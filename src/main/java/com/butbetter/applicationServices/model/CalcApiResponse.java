@@ -12,11 +12,11 @@ public class CalcApiResponse {
     public CalcApiResponse() {
     }
 
-    public String getType() {
+    public String getVatResult() {
         return vatResult;
     }
 
-    public void setType(String vatResult) {
+    public void setVatResult(String vatResult) {
         this.vatResult = vatResult;
     }
 
