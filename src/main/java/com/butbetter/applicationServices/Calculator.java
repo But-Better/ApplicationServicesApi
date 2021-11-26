@@ -26,12 +26,12 @@ public class Calculator implements CalculatorService{
 
     public void setCALC_API_URL_START(String CALC_API_URL_START) {
         this.CALC_API_URL_START = CALC_API_URL_START;
-        log.info("urlStart : " + CALC_API_URL_START);
+        log.info("urlStart set to: " + CALC_API_URL_START);
     }
 
     public void setCALC_API_URL_END(String CALC_API_URL_END) {
         this.CALC_API_URL_END = CALC_API_URL_END;
-        log.info("urlEnd : " + CALC_API_URL_END);
+        log.info("urlEnd set to: " + CALC_API_URL_END);
     }
 
     private RestTemplate calcAPIRESTTemplate= new RestTemplate();
