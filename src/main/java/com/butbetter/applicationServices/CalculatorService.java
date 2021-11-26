@@ -1,4 +1,2 @@
-package com.butbetter.applicationServices;
-
-public class CalculatorService {
+package com.butbetter.applicationServices;public interface CalculatorService {
 }
