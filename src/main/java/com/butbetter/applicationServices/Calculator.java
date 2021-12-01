@@ -3,6 +3,7 @@ package com.butbetter.applicationServices;
 import com.butbetter.applicationServices.model.CalcApiResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.ResourceAccessException;
@@ -15,6 +16,9 @@ public class Calculator implements CalculatorService {
     private String calcApiUrlEnd = "&percent=";
 
     private static final Logger log = LoggerFactory.getLogger(Calculator.class);
+
+    @Autowired
+    private RestTemplate calcAPIRESTTemplate;
 
     public String getCalcApiUrlStart() {
         log.info("urlStart : " + calcApiUrlStart);
@@ -36,13 +40,12 @@ public class Calculator implements CalculatorService {
         log.info("urlEnd set to: " + calcApiUrlEnd);
     }
 
-    private RestTemplate calcAPIRESTTemplate = new RestTemplate();
-
     @Override
     public float calculateVATofPrice(float price, float percent) throws ResourceAccessException, HttpClientErrorException.BadRequest {
         String restReq = this.calcApiUrlStart + price + this.calcApiUrlEnd + percent;
         log.info("accessing [" + restReq + "] to calc VAT of " + price + " with VAT(" + percent + "%)");
         CalcApiResponse calcApiResponse = calcAPIRESTTemplate.getForObject(restReq, CalcApiResponse.class);
+        if(calcApiResponse == null) throw new NullPointerException("Calc api response is null");
         return Float.parseFloat(calcApiResponse.getVatResult());
     }
 }
