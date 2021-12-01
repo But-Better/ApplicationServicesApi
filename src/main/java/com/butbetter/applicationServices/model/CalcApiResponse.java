@@ -12,6 +12,10 @@ public class CalcApiResponse {
     public CalcApiResponse() {
     }
 
+    public CalcApiResponse(String vatResult){
+        this.vatResult = vatResult;
+    }
+
     public String getVatResult() {
         return vatResult;
     }
