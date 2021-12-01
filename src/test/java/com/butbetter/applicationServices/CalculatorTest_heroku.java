@@ -19,7 +19,7 @@ class CalculatorTest_heroku {
 
     //these tests assert to true if the heroku calc api is running
     @Test
-    @DisplayName("test calc API with the values 100 10")
+    @DisplayName("test calc API on heroku with the values 100 10")
     void testCalcApiReturnValueFor10percentFrom100(){
         assertEquals(110,calculator.calculateVATofPrice(100,10));
     }
@@ -39,7 +39,7 @@ class CalculatorTest_heroku {
     //this test asserts to true if heroku calcApi is not running
     @Test
     @DisplayName("test a not running calc API with the values 100 10")
-    void textCalcApiReturnIFCalcAPINotAvailable(){
+    void testCalcApiReturnIFCalcAPINotAvailable(){
         assertThrows(ResourceAccessException.class, ()-> calculator.calculateVATofPrice(100,10));
     }
 
