@@ -17,7 +17,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 @SpringBootTest
-public class CalculatorTest_mockito {
+public class CalculatorTestUsingMockito {
 
     @Mock
     private RestTemplate calcRestApiTemplate_Mock;
