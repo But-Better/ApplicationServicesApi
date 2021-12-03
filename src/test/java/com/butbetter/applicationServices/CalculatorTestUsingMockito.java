@@ -20,7 +20,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 public class CalculatorTestUsingMockito {
 
     @Mock
-    private RestTemplate calcRestApiTemplate_Mock;
+    private RestTemplate calcRestApiTemplateMock;
 
     @InjectMocks
     private Calculator calcConnected = new Calculator();
@@ -33,7 +33,7 @@ public class CalculatorTestUsingMockito {
     void testCalcApiReturnValueFor10percentFrom100(){
         CalcApiResponse fakeResponse = new CalcApiResponse("110");
         String reqURL = calcConnected.getCalcApiUrl() + calcConnected.getCalcApiPath() + calcConnected.getCalcApiUrlPrice() +  "100.0" + calcConnected.getCalcApiUrlPercent() + "10.0";
-        Mockito.when(calcRestApiTemplate_Mock.getForObject(reqURL, CalcApiResponse.class)).thenReturn(fakeResponse);
+        Mockito.when(calcRestApiTemplateMock.getForObject(reqURL, CalcApiResponse.class)).thenReturn(fakeResponse);
         assertEquals(110, calcConnected.calculateVATofPrice(100,10));
     }
 
@@ -44,7 +44,7 @@ public class CalculatorTestUsingMockito {
         //problem i cannot mock a 400 type response using restTemplate.getForObject
         CalcApiResponse fakeResponse = new CalcApiResponse("110");
         String reqURL = calcConnected.getCalcApiUrl() + calcConnected.getCalcApiPath() + calcConnected.getCalcApiUrlPrice() +  "-100.0" + calcConnected.getCalcApiUrlPercent() + "10.0";
-        Mockito.when(calcRestApiTemplate_Mock.getForObject(reqURL, CalcApiResponse.class)).thenReturn(fakeResponse);
+        Mockito.when(calcRestApiTemplateMock.getForObject(reqURL, CalcApiResponse.class)).thenReturn(fakeResponse);
         assertThrows(HttpClientErrorException.BadRequest.class, ()-> calcConnected.calculateVATofPrice(-100,10));
     }
 
@@ -55,7 +55,7 @@ public class CalculatorTestUsingMockito {
         //problem i cannot mock a 400 type response using restTemplate.getForObject
         CalcApiResponse fakeResponse = new CalcApiResponse("110");
         String reqURL = calcConnected.getCalcApiUrl() + calcConnected.getCalcApiPath() + calcConnected.getCalcApiUrlPrice() +  "100.0" + calcConnected.getCalcApiUrlPercent() + "-10.0";
-        Mockito.when(calcRestApiTemplate_Mock.getForObject(reqURL, CalcApiResponse.class)).thenReturn(fakeResponse);
+        Mockito.when(calcRestApiTemplateMock.getForObject(reqURL, CalcApiResponse.class)).thenReturn(fakeResponse);
         assertThrows(HttpClientErrorException.BadRequest.class, ()-> calcConnected.calculateVATofPrice(100,-10));
     }
 
