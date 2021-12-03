@@ -12,37 +12,56 @@ import org.springframework.web.client.RestTemplate;
 @Service
 public class Calculator implements CalculatorService {
 
-    private String calcApiUrlStart = "https://caluationapi.herokuapp.com/calc/v1/VAT?price=";
-    private String calcApiUrlEnd = "&percent=";
+    private String calcApiUrl ="https://caluationapi.herokuapp.com";
+    private String calcApiPath = "/calc/v1/VAT?";
+    private String calcApiUrlPrice = "price=";
+    private String calcApiUrlPercent = "&percent=";
 
     private static final Logger log = LoggerFactory.getLogger(Calculator.class);
 
     @Autowired
     private RestTemplate calcAPIRESTTemplate;
 
-    public String getCalcApiUrlStart() {
-        log.info("urlStart : " + calcApiUrlStart);
-        return this.calcApiUrlStart;
+    public String getCalcApiUrl() {
+        return calcApiUrl;
     }
 
-    public String getCalcApiUrlEnd() {
-        log.info("urlEnd : " + calcApiUrlEnd);
-        return calcApiUrlEnd;
+    public String getCalcApiPath() {
+        return calcApiPath;
     }
 
-    public void setCalcApiUrlStart(String calcApiUrlStart) {
-        this.calcApiUrlStart = calcApiUrlStart;
-        log.info("urlStart set to: " + calcApiUrlStart);
+    public String getCalcApiUrlPrice() {
+        return calcApiUrlPrice;
     }
 
-    public void setCalcApiUrlEnd(String calcApiUrlEnd) {
-        this.calcApiUrlEnd = calcApiUrlEnd;
-        log.info("urlEnd set to: " + calcApiUrlEnd);
+    public String getCalcApiUrlPercent() {
+        return calcApiUrlPercent;
     }
+
+    public void setCalcApiUrl(String calcApiUrl) {
+        log.info("calcApi url : " + calcApiUrl);
+        this.calcApiUrl = calcApiUrl;
+    }
+
+    public void setCalcApiPath(String calcApiPath) {
+        log.info("calcApi path: " + calcApiPath);
+        this.calcApiPath = calcApiPath;
+    }
+
+    public void setCalcApiUrlPrice(String calcApiUrlPrice) {
+        log.info("calcApi url price: " + calcApiUrlPrice);
+        this.calcApiUrlPrice = calcApiUrlPrice;
+    }
+
+    public void setCalcApiUrlPercent(String calcApiUrlPercent) {
+        log.info("calcApi url percent: " + calcApiUrlPercent);
+        this.calcApiUrlPercent = calcApiUrlPercent;
+    }
+
 
     @Override
     public float calculateVATofPrice(float price, float percent) throws ResourceAccessException, HttpClientErrorException.BadRequest {
-        String restReq = this.calcApiUrlStart + price + this.calcApiUrlEnd + percent;
+        String restReq = this.calcApiUrl + this.calcApiPath + this.calcApiUrlPrice + price + this.calcApiUrlPercent + percent;
         log.info("accessing [" + restReq + "] to calc VAT of " + price + " with VAT(" + percent + "%)");
         CalcApiResponse calcApiResponse = calcAPIRESTTemplate.getForObject(restReq, CalcApiResponse.class);
         if(calcApiResponse == null) throw new NullPointerException("Calc api response is null");

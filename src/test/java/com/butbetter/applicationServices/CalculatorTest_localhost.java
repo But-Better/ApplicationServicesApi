@@ -21,21 +21,21 @@ class CalculatorTest_localhost {
     @Test
     @DisplayName("test calc API with the values 100 10")
     void testCalcApiReturnValueFor10percentFrom100(){
-        calculator.setCalcApiUrlStart("http://localhost:8080/calc/v1/VAT?price=");
+        calculator.setCalcApiUrl("http://localhost:8080");
         assertEquals(110,calculator.calculateVATofPrice(100,10));
     }
 
     @Test
     @DisplayName("test calc API with the values -100 10")
     void testCalcApiReturnForIllegalInputPrice(){
-        calculator.setCalcApiUrlStart("http://localhost:8080/calc/v1/VAT?price=");
+        calculator.setCalcApiUrl("http://localhost:8080");
         assertThrows(HttpClientErrorException.BadRequest.class, ()-> calculator.calculateVATofPrice(-100,10));
     }
 
     @Test
     @DisplayName("test calc API with the values 100 -10")
     void testCalcApiReturnForIllegalInputPercent(){
-        calculator.setCalcApiUrlStart("http://localhost:8080/calc/v1/VAT?price=");
+        calculator.setCalcApiUrl("http://localhost:8080");
         assertThrows(HttpClientErrorException.BadRequest.class, ()-> calculator.calculateVATofPrice(100,-10));
     }
 
@@ -43,7 +43,7 @@ class CalculatorTest_localhost {
     @Test
     @DisplayName("test not running calc API with the values 100 10")
     void testCalcApiReturnIFCalcAPINotAvailable(){
-        calculator.setCalcApiUrlStart("http://localhost:8080/calc/v1/VAT?price=");
+        calculator.setCalcApiUrl("http://localhost:8080");
         assertThrows(ResourceAccessException.class, ()-> calculator.calculateVATofPrice(100,10));
     }
 
