@@ -30,7 +30,7 @@ public class CalculatorTestUsingMockito {
 
     @Test
     @DisplayName("test calc API by mocking restTemplate with the values 100 10")
-    void testCalcApiReturnValueFor10percentFrom100(){
+    void testCalcAPIReturnValueFor10percentFrom100(){
         CalcApiResponse fakeResponse = new CalcApiResponse("110");
         String reqURL = calcConnected.getCalcApiUrl() + calcConnected.getCalcApiPath() + calcConnected.getCalcApiUrlPrice() +  "100.0" + calcConnected.getCalcApiUrlPercent() + "10.0";
         Mockito.when(calcRestApiTemplateMock.getForObject(reqURL, CalcApiResponse.class)).thenReturn(fakeResponse);
@@ -39,7 +39,7 @@ public class CalculatorTestUsingMockito {
 
     @Disabled
     @Test
-    void testCalcApiReturnForIllegalInputPrice(){
+    void testCalcAPIReturnForIllegalInputPrice(){
         //write a test that provokes a 400 type response -> spring boot throw bad request exc -> assert for this exception
         //problem i cannot mock a 400 type response using restTemplate.getForObject
         CalcApiResponse fakeResponse = new CalcApiResponse("110");
@@ -50,7 +50,7 @@ public class CalculatorTestUsingMockito {
 
     @Disabled
     @Test
-    void testCalcApiReturnForIllegalInputPercent(){
+    void testCalcAPIReturnForIllegalInputPercent(){
         //write a test that provokes a 400 type response -> spring boot throw bad request exc -> assert for this exception
         //problem i cannot mock a 400 type response using restTemplate.getForObject
         CalcApiResponse fakeResponse = new CalcApiResponse("110");
@@ -61,7 +61,7 @@ public class CalculatorTestUsingMockito {
 
     @Test
     @DisplayName("test not running calc API by using non existend url")
-    void testCalcApiReturnIFCalcAPINotAvailable(){
+    void testCalcAPIReturnIFCalcAPINotAvailable(){
         String url = "https://thisUrl345345435";
         String urlPath = "/wrong/path/alsdgiojangasl/VAT?";
         String urlPrice = "price=";
