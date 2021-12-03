@@ -42,7 +42,7 @@ class CalculatorTestUsingLocalhost {
     //this test asserts to true if localhost calcApi not running
     @Test
     @DisplayName("test not running calc API with the values 100 10")
-    void testCalcAOIReturnIfCalcAPINotAvailable(){
+    void testCalcAPIReturnIfCalcAPINotAvailable(){
         calculator.setCalcApiUrl("http://localhost:8080");
         assertThrows(ResourceAccessException.class, ()-> calculator.calculateVATofPrice(100,10));
     }

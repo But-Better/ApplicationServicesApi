@@ -39,7 +39,7 @@ class CalculatorTestUsingHeroku {
     //this test asserts to true if heroku calcApi is not running
     @Test
     @DisplayName("test a not running calc API with the values 100 10")
-    void testCalcAPAReturnIfCalcAPINotAvailable(){
+    void testCalcAPIReturnIfCalcAPINotAvailable(){
         assertThrows(ResourceAccessException.class, ()-> calculator.calculateVATofPrice(100,10));
     }
 

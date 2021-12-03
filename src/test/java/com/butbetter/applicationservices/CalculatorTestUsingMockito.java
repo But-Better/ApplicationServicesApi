@@ -61,7 +61,7 @@ public class CalculatorTestUsingMockito {
 
     @Test
     @DisplayName("test not running calc API by using non existend url")
-    void testCalcAPIReturnIFCalcAPINotAvailable(){
+    void testCalcAPIReturnIfCalcAPINotAvailable(){
         String url = "https://thisUrl345345435";
         String urlPath = "/wrong/path/alsdgiojangasl/VAT?";
         String urlPrice = "price=";
