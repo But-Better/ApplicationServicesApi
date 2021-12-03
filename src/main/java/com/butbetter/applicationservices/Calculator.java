@@ -1,6 +1,6 @@
-package com.butbetter.applicationServices;
+package com.butbetter.applicationservices;
 
-import com.butbetter.applicationServices.model.CalcApiResponse;
+import com.butbetter.applicationservices.model.CalcApiResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -64,7 +64,7 @@ public class Calculator implements CalculatorService {
         String restReq = this.calcApiUrl + this.calcApiPath + this.calcApiUrlPrice + price + this.calcApiUrlPercent + percent;
         log.info("accessing [" + restReq + "] to calc VAT of " + price + " with VAT(" + percent + "%)");
         CalcApiResponse calcApiResponse = calcAPIRESTTemplate.getForObject(restReq, CalcApiResponse.class);
-        if(calcApiResponse == null) throw new NullPointerException("Calc api response is null");
+        if(calcApiResponse == null) throw new IllegalStateException("Calc api response is null because spring boot didnt throw ResourcAccessException");
         return Float.parseFloat(calcApiResponse.getVatResult());
     }
 }

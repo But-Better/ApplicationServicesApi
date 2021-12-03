@@ -1,4 +1,4 @@
-package com.butbetter.applicationServices;
+package com.butbetter.applicationservices;
 
 import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.ResourceAccessException;

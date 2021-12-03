@@ -1,4 +1,4 @@
-package com.butbetter.applicationServices.model;
+package com.butbetter.applicationservices.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;

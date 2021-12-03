@@ -1,4 +1,4 @@
-package com.butbetter.applicationServices;
+package com.butbetter.applicationservices;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
