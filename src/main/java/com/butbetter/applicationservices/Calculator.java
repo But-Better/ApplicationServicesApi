@@ -12,7 +12,7 @@ import org.springframework.web.client.RestTemplate;
 @Service
 public class Calculator implements CalculatorService {
 
-    private String calcApiUrl ="https://caluationapi.herokuapp.com";
+    private String calcApiUrl = "https://caluationapi.herokuapp.com";
     private String calcApiPath = "/calc/v1/VAT?";
     private String calcApiUrlPrice = "price=";
     private String calcApiUrlPercent = "&percent=";
@@ -64,7 +64,8 @@ public class Calculator implements CalculatorService {
         String restReq = this.calcApiUrl + this.calcApiPath + this.calcApiUrlPrice + price + this.calcApiUrlPercent + percent;
         log.info("accessing [" + restReq + "] to calc VAT of " + price + " with VAT(" + percent + "%)");
         CalcApiResponse calcApiResponse = calcAPIRESTTemplate.getForObject(restReq, CalcApiResponse.class);
-        if(calcApiResponse == null) throw new IllegalStateException("Calc api response is null because spring boot didnt throw ResourcAccessException");
+        if (calcApiResponse == null)
+            throw new IllegalStateException("Calc api response is null because spring boot didnt throw ResourcAccessException");
         return Float.parseFloat(calcApiResponse.getVatResult());
     }
 }
