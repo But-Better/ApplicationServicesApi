@@ -3,6 +3,7 @@ package com.butbetter.applicationservices.service;
 import com.butbetter.applicationservices.model.ProductInformation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
@@ -32,6 +33,11 @@ public class StorageApiService {
 
     private RestTemplate restTemplate;
     private String default_url;
+
+    @Autowired
+    public StorageApiService(RestTemplate restTemplate) {
+        this.restTemplate = restTemplate;
+    }
 
     public StorageApiService() {
         this.restTemplate = new RestTemplate();
@@ -72,10 +78,6 @@ public class StorageApiService {
         this.handleResponse(response);
         log.info(Objects.requireNonNull(response.getBody()).toString());
         return response.getBody();
-    }
-
-    public StorageApiService(RestTemplate restTemplate) {
-        this.restTemplate = restTemplate;
     }
 
     public void newProductInformation(@NotNull ProductInformation productInformation) {
