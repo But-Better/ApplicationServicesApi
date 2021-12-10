@@ -9,6 +9,8 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.HttpServerErrorException;
+import org.springframework.web.client.ResourceAccessException;
 import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 
@@ -51,12 +53,17 @@ public class StorageApiService {
      * @throws ServerException if response not in range of 2xx
      */
     public List<ProductInformation> all() throws ServerException {
-        ResponseEntity<ProductInformation[]> response = this.restTemplate.getForEntity(
-                this.default_url,
-                ProductInformation[].class
-        );
+        ResponseEntity<ProductInformation[]> response = null;
 
-        this.handleResponse(response);
+        try {
+            response = this.restTemplate.getForEntity(
+                    this.default_url,
+                    ProductInformation[].class
+            );
+        } catch (HttpServerErrorException | ResourceAccessException e) {
+            log.error(e.getMessage());
+        }
+
         List<ProductInformation> informationList = Arrays.asList(Objects.requireNonNull(response.getBody()));
         log.info(Arrays.toString(informationList.toArray()));
         return informationList;
@@ -70,12 +77,16 @@ public class StorageApiService {
      * @throws ServerException if response not in range of 2xx
      */
     public ProductInformation one(@NotNull String id) throws ServerException {
-        ResponseEntity<ProductInformation> response = this.restTemplate.getForEntity(
-                this.default_url + id,
-                ProductInformation.class
-        );
+        ResponseEntity<ProductInformation> response = null;
+        try {
+            response = this.restTemplate.getForEntity(
+                    this.default_url + id,
+                    ProductInformation.class
+            );
+        } catch (HttpServerErrorException | ResourceAccessException e) {
+            log.error(e.getMessage());
+        }
 
-        this.handleResponse(response);
         log.info(Objects.requireNonNull(response.getBody()).toString());
         return response.getBody();
     }
@@ -87,14 +98,5 @@ public class StorageApiService {
 
         HttpEntity<ProductInformation> request = new HttpEntity<>(productInformation, headers);
         this.restTemplate.postForObject(this.default_url, request.getBody(), ProductInformation.class);
-    }
-
-    private <T> void handleResponse(ResponseEntity<T> response) throws ServerException {
-        if (!response.getStatusCode().is2xxSuccessful()) {
-            String msg = "Code: " + response.getStatusCode() + " Connection is not possible." +
-                    " Checkout you connection to server";
-            log.error(msg);
-            throw new ServerException(msg);
-        }
     }
 }
