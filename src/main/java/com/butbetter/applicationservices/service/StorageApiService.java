@@ -45,23 +45,14 @@ public class StorageApiService {
      * @throws ServerException if response not in range of 2xx
      */
     public List<ProductInformation> all() throws ServerException {
-        ResponseEntity<ProductInformation[]> response = null;
-        try {
-            response = restTemplate.getForEntity(
-                    this.default_url,
-                    ProductInformation[].class
-            );
-        } catch (RestClientException e) {
-            log.error(e.getMessage());
-        }
-
+        ResponseEntity<ProductInformation[]> response = restTemplate.getForEntity(
+                this.default_url,
+                ProductInformation[].class
+        );
 
         this.handleResponse(response);
-
         List<ProductInformation> informationList = Arrays.asList(Objects.requireNonNull(response.getBody()));
-
         log.info(Arrays.toString(informationList.toArray()));
-
         return informationList;
     }
 
@@ -79,9 +70,7 @@ public class StorageApiService {
         );
 
         this.handleResponse(response);
-
         log.info(Objects.requireNonNull(response.getBody()).toString());
-
         return response.getBody();
     }
 
@@ -106,5 +95,4 @@ public class StorageApiService {
             throw new ServerException(msg);
         }
     }
-
 }
