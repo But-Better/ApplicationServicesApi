@@ -11,7 +11,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.HttpServerErrorException;
 import org.springframework.web.client.ResourceAccessException;
-import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 
 import javax.validation.constraints.NotNull;
@@ -50,7 +49,6 @@ public class StorageApiService {
      * Get all ProductInformation from StorageAPI
      *
      * @return a list of {@link ProductInformation}
-     * @throws ServerException if response not in range of 2xx
      */
     public List<ProductInformation> all() throws ServerException {
         ResponseEntity<ProductInformation[]> response = null;
@@ -74,9 +72,8 @@ public class StorageApiService {
      *
      * @param id = type as UUID
      * @return {@link ProductInformation}
-     * @throws ServerException if response not in range of 2xx
      */
-    public ProductInformation one(@NotNull String id) throws ServerException {
+    public ProductInformation one(@NotNull String id) {
         ResponseEntity<ProductInformation> response = null;
         try {
             response = this.restTemplate.getForEntity(
@@ -91,6 +88,11 @@ public class StorageApiService {
         return response.getBody();
     }
 
+    /**
+     * Add a new ProductionInformation at StorageAPI
+     *
+     * @param productInformation = {@link ProductInformation}
+     */
     public void newProductInformation(@NotNull ProductInformation productInformation) {
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
