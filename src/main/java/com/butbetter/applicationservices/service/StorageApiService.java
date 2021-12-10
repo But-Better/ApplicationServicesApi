@@ -51,7 +51,7 @@ public class StorageApiService {
      * @throws ServerException if response not in range of 2xx
      */
     public List<ProductInformation> all() throws ServerException {
-        ResponseEntity<ProductInformation[]> response = restTemplate.getForEntity(
+        ResponseEntity<ProductInformation[]> response = this.restTemplate.getForEntity(
                 this.default_url,
                 ProductInformation[].class
         );
@@ -70,7 +70,7 @@ public class StorageApiService {
      * @throws ServerException if response not in range of 2xx
      */
     public ProductInformation one(@NotNull String id) throws ServerException {
-        ResponseEntity<ProductInformation> response = restTemplate.getForEntity(
+        ResponseEntity<ProductInformation> response = this.restTemplate.getForEntity(
                 this.default_url + id,
                 ProductInformation.class
         );
