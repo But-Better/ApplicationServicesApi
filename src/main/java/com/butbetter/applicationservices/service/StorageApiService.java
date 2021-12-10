@@ -50,7 +50,7 @@ public class StorageApiService {
      *
      * @return a list of {@link ProductInformation}
      */
-    public List<ProductInformation> all() throws ServerException {
+    public List<ProductInformation> all() {
         ResponseEntity<ProductInformation[]> response = null;
 
         try {
