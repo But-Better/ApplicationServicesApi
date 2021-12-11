@@ -7,7 +7,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-import java.rmi.ServerException;
 import java.time.Instant;
 import java.time.OffsetDateTime;
 import java.time.ZoneId;
@@ -23,6 +22,7 @@ public class StorageApiServiceTest {
         this.storageApiService = new StorageApiService();
     }
 
+    @Disabled
     @Test
     void getOne() {
         ProductInformation productInformation = null;
@@ -32,6 +32,7 @@ public class StorageApiServiceTest {
         Assertions.assertNotNull(productInformation);
     }
 
+    @Disabled
     @Test
     void getAll() {
         List<ProductInformation> informationList =
@@ -41,6 +42,7 @@ public class StorageApiServiceTest {
         Assertions.assertNotEquals(informationList.size(), 0);
     }
 
+    @Disabled
     @Test
     void createOne() {
         int hour = 3;
