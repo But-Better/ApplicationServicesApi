@@ -33,8 +33,8 @@ public class StorageApiService {
     public static final String STORAGE_URL = "storage/v1/";
     public static final String PRODUCT_INFORMATION = "productInformation/";
 
-    private RestTemplate restTemplate;
-    private String default_url;
+    private final RestTemplate restTemplate;
+    private final String default_url;
 
     @Autowired
     public StorageApiService(RestTemplate restTemplate) {
