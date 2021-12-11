@@ -27,12 +27,7 @@ public class StorageApiServiceTest {
     void getOne() {
         ProductInformation productInformation = null;
 
-        try {
-            productInformation = this.storageApiService.one("6c83a6c0-40b3-4c06-a5fd-16af6344ab6d");
-        } catch (ServerException e) {
-            e.printStackTrace();
-            Assertions.fail();
-        }
+        productInformation = this.storageApiService.one("6c83a6c0-40b3-4c06-a5fd-16af6344ab6d");
 
         Assertions.assertNotNull(productInformation);
     }
@@ -41,12 +36,7 @@ public class StorageApiServiceTest {
     void getAll() {
         List<ProductInformation> informationList =
                 null;
-        try {
-            informationList = this.storageApiService.all();
-        } catch (ServerException e) {
-            e.printStackTrace();
-            Assertions.fail();
-        }
+        informationList = this.storageApiService.all();
 
         Assertions.assertNotEquals(informationList.size(), 0);
     }
