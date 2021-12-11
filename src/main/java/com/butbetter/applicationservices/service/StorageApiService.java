@@ -50,7 +50,7 @@ public class StorageApiService {
     /**
      * Get all ProductInformation from StorageAPI
      *
-     * @return a list of {@link ProductInformation}
+     * @return a list of {@link ProductInformation} or null
      */
     public List<ProductInformation> all() {
         ResponseEntity<ProductInformation[]> response = null;
@@ -73,7 +73,7 @@ public class StorageApiService {
      * Get one ProductInformation from StorageAPI
      *
      * @param id = type as UUID
-     * @return {@link ProductInformation}
+     * @return {@link ProductInformation} or null
      */
     public ProductInformation one(@NotNull String id) {
         ResponseEntity<ProductInformation> response = null;
