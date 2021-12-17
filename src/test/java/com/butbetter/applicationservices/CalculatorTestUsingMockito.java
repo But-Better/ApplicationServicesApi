@@ -1,6 +1,7 @@
 package com.butbetter.applicationservices;
 
-import com.butbetter.applicationservices.model.CalcApiResponse;
+import com.butbetter.applicationservices.calculator.Calculator;
+import com.butbetter.applicationservices.calculator.model.CalcApiResponse;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
