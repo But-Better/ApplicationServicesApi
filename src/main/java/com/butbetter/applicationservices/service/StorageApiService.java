@@ -28,22 +28,27 @@ public class StorageApiService {
     private static final Logger log = LoggerFactory.getLogger(StorageApiService.class);
 
     public static final String HEROKU_URL = "https://storageapi2.herokuapp.com/";
-    public static final String LOCALHOST = "http://localhost:8080/";
-    public static final String STORAGE_URL = "storage/v1/";
+    public static final String LOCALHOST = "http://localhost:";
+    public static final String PORT = "8080";
+    public static final String STORAGE_URL = "/storage/v1/";
     public static final String PRODUCT_INFORMATION = "productInformation/";
 
     private final RestTemplate restTemplate;
     private final String default_url;
 
-    @Autowired
-    public StorageApiService(RestTemplate restTemplate) {
-        this.restTemplate = restTemplate;
-        this.default_url = LOCALHOST + STORAGE_URL + PRODUCT_INFORMATION;
+    public StorageApiService(String host, String port) {
+        this.restTemplate = new RestTemplate();
+        this.default_url = host + port + STORAGE_URL + PRODUCT_INFORMATION;
+    }
+
+    public StorageApiService(String port) {
+        this.restTemplate = new RestTemplate();
+        this.default_url = LOCALHOST + port + STORAGE_URL + PRODUCT_INFORMATION;
     }
 
     public StorageApiService() {
         this.restTemplate = new RestTemplate();
-        this.default_url = LOCALHOST + STORAGE_URL + PRODUCT_INFORMATION;
+        this.default_url = LOCALHOST + PORT + STORAGE_URL + PRODUCT_INFORMATION;
     }
 
     /**
