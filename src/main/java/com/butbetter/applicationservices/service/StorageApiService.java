@@ -14,7 +14,6 @@ import org.springframework.web.client.ResourceAccessException;
 import org.springframework.web.client.RestTemplate;
 
 import javax.validation.constraints.NotNull;
-import java.rmi.ServerException;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -62,6 +61,7 @@ public class StorageApiService {
             );
         } catch (HttpServerErrorException | ResourceAccessException e) {
             log.error(e.getMessage());
+            return null;
         }
 
         List<ProductInformation> informationList = Arrays.asList(Objects.requireNonNull(response.getBody()));
@@ -84,6 +84,7 @@ public class StorageApiService {
             );
         } catch (HttpServerErrorException | ResourceAccessException e) {
             log.error(e.getMessage());
+            return null;
         }
 
         log.info(Objects.requireNonNull(response.getBody()).toString());
