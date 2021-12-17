@@ -9,6 +9,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.HttpServerErrorException;
 import org.springframework.web.client.ResourceAccessException;
 import org.springframework.web.client.RestTemplate;
@@ -64,7 +65,7 @@ public class StorageApiService {
                     this.default_url,
                     ProductInformation[].class
             );
-        } catch (HttpServerErrorException | ResourceAccessException e) {
+        } catch (HttpClientErrorException | ResourceAccessException e) {
             log.error(e.getMessage());
             return null;
         }
@@ -87,7 +88,7 @@ public class StorageApiService {
                     this.default_url + id,
                     ProductInformation.class
             );
-        } catch (HttpServerErrorException | ResourceAccessException e) {
+        } catch (HttpClientErrorException | ResourceAccessException e) {
             log.error(e.getMessage());
             return null;
         }

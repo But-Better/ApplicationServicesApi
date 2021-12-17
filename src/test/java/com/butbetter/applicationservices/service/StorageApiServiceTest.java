@@ -22,6 +22,9 @@ public class StorageApiServiceTest {
         this.storageApiService = new StorageApiService();
     }
 
+    /**
+     * Required Docker-compose up -d from StorageAPI
+     */
     @Disabled
     @Test
     void getOne() {
@@ -32,6 +35,9 @@ public class StorageApiServiceTest {
         Assertions.assertNotNull(productInformation);
     }
 
+    /**
+     * Required Docker-compose up -d from StorageAPI
+     */
     @Disabled
     @Test
     void getAll() {
@@ -42,6 +48,9 @@ public class StorageApiServiceTest {
         Assertions.assertNotEquals(informationList.size(), 0);
     }
 
+    /**
+     * Required Docker-compose up -d from StorageAPI
+     */
     @Disabled
     @Test
     void createOne() {
