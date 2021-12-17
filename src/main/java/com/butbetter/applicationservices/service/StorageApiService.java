@@ -24,7 +24,7 @@ import java.util.Objects;
  * Create Connection to Storage API
  */
 @Service
-public class StorageApiService {
+public class StorageApiService implements IStorageApiService {
 
     private static final Logger log = LoggerFactory.getLogger(StorageApiService.class);
 
