@@ -31,3 +31,6 @@ build/
 
 ### VS Code ###
 .vscode/
+
+###DeepL ####
+env-config.yml
