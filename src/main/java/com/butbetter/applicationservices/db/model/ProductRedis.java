@@ -1,13 +1,12 @@
 package com.butbetter.applicationservices.db.model;
 
-import com.butbetter.applicationservices.db.model.ProductBeverageEnum;
-import com.butbetter.applicationservices.db.model.ProductRatingEnum;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.data.redis.core.RedisHash;
 import org.springframework.stereotype.Component;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.UUID;
 
@@ -16,7 +15,7 @@ import java.util.UUID;
 @AllArgsConstructor
 @RedisHash("ProductRedis")
 @Component
-public class ProductRedis {
+public class ProductRedis implements Serializable, Producible {
     private UUID uuid;
     private ProductBeverageEnum productBeverageEnum;
     private String name;

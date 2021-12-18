@@ -1,9 +1,11 @@
 package com.butbetter.applicationservices.db.repository;
 
+import com.butbetter.applicationservices.db.model.Producible;
+
 import javax.validation.constraints.NotNull;
 import java.util.UUID;
 
-public interface ProductOperations<P> {
+public interface ProductOperations<P extends Producible> {
 
     void save(@NotNull final P product);
 

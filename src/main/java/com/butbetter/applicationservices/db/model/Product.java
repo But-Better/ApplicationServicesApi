@@ -12,7 +12,7 @@ import java.util.UUID;
 
 @Entity
 @Table(schema = "Product")
-public class Product implements Serializable {
+public class Product implements Serializable, Producible {
 
     @Id
     @Column(name = "uuid", nullable = false, updatable = false, insertable = false)
