@@ -14,7 +14,7 @@ import java.util.Map;
 import java.util.UUID;
 
 @Service
-public class ProductRedisServices implements ProductRedisRepository {
+public class ProductRedisServices implements ProductRedisRepository<ProductRedis> {
 
     private static final String PRODUCT_CACHE = "ProductRedis";
     private static final Logger log = LoggerFactory.getLogger(ProductRedisServices.class);
