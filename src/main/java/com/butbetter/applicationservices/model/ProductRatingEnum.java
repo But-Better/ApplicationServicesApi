@@ -7,8 +7,4 @@ public enum ProductRatingEnum {
     three,
     four,
     five;
-
-
-    ProductRatingEnum() {
-    }
 }
