@@ -1,18 +1,18 @@
-package com.butbetter.applicationservices.model;
+package com.butbetter.applicationservices.caluapi.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class CalcApiResponse {
+public class VAT {
 
     @JsonProperty("VAT-Result")
     private String vatResult;
 
-    public CalcApiResponse() {
+    public VAT() {
     }
 
-    public CalcApiResponse(String vatResult){
+    public VAT(String vatResult){
         this.vatResult = vatResult;
     }
 

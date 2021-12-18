@@ -1,6 +1,6 @@
-package com.butbetter.applicationservices.service;
+package com.butbetter.applicationservices.storagerestapi.service;
 
-import com.butbetter.applicationservices.db.model.ProductInformation;
+import com.butbetter.applicationservices.storagerestapi.model.ProductInformation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpEntity;

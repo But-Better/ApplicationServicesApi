@@ -1,4 +1,4 @@
-package com.butbetter.applicationservices.service;
+package com.butbetter.applicationservices.caluapi.service;
 
 import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.ResourceAccessException;
