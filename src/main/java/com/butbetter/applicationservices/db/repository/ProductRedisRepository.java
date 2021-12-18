@@ -10,8 +10,6 @@ public interface ProductRedisRepository<P> {
 
     void save(@NotNull final P product);
 
-    void save(ProductRedis productRedis);
-
     P findById(@NotNull final UUID uuid);
 
     void delete(@NotNull final UUID uuid);
