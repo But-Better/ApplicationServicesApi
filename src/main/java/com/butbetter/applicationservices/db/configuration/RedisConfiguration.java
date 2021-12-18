@@ -1,6 +1,6 @@
-package com.butbetter.applicationservices.configuration;
+package com.butbetter.applicationservices.db.configuration;
 
-import com.butbetter.applicationservices.model.ProductRedis;
+import com.butbetter.applicationservices.db.model.ProductRedis;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.connection.RedisConnectionFactory;

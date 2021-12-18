@@ -1,5 +1,7 @@
-package com.butbetter.applicationservices.model;
+package com.butbetter.applicationservices.db.model;
 
+import com.butbetter.applicationservices.db.model.ProductBeverageEnum;
+import com.butbetter.applicationservices.db.model.ProductRatingEnum;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

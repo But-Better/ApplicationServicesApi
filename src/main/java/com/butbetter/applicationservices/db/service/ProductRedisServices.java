@@ -1,7 +1,7 @@
-package com.butbetter.applicationservices.service;
+package com.butbetter.applicationservices.db.service;
 
-import com.butbetter.applicationservices.model.ProductRedis;
-import com.butbetter.applicationservices.repository.ProductRedisRepository;
+import com.butbetter.applicationservices.db.model.ProductRedis;
+import com.butbetter.applicationservices.db.repository.ProductRedisRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

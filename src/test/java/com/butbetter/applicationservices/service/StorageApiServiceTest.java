@@ -1,7 +1,7 @@
 package com.butbetter.applicationservices.service;
 
 import com.butbetter.applicationservices.model.Address;
-import com.butbetter.applicationservices.model.ProductInformation;
+import com.butbetter.applicationservices.db.model.ProductInformation;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;

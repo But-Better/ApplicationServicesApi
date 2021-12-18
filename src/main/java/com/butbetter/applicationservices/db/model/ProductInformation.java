@@ -1,4 +1,6 @@
-package com.butbetter.applicationservices.model;
+package com.butbetter.applicationservices.db.model;
+
+import com.butbetter.applicationservices.model.Address;
 
 import java.io.Serializable;
 

@@ -1,8 +1,8 @@
-package com.butbetter.applicationservices.controller;
+package com.butbetter.applicationservices.db.controller;
 
-import com.butbetter.applicationservices.model.Product;
-import com.butbetter.applicationservices.model.ProductRedis;
-import com.butbetter.applicationservices.service.ProductRedisServices;
+import com.butbetter.applicationservices.db.model.Product;
+import com.butbetter.applicationservices.db.model.ProductRedis;
+import com.butbetter.applicationservices.db.service.ProductRedisServices;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +13,7 @@ import java.util.UUID;
 
 @RestController
 @RequestMapping(value = "v1/redis/product")
-public class ProductController {
+public class ProductController{
     private static final Logger log = LoggerFactory.getLogger(Product.class);
 
     private final ProductRedisServices productRedisServices;

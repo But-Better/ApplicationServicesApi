@@ -1,4 +1,4 @@
-package com.butbetter.applicationservices.model;
+package com.butbetter.applicationservices.db.model;
 
 import javax.persistence.*;
 import javax.validation.constraints.Max;
