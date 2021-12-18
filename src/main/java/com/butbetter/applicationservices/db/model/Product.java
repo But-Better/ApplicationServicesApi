@@ -11,6 +11,7 @@ import java.util.Objects;
 import java.util.UUID;
 
 @Entity
+@Table(schema = "Product")
 public class Product implements Serializable {
 
     @Id
