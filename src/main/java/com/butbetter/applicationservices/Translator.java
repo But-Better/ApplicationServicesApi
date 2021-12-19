@@ -2,28 +2,31 @@ package com.butbetter.applicationservices;
 
 import com.butbetter.applicationservices.model.DeepLApiResponse;
 import com.butbetter.applicationservices.model.Translation;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.ResourceAccessException;
 import org.springframework.web.client.RestTemplate;
 
-import java.io.File;
-import java.io.IOException;
+import java.util.Objects;
 
 @Service
 public class Translator implements TranslatorService {
- //https://api-free.deepl.com/v2/translate?auth_key=ea5a91a5-19c6-13d0-ca9c-a83aaa6be820%3Afx&text=Freund&target_lang=en-GB&source_lang=de
     private String deepLAPIURL = "https://api-free.deepl.com/v2/translate?";
+    private String deepLToken;
     private String authenticationKey = "auth_key=";
     private String textToTranslate = "&text=";
     private String targetLanguage = "&target_lang=";
     private String sourceLanguage = "&source_lang=de"; // set to german by default
 
-    private static final Logger log = LoggerFactory.getLogger(Calculator.class);
+    private static final Logger log = LoggerFactory.getLogger(Translator.class);
+
+    public Translator() {
+        this.deepLToken = System.getenv("DEEPL_TOKEN");
+    }
 
     @Autowired
     private RestTemplate deepLRESTTemplate;
@@ -78,17 +81,11 @@ public class Translator implements TranslatorService {
     }
 
     private String createURL(String sentence, Language language){
-        if (language == null){
-            return deepLAPIURL +
-                    authenticationKey+
-                    textToTranslate+ sentence +
-                    targetLanguage + Language.EN.name().toLowerCase() +
-                    sourceLanguage;
-        }
         return deepLAPIURL +
-                authenticationKey+
-                textToTranslate+ sentence +
-                targetLanguage + language.name().toLowerCase() +
+                authenticationKey +
+                deepLToken +
+                textToTranslate + sentence +
+                targetLanguage + Objects.requireNonNullElse(language, Language.EN).name().toLowerCase() +
                 sourceLanguage;
     }
 }

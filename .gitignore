@@ -33,4 +33,4 @@ build/
 .vscode/
 
 ###DeepL ####
-env-config.yml
+.env-config.yml
