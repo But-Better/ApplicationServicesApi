@@ -1,4 +1,4 @@
-package com.butbetter.applicationservices.configuration;
+package com.butbetter.applicationservices.caluapi.configuration;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

@@ -1,16 +1,15 @@
-package com.butbetter.applicationservices.service;
+package com.butbetter.applicationservices.storagerestapi.service;
 
-import com.butbetter.applicationservices.model.ProductInformation;
+import com.butbetter.applicationservices.storagerestapi.model.ProductInformation;
+import com.butbetter.applicationservices.storagerestapi.repoistory.StorageOperation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.HttpClientErrorException;
-import org.springframework.web.client.HttpServerErrorException;
 import org.springframework.web.client.ResourceAccessException;
 import org.springframework.web.client.RestTemplate;
 
@@ -24,7 +23,7 @@ import java.util.Objects;
  * Create Connection to Storage API
  */
 @Service
-public class StorageApiService {
+public class StorageApiService implements StorageOperation {
 
     private static final Logger log = LoggerFactory.getLogger(StorageApiService.class);
 
@@ -57,6 +56,7 @@ public class StorageApiService {
      *
      * @return a list of {@link ProductInformation} or null
      */
+    @Override
     public List<ProductInformation> all() {
         ResponseEntity<ProductInformation[]> response = null;
 
@@ -81,6 +81,7 @@ public class StorageApiService {
      * @param id = type as UUID
      * @return {@link ProductInformation} or null
      */
+    @Override
     public ProductInformation one(@NotNull String id) {
         ResponseEntity<ProductInformation> response = null;
         try {
@@ -102,6 +103,7 @@ public class StorageApiService {
      *
      * @param productInformation = {@link ProductInformation}
      */
+    @Override
     public void newProductInformation(@NotNull ProductInformation productInformation) {
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);

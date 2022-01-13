@@ -1,7 +1,7 @@
 package com.butbetter.applicationservices;
 
-import com.butbetter.applicationservices.calculator.Calculator;
-import com.butbetter.applicationservices.calculator.model.CalcApiResponse;
+import com.butbetter.applicationservices.caluapi.model.VAT;
+import com.butbetter.applicationservices.caluapi.service.Calculator;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -32,9 +32,9 @@ public class CalculatorTestUsingMockito {
     @Test
     @DisplayName("test calc API by mocking restTemplate with the values 100 10")
     void testCalcAPIReturnValueFor10percentFrom100(){
-        CalcApiResponse fakeResponse = new CalcApiResponse("110");
+        VAT fakeResponse = new VAT("110");
         String reqURL = calcConnected.getCalcApiUrl() + calcConnected.getCalcApiPath() + calcConnected.getCalcApiUrlPrice() +  "100.0" + calcConnected.getCalcApiUrlPercent() + "10.0";
-        Mockito.when(calcRestApiTemplateMock.getForObject(reqURL, CalcApiResponse.class)).thenReturn(fakeResponse);
+        Mockito.when(calcRestApiTemplateMock.getForObject(reqURL, VAT.class)).thenReturn(fakeResponse);
         assertEquals(110, calcConnected.calculateVATofPrice(100,10));
     }
 
@@ -43,9 +43,9 @@ public class CalculatorTestUsingMockito {
     void testCalcAPIReturnForIllegalInputPrice(){
         //write a test that provokes a 400 type response -> spring boot throw bad request exc -> assert for this exception
         //problem i cannot mock a 400 type response using restTemplate.getForObject
-        CalcApiResponse fakeResponse = new CalcApiResponse("110");
+        VAT fakeResponse = new VAT("110");
         String reqURL = calcConnected.getCalcApiUrl() + calcConnected.getCalcApiPath() + calcConnected.getCalcApiUrlPrice() +  "-100.0" + calcConnected.getCalcApiUrlPercent() + "10.0";
-        Mockito.when(calcRestApiTemplateMock.getForObject(reqURL, CalcApiResponse.class)).thenReturn(fakeResponse);
+        Mockito.when(calcRestApiTemplateMock.getForObject(reqURL, VAT.class)).thenReturn(fakeResponse);
         assertThrows(HttpClientErrorException.BadRequest.class, ()-> calcConnected.calculateVATofPrice(-100,10));
     }
 
@@ -54,9 +54,9 @@ public class CalculatorTestUsingMockito {
     void testCalcAPIReturnForIllegalInputPercent(){
         //write a test that provokes a 400 type response -> spring boot throw bad request exc -> assert for this exception
         //problem i cannot mock a 400 type response using restTemplate.getForObject
-        CalcApiResponse fakeResponse = new CalcApiResponse("110");
+        VAT fakeResponse = new VAT("110");
         String reqURL = calcConnected.getCalcApiUrl() + calcConnected.getCalcApiPath() + calcConnected.getCalcApiUrlPrice() +  "100.0" + calcConnected.getCalcApiUrlPercent() + "-10.0";
-        Mockito.when(calcRestApiTemplateMock.getForObject(reqURL, CalcApiResponse.class)).thenReturn(fakeResponse);
+        Mockito.when(calcRestApiTemplateMock.getForObject(reqURL, VAT.class)).thenReturn(fakeResponse);
         assertThrows(HttpClientErrorException.BadRequest.class, ()-> calcConnected.calculateVATofPrice(100,-10));
     }
 

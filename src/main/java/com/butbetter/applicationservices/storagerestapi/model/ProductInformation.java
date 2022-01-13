@@ -1,4 +1,6 @@
-package com.butbetter.applicationservices.model;
+package com.butbetter.applicationservices.storagerestapi.model;
+
+import com.butbetter.applicationservices.storagerestapi.model.Address;
 
 import java.io.Serializable;
 

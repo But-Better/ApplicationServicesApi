@@ -1,4 +1,4 @@
-package com.butbetter.applicationservices.model;
+package com.butbetter.applicationservices.storagerestapi.model;
 
 import java.io.Serializable;
 import java.util.UUID;
