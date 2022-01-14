@@ -31,8 +31,8 @@ public class Cleaner implements Runnable {
 
 	@Autowired
 	public Cleaner(CSVExporterProperties properties) {
-		logger.info("Location: " + properties.getLocation() + " is getting used for the temporary save location");
-		this.directoryToClean = Paths.get(properties.getLocation());
+		logger.info("Location: " + properties.getSaveLocation() + " is getting used for the temporary save location");
+		this.directoryToClean = Paths.get(properties.getSaveLocation());
 
 		logger.info("Location: " + properties.getManualDeletionLocation() + " is getting used, for manual " +
 				"deletion requirement location");

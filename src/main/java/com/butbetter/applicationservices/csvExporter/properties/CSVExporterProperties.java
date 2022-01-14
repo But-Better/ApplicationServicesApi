@@ -5,9 +5,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 @ConfigurationProperties("csv-exporter")
 public class CSVExporterProperties {
 
-	/**
-	 * Folder location for storing files
-	 */
+	/** Folder location for storing files */
 	private String location = "tmp";
 
 	/**
@@ -22,11 +20,11 @@ public class CSVExporterProperties {
 		location = customLocation;
 	}
 
-	public String getLocation() {
+	public String getSaveLocation() {
 		return location;
 	}
 
-	public void setLocation(String location) {
+	public void setSaveLocation(String location) {
 		this.location = location;
 	}
 
