@@ -4,6 +4,7 @@ import com.butbetter.applicationservices.ProductFaker;
 import com.butbetter.applicationservices.db.model.Product;
 import com.butbetter.applicationservices.db.repository.ProductRepository;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
@@ -29,6 +30,7 @@ public class ProductServiceTest {
     }
 
     @Test
+    @Disabled
     void saveAProductAndCachingAfterARemovedProduct() {
         if (productService.findAll().iterator().hasNext()) {
             productService.deleteAll();
