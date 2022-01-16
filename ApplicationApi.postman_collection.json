@@ -1,16 +1,186 @@
 {
 	"info": {
-		"_postman_id": "f2c2e9a5-5d7e-4cbc-bc03-575fe4df70b1",
-		"name": "ApplicationApi",
+		"_postman_id": "a94facc3-6678-42a2-bdd5-b0bc01e58b21",
+		"name": "ApplicationApi Copy",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
 			"name": "Get all Products",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "GET",
 				"header": [],
-				"url": null
+				"url": {
+					"raw": "http://localhost:9090/v1/product/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"v1",
+						"product",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Save a Product",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"productBeverageEnum\": \"custom\",\n    \"name\": \"Maikäfer Flugzeug Benzin\",\n    \"price\": 19.99,\n    \"percentage\": 40.0,\n    \"amount\": 1.0,\n    \"productRatingEnum\": \"three\",\n    \"ageOfRestrictions\": 16,\n    \"fairTrade\": true,\n    \"bio\": true,\n    \"countryOfOrigin\": \"Deutschland\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9090/v1/product/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"v1",
+						"product",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete a Product",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9090/v1/product/3249ba83-18e5-4d88-934a-50fd0ea3373c",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"v1",
+						"product",
+						"3249ba83-18e5-4d88-934a-50fd0ea3373c"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get one Product",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9090/v1/product/986ecb35-2d2f-41b2-b5a3-c349ab683b3f",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"v1",
+						"product",
+						"986ecb35-2d2f-41b2-b5a3-c349ab683b3f"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get one Product 2",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9090/v1/product/f329e9b7-270f-4418-bc64-a211220ef7ae",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"v1",
+						"product",
+						"f329e9b7-270f-4418-bc64-a211220ef7ae"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:9090/v1/product/7edf120b-114d-4aec-ae95-1892b7427fa8",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9090/v1/product/7edf120b-114d-4aec-ae95-1892b7427fa8",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"v1",
+						"product",
+						"7edf120b-114d-4aec-ae95-1892b7427fa8"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Wrong Enum type",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"productBeverageEnum\": \"arschloch\",\n    \"name\": \"Maikäfer Flugzeug Benzin\",\n    \"price\": 19.99,\n    \"percentage\": 40.0,\n    \"amount\": 1.0,\n    \"productRatingEnum\": \"three\",\n    \"ageOfRestrictions\": 16,\n    \"fairTrade\": true,\n    \"bio\": true,\n    \"countryOfOrigin\": \"Deutschland\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9090/v1/product/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"v1",
+						"product",
+						""
+					]
+				}
 			},
 			"response": []
 		}
