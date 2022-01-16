@@ -48,4 +48,71 @@ public class ProductFaker {
             ProductBeverageEnum.custom, "Maikäfer Flugzeug Benzin", BigDecimal.valueOf(22.80), 45, 0.35,
             ProductRatingEnum.one, 18, true, true, "Deutschland"
     );
+
+    public static final Product Faxe = new Product(
+            ProductBeverageEnum.custom, "Faxe", BigDecimal.valueOf(3), 8, 1,
+            ProductRatingEnum.four, 18, true, true, "Deutschland"
+    );
+
+    /**
+     * Get all wrong products
+     */
+    static public class WrongProduct {
+
+        public static final Product nullName = new Product(
+                ProductBeverageEnum.vodka, null, BigDecimal.valueOf(30.80), 45, 0.35,
+                ProductRatingEnum.one, 18, true, true, "Deutschland"
+        );
+
+        public static final Product negativePrice = new Product(
+                ProductBeverageEnum.custom, "Maikäfer Flugzeug Benzin", BigDecimal.valueOf(-1.80), 45, 0.35,
+                ProductRatingEnum.one, 18, true, true, "Deutschland"
+        );
+
+        public static final Product negativePercentage = new Product(
+                ProductBeverageEnum.custom, "Bier Bier Bier", BigDecimal.valueOf(22.80), -45, 0.35,
+                ProductRatingEnum.one, 18, true, true, "Deutschland"
+        );
+
+        public static final Product over100Percentage = new Product(
+                ProductBeverageEnum.beer, "Duff", BigDecimal.valueOf(22.80), 101, 0.35,
+                ProductRatingEnum.one, 18, true, true, "Deutschland"
+        );
+
+        public static final Product negativeAmount = new Product(
+                ProductBeverageEnum.beer, "Duff", BigDecimal.valueOf(22.80), 34, -0.35,
+                ProductRatingEnum.one, 18, true, true, "Deutschland"
+        );
+
+        public static final Product minAmount = new Product(
+                ProductBeverageEnum.beer, "Duff", BigDecimal.valueOf(22.80), 34, 0,
+                ProductRatingEnum.one, 18, true, true, "Deutschland"
+        );
+
+        public static final Product maxAmount = new Product(
+                ProductBeverageEnum.beer, "Duff", BigDecimal.valueOf(22.80), 34, Integer.MAX_VALUE,
+                ProductRatingEnum.one, 18, true, true, "Deutschland"
+        );
+
+        public static final Product negativeAgeOfRestriction = new Product(
+                ProductBeverageEnum.beer, "Duff", BigDecimal.valueOf(22.80), 34, 0.7,
+                ProductRatingEnum.one, -18, true, true, "Deutschland"
+        );
+
+        public static final Product minAgeOfRestriction = new Product(
+                ProductBeverageEnum.beer, "Duff", BigDecimal.valueOf(22.80), 34, 0.7,
+                ProductRatingEnum.one, 0, true, true, "Deutschland"
+        );
+
+        public static final Product maxAgeOfRestriction = new Product(
+                ProductBeverageEnum.beer, "Duff", BigDecimal.valueOf(22.80), 34, 0.7,
+                ProductRatingEnum.one, 100, true, true, "Deutschland"
+        );
+
+        public static final Product nullCountryOfOrigin = new Product(
+                ProductBeverageEnum.beer, "Duff", BigDecimal.valueOf(22.80), 34, 0.7,
+                ProductRatingEnum.one, 101, true, true, "Deutschland"
+        );
+    }
+
 }
