@@ -47,7 +47,7 @@ class FileStorageServiceTest {
 	}
 
 	@Test
-	void testSaveSingleContentInFileGetsCreated() throws NameAlreadyBoundException, IOException, StorageNotReadyException {
+	void testSaveSingleContentInFile_GetsCreated() throws NameAlreadyBoundException, IOException, StorageNotReadyException {
 		String name = "singleContentTestFile.file";
 		String content = "some content";
 
@@ -56,7 +56,7 @@ class FileStorageServiceTest {
 	}
 
 	@Test
-	void testSaveMultipleStringsInFileGetsCreated() throws NameAlreadyBoundException, IOException, StorageNotReadyException {
+	void testSaveMultipleStringsInFile_GetsCreated() throws NameAlreadyBoundException, IOException, StorageNotReadyException {
 		String name = "multipleContentTestFile.file";
 		String[] content = {"content", "with", "more", "content"};
 
@@ -65,7 +65,7 @@ class FileStorageServiceTest {
 	}
 
 	@Test
-	void testSaveCreatesNewFile() throws IOException, StorageNotReadyException {
+	void testSave_CreatesNewFile() throws IOException, StorageNotReadyException {
 		String filename = "newFileToSave";
 		File fileToSave = new File(BASE_PATH + "/newFileToSave");
 
@@ -79,7 +79,7 @@ class FileStorageServiceTest {
 	}
 
 	@Test
-	void testGetGivesRightFile() throws IOException, NameNotFoundException, StorageNotReadyException {
+	void testGetFileHandle_ReturnsRightFile() throws IOException, NameNotFoundException, StorageNotReadyException {
 		String filename = "newFileToSave";
 		File fileToSave = new File(BASE_PATH + "/newFileToSave");
 
@@ -90,7 +90,7 @@ class FileStorageServiceTest {
 	}
 
 	@Test
-	void testGetAllSavedGivesRightNumberOfFiles() throws IOException, StorageNotReadyException {
+	void testGetAllSaved_GivesRightNumberOfFiles() throws IOException, StorageNotReadyException {
 		File fileToSave = new File(BASE_PATH + "/newFileToSave");
 
 		assert fileToSave.createNewFile();
@@ -101,7 +101,7 @@ class FileStorageServiceTest {
 	}
 
 	@Test
-	void testGetAllSavedPathsGivesTheRightFileBack() throws IOException, StorageNotReadyException {
+	void testGetAllSavedPaths_GivesTheRightFileBack() throws IOException, StorageNotReadyException {
 		String filename = "newFileToSave";
 		File fileToSave = new File(BASE_PATH + "/newFileToSave");
 
@@ -116,7 +116,7 @@ class FileStorageServiceTest {
 	}
 
 	@Test
-	void testMoveAndDeleteActuallySavesInNewStorage() throws IOException, NameNotFoundException, URISyntaxException, StorageNotReadyException {
+	void testMoveAndDelete_SavesInNewStorage() throws IOException, NameNotFoundException, URISyntaxException, StorageNotReadyException {
 		String filename = "newFileToSave";
 		File fileToSave = new File(BASE_PATH + "/newFileToSave");
 
@@ -132,7 +132,7 @@ class FileStorageServiceTest {
 	}
 
 	@Test
-	void testMoveAndDeleteActuallyRemovesFileInOldStorage() throws IOException, NameNotFoundException, URISyntaxException, StorageNotReadyException {
+	void testMoveAndDelete_RemovesFileInOldStorage() throws IOException, NameNotFoundException, URISyntaxException, StorageNotReadyException {
 		String filename = "newFileToSave";
 		File fileToSave = new File(BASE_PATH + "/newFileToSave");
 
@@ -148,7 +148,7 @@ class FileStorageServiceTest {
 	}
 
 	@Test
-	void testRemoveActuallyRemovesFile() throws IOException, NameNotFoundException, StorageNotReadyException {
+	void testRemove_RemovesFile() throws IOException, NameNotFoundException, StorageNotReadyException {
 		String filename = "newFileToSave";
 		File fileToSave = new File(BASE_PATH + "/newFileToSave");
 
