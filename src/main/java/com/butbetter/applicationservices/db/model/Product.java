@@ -2,6 +2,7 @@ package com.butbetter.applicationservices.db.model;
 
 import lombok.*;
 import org.hibernate.Hibernate;
+import org.springframework.data.redis.core.RedisHash;
 
 import javax.persistence.*;
 import javax.validation.constraints.Max;
@@ -20,10 +21,11 @@ import java.util.UUID;
 @NoArgsConstructor
 @ToString
 @AllArgsConstructor
-public class Product implements Serializable, Producible {
+public class Product implements Serializable {
 
     @Id
     @Column(name = "uuid", nullable = false, updatable = false, insertable = false)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID uuid;
 
     @Enumerated(EnumType.ORDINAL)
