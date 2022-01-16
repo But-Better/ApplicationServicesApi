@@ -17,7 +17,7 @@ public class CSVExporterProperties {
 
 	public CSVExporterProperties(String customLocation, String manualDeletionLocation) {
 		this.manualDeletionLocation = manualDeletionLocation;
-		location = customLocation;
+		this.location = customLocation;
 	}
 
 	public String getSaveLocation() {
