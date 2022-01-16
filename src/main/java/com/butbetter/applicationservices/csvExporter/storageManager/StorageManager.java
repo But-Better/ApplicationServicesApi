@@ -2,16 +2,14 @@ package com.butbetter.applicationservices.csvExporter.storageManager;
 
 import javax.naming.NameAlreadyBoundException;
 import javax.naming.NameNotFoundException;
-import java.io.File;
-import java.io.IOException;
-import java.io.WriteAbortedException;
+import java.io.*;
 import java.net.URI;
 import java.nio.file.Path;
 import java.util.stream.Stream;
 
 public interface StorageManager {
 
-	URI getSaveLocation();
+	URI getSaveLocation() throws StorageNotReadyException;
 
 	boolean ready();
 
@@ -19,7 +17,7 @@ public interface StorageManager {
 
 	void saveContentToFile(String name, Stream<String> content) throws NameAlreadyBoundException, IOException, StorageNotReadyException;
 
-	void copyFileToStorage(Path file) throws WriteAbortedException, StorageNotReadyException;
+	void copyFileToStorage(Path file) throws WriteAbortedException, StorageNotReadyException, FileNotFoundException, NotActiveException;
 
 	File getFileHandleWithName(String filename) throws NameNotFoundException, IOException, StorageNotReadyException;
 
