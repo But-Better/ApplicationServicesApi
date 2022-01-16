@@ -81,7 +81,7 @@ public class ProductValidationService {
     }
 
     private boolean priceIsValid(Product product) {
-        return product.getPrice().compareTo(MIN_PRICE) < 0;
+        return product.getPrice().compareTo(MIN_PRICE) > 0;
     }
 
     private boolean ageRestrictionIsValid(Product product) {
@@ -98,6 +98,4 @@ public class ProductValidationService {
         return product.getPercentage() >= MIN_PERCENTAGE
                 && product.getPercentage() <= MAX_PERCENTAGE;
     }
-
-    // bigger > smaller
 }

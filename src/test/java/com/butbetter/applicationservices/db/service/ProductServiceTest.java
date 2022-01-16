@@ -1,13 +1,11 @@
 package com.butbetter.applicationservices.db.service;
 
-import com.butbetter.applicationservices.ProductFaker;
+import com.butbetter.applicationservices.Faker.Faker;
 import com.butbetter.applicationservices.db.model.Product;
 import com.butbetter.applicationservices.db.repository.ProductRepository;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.cache.annotation.EnableCaching;
 
@@ -23,9 +21,11 @@ public class ProductServiceTest {
     @Autowired
     private ProductRepository productRepository;
 
+    private final Faker faker = new Faker();
+
     @Test
     void saveAProduct() {
-        productService.save(ProductFaker.AbsolutVodka);
+        productService.save(faker.getProductFaker().AbsolutVodka);
         assertThat(productRepository.count()).isEqualTo(1);
     }
 
@@ -35,9 +35,9 @@ public class ProductServiceTest {
         if (productService.findAll().iterator().hasNext()) {
             productService.deleteAll();
         }
-        productService.save(ProductFaker.MaikäferFlugzeugBenzin);
-        productService.save(ProductFaker.Frankfurter);
-        productService.save(ProductFaker.Corona);
+        productService.save(faker.getProductFaker().MaikäferFlugzeugBenzin);
+        productService.save(faker.getProductFaker().Frankfurter);
+        productService.save(faker.getProductFaker().Corona);
 
         Iterable<Product> productIterable = productService.findAll();
         Product product = productIterable.iterator().next();

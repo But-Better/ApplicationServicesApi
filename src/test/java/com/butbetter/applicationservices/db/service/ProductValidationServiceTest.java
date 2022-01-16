@@ -1,12 +1,13 @@
 package com.butbetter.applicationservices.db.service;
 
-import com.butbetter.applicationservices.ProductFaker;
+import com.butbetter.applicationservices.Faker.Faker;
+import com.butbetter.applicationservices.Faker.ProductFaker;
+import com.butbetter.applicationservices.Faker.WrongProduct;
 import com.butbetter.applicationservices.db.model.Product;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-
-import javax.sound.sampled.Port;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -16,85 +17,87 @@ class ProductValidationServiceTest {
     @Autowired
     private ProductValidationService productValidationService;
 
+    private final Faker faker = new Faker();
+
     @Test
     void checkADefaultProduct() {
-        assertDoesNotThrow((() -> this.productValidationService.checkProduct(ProductFaker.Corona)));
+        assertDoesNotThrow((() -> this.productValidationService.checkProduct(faker.getProductFaker().Corona)));
     }
 
     @Test
-    void checkNameIsNotNull() {
+    void checkNameIsEmpty() {
         assertThrows(IllegalArgumentException.class, () -> {
-            this.productValidationService.checkProduct(ProductFaker.WrongProduct.nullName);
+            this.productValidationService.checkProduct(faker.getWrongProduct().emptyName);
         });
     }
 
     @Test
     void isNegativePrice() {
         assertThrows(IllegalArgumentException.class, () -> {
-            this.productValidationService.checkProduct(ProductFaker.WrongProduct.negativePrice);
+            this.productValidationService.checkProduct(faker.getWrongProduct().negativePrice);
         });
     }
 
     @Test
     void isNegativePercentage() {
         assertThrows(IllegalArgumentException.class, () -> {
-            this.productValidationService.checkProduct(ProductFaker.WrongProduct.negativePercentage);
+            this.productValidationService.checkProduct(faker.getWrongProduct().negativePercentage);
         });
     }
 
     @Test
     void isPercentageOver100() {
         assertThrows(IllegalArgumentException.class, () -> {
-            this.productValidationService.checkProduct(ProductFaker.WrongProduct.over100Percentage);
+            this.productValidationService.checkProduct(faker.getWrongProduct().over100Percentage);
         });
     }
 
     @Test
     void isNegativeAmount() {
         assertThrows(IllegalArgumentException.class, () -> {
-            this.productValidationService.checkProduct(ProductFaker.WrongProduct.negativeAmount);
+            this.productValidationService.checkProduct(faker.getWrongProduct().negativeAmount);
         });
     }
 
     @Test
     void isMinAmount() {
         assertDoesNotThrow(() -> {
-            this.productValidationService.checkProduct(ProductFaker.WrongProduct.minAmount);
+            this.productValidationService.checkProduct(faker.getWrongProduct().minAmount);
         });
     }
 
     @Test
     void isMaxAmount() {
         assertThrows(IllegalArgumentException.class, () -> {
-            this.productValidationService.checkProduct(ProductFaker.WrongProduct.maxAmount);
+            this.productValidationService.checkProduct(faker.getWrongProduct().maxAmount);
         });
     }
 
     @Test
     void isNegativeAge() {
         assertThrows(IllegalArgumentException.class, () -> {
-            this.productValidationService.checkProduct(ProductFaker.WrongProduct.negativeAgeOfRestriction);
+            this.productValidationService.checkProduct(faker.getWrongProduct().negativeAgeOfRestriction);
         });
     }
 
     @Test
     void checkMinAge() {
         assertDoesNotThrow(() -> {
-            this.productValidationService.checkProduct(ProductFaker.WrongProduct.maxAgeOfRestriction);
+            this.productValidationService.checkProduct(faker.getWrongProduct().maxAgeOfRestriction);
         });
     }
 
     @Test
     void checkMaxAge() {
         assertDoesNotThrow(() -> {
-            this.productValidationService.checkProduct(ProductFaker.WrongProduct.maxAgeOfRestriction);
+            this.productValidationService.checkProduct(faker.getWrongProduct().maxAgeOfRestriction);
         });
     }
 
     @Test
     void checkOverMaxAge() {
         assertThrows(IllegalArgumentException.class, () -> {
-            Product product = ProductFaker.WrongProduct.maxAgeOfRestriction;
+            final Product product = faker.getWrongProduct().maxAgeOfRestriction;
             product.setAgeOfRestrictions(product.getAgeOfRestrictions() + 1);
             this.productValidationService.checkProduct(product);
         });
