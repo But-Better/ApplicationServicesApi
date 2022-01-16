@@ -24,7 +24,7 @@ public class ProductService implements ProductOperations<Product> {
     private static final Logger log = LoggerFactory.getLogger(ProductService.class);
 
     @Autowired
-    public ProductService(ProductRepository productRepository) {
+    public ProductService(ProductRepository productRepository, ProductValidationService productValidationService) {
         this.productRepository = productRepository;
         this.productValidationService = productValidationService;
     }
