@@ -23,15 +23,15 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 
-class FileStorageServiceTest {
+class LocalFileStorageServiceTest {
 
-	private static final String BASE_PATH = "src/test/resources/testStorage";
+	private static final String BASE_PATH = "src/test/resources/testStorage/storageDirectory";
 
 	private LocalFileStorageManager serviceToTest;
 
 	@BeforeEach
 	void setUp() {
-		serviceToTest = new LocalFileStorageManager(Path.of(BASE_PATH + "/storageDirectory"));
+		serviceToTest = new LocalFileStorageManager(Path.of(BASE_PATH));
 	}
 
 	@AfterEach

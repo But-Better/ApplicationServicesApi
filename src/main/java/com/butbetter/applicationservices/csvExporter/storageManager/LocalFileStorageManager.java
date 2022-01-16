@@ -31,7 +31,7 @@ public class LocalFileStorageManager implements StorageManager {
 		}
 	}
 
-	public boolean pathUsedExistent() {
+	public boolean pathUsedIsExistent() {
 		return saveLocation.toFile().exists();
 	}
 
