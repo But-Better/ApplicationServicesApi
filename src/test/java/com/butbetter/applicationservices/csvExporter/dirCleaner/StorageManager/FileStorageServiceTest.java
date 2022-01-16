@@ -46,6 +46,13 @@ class FileStorageServiceTest {
 		serviceToTest = null;
 	}
 
+	private File setupTestFile(String filename) throws IOException {
+		File fileToSave = new File(BASE_PATH + "/" + filename);
+
+		assert fileToSave.createNewFile();
+		return fileToSave;
+	}
+
 	@Test
 	void testSaveSingleContentInFile_GetsCreated() throws NameAlreadyBoundException, IOException, StorageNotReadyException {
 		String name = "singleContentTestFile.file";
@@ -67,9 +74,8 @@ class FileStorageServiceTest {
 	@Test
 	void testSave_CreatesNewFile() throws IOException, StorageNotReadyException {
 		String filename = "newFileToSave";
-		File fileToSave = new File(BASE_PATH + "/newFileToSave");
 
-		assert fileToSave.createNewFile();
+		File fileToSave = setupTestFile(filename);
 
 		serviceToTest.copyFileToStorage(fileToSave.toPath());
 
@@ -81,9 +87,7 @@ class FileStorageServiceTest {
 	@Test
 	void testGetFileHandle_ReturnsRightFile() throws IOException, NameNotFoundException, StorageNotReadyException {
 		String filename = "newFileToSave";
-		File fileToSave = new File(BASE_PATH + "/newFileToSave");
-
-		assert fileToSave.createNewFile();
+		File fileToSave = setupTestFile(filename);
 
 		serviceToTest.copyFileToStorage(fileToSave.toPath());
 		assertEquals(new File(serviceToTest.getSaveLocation().getPath() + "/" + filename), serviceToTest.getFileHandleWithName(filename).getAbsoluteFile());
@@ -91,9 +95,8 @@ class FileStorageServiceTest {
 
 	@Test
 	void testGetAllSaved_GivesRightNumberOfFiles() throws IOException, StorageNotReadyException {
-		File fileToSave = new File(BASE_PATH + "/newFileToSave");
-
-		assert fileToSave.createNewFile();
+		String filename = "newFileToSave";
+		File fileToSave = setupTestFile(filename);
 
 		serviceToTest.copyFileToStorage(fileToSave.toPath());
 
@@ -103,9 +106,7 @@ class FileStorageServiceTest {
 	@Test
 	void testGetAllSavedPaths_GivesTheRightFileBack() throws IOException, StorageNotReadyException {
 		String filename = "newFileToSave";
-		File fileToSave = new File(BASE_PATH + "/newFileToSave");
-
-		assert fileToSave.createNewFile();
+		File fileToSave = setupTestFile(filename);
 
 		serviceToTest.copyFileToStorage(fileToSave.toPath());
 
@@ -118,9 +119,7 @@ class FileStorageServiceTest {
 	@Test
 	void testMoveAndDelete_SavesInNewStorage() throws IOException, NameNotFoundException, URISyntaxException, StorageNotReadyException {
 		String filename = "newFileToSave";
-		File fileToSave = new File(BASE_PATH + "/newFileToSave");
-
-		assert fileToSave.createNewFile();
+		File fileToSave = setupTestFile(filename);
 
 		serviceToTest.copyFileToStorage(fileToSave.toPath());
 
@@ -134,9 +133,7 @@ class FileStorageServiceTest {
 	@Test
 	void testMoveAndDelete_RemovesFileInOldStorage() throws IOException, NameNotFoundException, URISyntaxException, StorageNotReadyException {
 		String filename = "newFileToSave";
-		File fileToSave = new File(BASE_PATH + "/newFileToSave");
-
-		assert fileToSave.createNewFile();
+		File fileToSave = setupTestFile(filename);
 
 		LocalFileStorageManager mockService = mock(LocalFileStorageManager.class);
 		when(mockService.getSaveLocation()).thenReturn(new URI("mockedFilePath"));
@@ -150,9 +147,7 @@ class FileStorageServiceTest {
 	@Test
 	void testRemove_RemovesFile() throws IOException, NameNotFoundException, StorageNotReadyException {
 		String filename = "newFileToSave";
-		File fileToSave = new File(BASE_PATH + "/newFileToSave");
-
-		assert fileToSave.createNewFile();
+		File fileToSave = setupTestFile(filename);
 
 		serviceToTest.copyFileToStorage(fileToSave.toPath());
 		serviceToTest.removeFileWithName(filename);
@@ -162,9 +157,8 @@ class FileStorageServiceTest {
 
 	@Test
 	void testRemoveFileUsingGetAllSaved() throws IOException, NameNotFoundException, StorageNotReadyException {
-		File fileToSave = new File(BASE_PATH + "/newFileToSave");
-
-		assert fileToSave.createNewFile();
+		String filename = "newFileToSave";
+		File fileToSave = setupTestFile(filename);
 
 		serviceToTest.copyFileToStorage(fileToSave.toPath());
 		Stream<Path> savedFiles = serviceToTest.getAllSavedAsPaths();
