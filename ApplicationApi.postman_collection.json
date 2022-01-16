@@ -1,0 +1,18 @@
+{
+	"info": {
+		"_postman_id": "f2c2e9a5-5d7e-4cbc-bc03-575fe4df70b1",
+		"name": "ApplicationApi",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get all Products",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": null
+			},
+			"response": []
+		}
+	]
+}
