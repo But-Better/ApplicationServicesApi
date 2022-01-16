@@ -1,4 +1,4 @@
-package com.butbetter.applicationservices;
+package com.butbetter.applicationservices.caluapi;
 
 import com.butbetter.applicationservices.caluapi.model.VAT;
 import com.butbetter.applicationservices.caluapi.service.Calculator;

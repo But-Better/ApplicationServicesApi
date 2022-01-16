@@ -1,4 +1,4 @@
-package com.butbetter.applicationservices;
+package com.butbetter.applicationservices.caluapi;
 
 import com.butbetter.applicationservices.caluapi.service.Calculator;
 import org.junit.jupiter.api.DisplayName;

@@ -1,4 +1,4 @@
-package com.butbetter.applicationservices.service;
+package com.butbetter.applicationservices.storageapi.service;
 
 import com.butbetter.applicationservices.storagerestapi.model.Address;
 import com.butbetter.applicationservices.storagerestapi.model.ProductInformation;
