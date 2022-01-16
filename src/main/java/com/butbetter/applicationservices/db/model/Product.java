@@ -2,6 +2,7 @@ package com.butbetter.applicationservices.db.model;
 
 import lombok.*;
 import org.hibernate.Hibernate;
+import org.hibernate.annotations.GenericGenerator;
 import org.springframework.data.redis.core.RedisHash;
 
 import javax.persistence.*;
@@ -15,7 +16,6 @@ import java.util.Objects;
 import java.util.UUID;
 
 @Entity
-@Table(schema = "Product")
 @Getter
 @Setter
 @NoArgsConstructor
@@ -24,8 +24,9 @@ import java.util.UUID;
 public class Product implements Serializable {
 
     @Id
-    @Column(name = "uuid", nullable = false, updatable = false, insertable = false)
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(generator = "uuid2")
+    @GenericGenerator(name = "uuid2", strategy = "uuid2")
+    @Column(columnDefinition = "BINARY(16)")
     private UUID uuid;
 
     @Enumerated(EnumType.ORDINAL)
