@@ -24,7 +24,6 @@ public class ProductValidationService {
 
     public void checkProduct(Product product) throws IllegalArgumentException {
         this.age(product);
-        this.rating(product);
         this.name(product);
         this.price(product);
         this.percentage(product);
