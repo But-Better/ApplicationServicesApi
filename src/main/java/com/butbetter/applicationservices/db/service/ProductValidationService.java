@@ -26,8 +26,11 @@ public class ProductValidationService {
      * Check is Amount, Name, Price, Percentage or Age valid to processes it
      *
      * @param product = {@link Product}
-     * @throws IllegalArgumentException = Name is Empty, Amount is too low or high,
-     *                                  Price is negative, Percentage min. 1 - max. 100, Age is min. 16 and max. 100
+     * @throws IllegalArgumentException Name is Empty,
+     *                                  Price is negative,
+     *                                  Percentage min. {@value MIN_PERCENTAGE} - max. {@value MAX_PERCENTAGE},
+     *                                  Age is min. {@value MIN_AGE} and max. {@value MAX_AGE},
+     *                                  Amount is min {@value MIN_AMOUNT} and max. {@value MAX_AMOUNT}
      */
     public void checkProduct(Product product) throws IllegalArgumentException {
         this.age(product);
