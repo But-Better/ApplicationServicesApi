@@ -22,6 +22,13 @@ public class ProductValidationService {
     private static final double MIN_PERCENTAGE = 0;
     private static final BigDecimal MIN_PRICE = BigDecimal.valueOf(0);
 
+    /**
+     * Check is Amount, Name, Price, Percentage or Age valid to processes it
+     *
+     * @param product = {@link Product}
+     * @throws IllegalArgumentException = Name is Empty, Amount is too low or high,
+     *                                  Price is negative, Percentage min. 1 - max. 100, Age is min. 16 and max. 100
+     */
     public void checkProduct(Product product) throws IllegalArgumentException {
         this.age(product);
         this.name(product);
