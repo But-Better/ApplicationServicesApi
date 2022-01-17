@@ -63,15 +63,6 @@ public class ProductValidationService {
         }
     }
 
-    private void rating(Product product) throws IllegalArgumentException {
-        try {
-            ProductRatingEnum.valueOf(String.valueOf(product.getProductRatingEnum()));
-        } catch (IllegalArgumentException e) {
-            log.error(e.getMessage());
-            throw new IllegalArgumentException(e);
-        }
-    }
-
     private void age(Product product) throws IllegalArgumentException {
         if (!ageRestrictionIsValid(product)) {
             final String message = "age is not valid | age: " + product.getAgeOfRestrictions();
