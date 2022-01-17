@@ -19,7 +19,7 @@ public class ProductValidationService {
     private static final double MIN_AMOUNT = 0;
     private static final double MAX_AMOUNT = 20000;
     private static final double MAX_PERCENTAGE = 100;
-    private static final double MIN_PERCENTAGE = 0;
+    private static final double MIN_PERCENTAGE = 1;
     private static final BigDecimal MIN_PRICE = BigDecimal.valueOf(0);
 
     /**
