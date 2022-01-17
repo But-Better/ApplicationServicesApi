@@ -31,43 +31,25 @@ public class ProductValidationService {
     }
 
     private void amount(Product product) throws IllegalArgumentException {
-        if (!amountIsValid(product)) {
-            String message = "Amount is not valid | amount: " + product.getAmount();
-            log.error(message);
-            throw new IllegalArgumentException(message);
-        }
+        if (!amountIsValid(product)) throw new IllegalArgumentException("Amount is negative or to high");
     }
 
     private void percentage(Product product) throws IllegalArgumentException {
-        if (!percentageIsValid(product)) {
-            String message = "percentage is negative or to high | percentage: " + product.getPercentage();
-            log.error(message);
-            throw new IllegalArgumentException(message);
-        }
+        if (!percentageIsValid(product)) throw new IllegalArgumentException("percentage is negative or to high");
     }
 
     private void price(Product product) throws IllegalArgumentException {
-        if (!priceIsValid(product)) {
-            String message = "price is negative | price: " + product.getPrice();
-            log.error(message);
-            throw new IllegalArgumentException(message);
-        }
+        if (!priceIsValid(product)) throw new IllegalArgumentException("price is negative");
+
     }
 
     private void name(Product product) throws IllegalArgumentException {
-        if (product.getName().isEmpty()) {
-            String message = "name is empty";
-            log.error(message);
-            throw new IllegalArgumentException(message);
-        }
+        if (product.getName().isEmpty()) throw new IllegalArgumentException("name is empty");
+
     }
 
     private void age(Product product) throws IllegalArgumentException {
-        if (!ageRestrictionIsValid(product)) {
-            final String message = "age is not valid | age: " + product.getAgeOfRestrictions();
-            log.error(message);
-            throw new IllegalArgumentException(message);
-        }
+        if (!ageRestrictionIsValid(product)) throw new IllegalArgumentException("age is not valid ");
     }
 
     private boolean priceIsValid(Product product) {
