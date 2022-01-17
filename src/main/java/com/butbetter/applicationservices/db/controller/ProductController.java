@@ -50,7 +50,8 @@ public class ProductController {
     }
 
     @ExceptionHandler(IllegalArgumentException.class)
-    public ResponseEntity<?> illegalInputs() {
+    public ResponseEntity<?> illegalInputs(Exception e) {
+        log.error(e.getMessage());
         return ResponseEntity.badRequest().build();
     }
 }
