@@ -1,8 +1,6 @@
 package com.butbetter.applicationservices.db.service;
 
 import com.butbetter.applicationservices.db.model.Product;
-import com.butbetter.applicationservices.db.model.ProductBeverageEnum;
-import com.butbetter.applicationservices.db.model.ProductRatingEnum;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
