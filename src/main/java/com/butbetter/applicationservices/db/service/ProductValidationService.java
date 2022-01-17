@@ -31,33 +31,11 @@ public class ProductValidationService {
      *                                  Amount is min {@value MIN_AMOUNT} and max. {@value MAX_AMOUNT}
      */
     public void checkProduct(Product product) throws IllegalArgumentException {
-        this.age(product);
-        this.name(product);
-        this.price(product);
-        this.percentage(product);
-        this.amount(product);
-    }
-
-    private void amount(Product product) throws IllegalArgumentException {
         if (!amountIsValid(product)) throw new IllegalArgumentException("Amount is negative or to high");
-    }
-
-    private void percentage(Product product) throws IllegalArgumentException {
         if (!percentageIsValid(product)) throw new IllegalArgumentException("percentage is negative or to high");
-    }
-
-    private void price(Product product) throws IllegalArgumentException {
         if (!priceIsValid(product)) throw new IllegalArgumentException("price is negative");
-
-    }
-
-    private void name(Product product) throws IllegalArgumentException {
-        if (product.getName().isEmpty()) throw new IllegalArgumentException("name is empty");
-
-    }
-
-    private void age(Product product) throws IllegalArgumentException {
         if (!ageRestrictionIsValid(product)) throw new IllegalArgumentException("age is not valid ");
+        if (product.getName().isEmpty()) throw new IllegalArgumentException("name is empty");
     }
 
     private boolean priceIsValid(Product product) {
