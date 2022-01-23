@@ -1,4 +1,4 @@
-package com.butbetter.applicationservices.storagerestapi.repoistory;
+package com.butbetter.applicationservices.storagerestapi.repository;
 
 import com.butbetter.applicationservices.storagerestapi.model.ProductInformation;
 
