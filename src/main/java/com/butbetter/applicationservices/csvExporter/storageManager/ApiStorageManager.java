@@ -162,6 +162,9 @@ public class ApiStorageManager implements StorageManager {
 
 		try {
 			if (onlyContainsOne(contentList.stream())) {
+
+				// is already getting checked in onlyContainsOne method
+				//noinspection OptionalGetWithoutIsPresent
 				tmpFileManager.saveContentToFile(name, contentList.stream().findFirst().get());
 			} else {
 				tmpFileManager.saveContentToFile(name, content);
