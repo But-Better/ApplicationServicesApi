@@ -79,23 +79,23 @@ public class ApiStorageManager implements StorageManager {
 
 	@Override
 	public File getFileHandleWithName(String filename) {
-		throw new UnsupportedOperationException("file request is not supported by the storage api");
+		throw new UnsupportedOperationException("file request is not supported by the storage api due to api restrictions");
 	}
 
 	@Override
 	public Stream<Path> getAllSavedAsPaths() {
-		throw new UnsupportedOperationException("file listing is not supported by the storage api");
+		throw new UnsupportedOperationException("file listing is not supported by the storage api due to api restrictions");
 	}
 
 	@Override
 	public void moveFileToAnotherStorage(StorageManager nextStorage, String name) {
-		throw new UnsupportedOperationException("file movement is not supported by the storage api");
+		throw new UnsupportedOperationException("file movement is not supported by the storage api due to api restrictions");
 
 	}
 
 	@Override
 	public void removeFileWithName(String name) {
-		throw new UnsupportedOperationException("file removal is not supported by the storage api");
+		throw new UnsupportedOperationException("file removal is not supported by the storage api due to api restrictions");
 
 	}
 
