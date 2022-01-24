@@ -1,9 +1,11 @@
 package com.butbetter.applicationservices.csvExporter.storageManager;
 
 import com.butbetter.applicationservices.csvExporter.apiRequestHandler.RemoteFileService;
+import com.butbetter.applicationservices.csvExporter.properties.CSVExporterProperties;
 import javassist.tools.web.BadHttpRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import javax.naming.NameAlreadyBoundException;
@@ -52,6 +54,14 @@ public class ApiStorageManager implements StorageManager {
 		this.remoteFileService = remoteFileService;
 
 		this.tmpFileManager = tmpFileManager;
+	}
+
+	public ApiStorageManager(CSVExporterProperties properties) {
+		logger.info("Remote: \"" + properties.getSaveLocation() + "\" is getting used for the save location");
+
+		this.remoteFileService = new RemoteFileService(properties.getStorageUrl());
+
+		this.tmpFileManager = new LocalFileStorageManager(Path.of(properties.getSaveLocation()));
 	}
 
 	@Override
