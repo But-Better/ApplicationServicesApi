@@ -2,8 +2,22 @@ package com.butbetter.applicationservices.csvExporter.properties;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
+import java.net.MalformedURLException;
+import java.net.URL;
+
 @ConfigurationProperties("csv-exporter")
 public class CSVExporterProperties {
+
+	/** general storage url */
+	private URL StorageUrl;
+
+	{
+		try {
+			StorageUrl = new URL("localhost");
+		} catch (MalformedURLException e) {
+			e.printStackTrace();
+		}
+	}
 
 	/** Folder location for storing files */
 	private String location = "tmp";
@@ -34,5 +48,9 @@ public class CSVExporterProperties {
 
 	public void setManualDeletionLocation(String manualDeletionLocation) {
 		this.manualDeletionLocation = manualDeletionLocation;
+	}
+
+	public URL getStorageUrl() {
+		return StorageUrl;
 	}
 }
