@@ -1,4 +1,4 @@
-package com.butbetter.applicationservices.csvExporter.dirCleaner.StorageManager;
+package com.butbetter.applicationservices.csvExporter.storageManager;
 
 import com.butbetter.applicationservices.csvExporter.storageManager.LocalFileStorageManager;
 import com.butbetter.applicationservices.csvExporter.storageManager.StorageNotReadyException;
