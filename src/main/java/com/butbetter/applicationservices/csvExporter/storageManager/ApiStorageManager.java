@@ -45,6 +45,14 @@ public class ApiStorageManager implements StorageManager {
 		this.tmpFileManager = tmpFileManager;
 	}
 
+	public ApiStorageManager(RemoteFileService remoteFileService, StorageManager tmpFileManager) {
+		logger.info("Remote: \"" + remoteFileService.getStorageApiUrl() + "\" is getting used for the save location");
+
+		this.remoteFileService = remoteFileService;
+
+		this.tmpFileManager = tmpFileManager;
+	}
+
 	@Override
 	public URI getSaveLocation() throws StorageNotReadyException {
 		try {
