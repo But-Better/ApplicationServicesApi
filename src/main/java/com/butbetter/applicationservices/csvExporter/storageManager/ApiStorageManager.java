@@ -29,7 +29,7 @@ public class ApiStorageManager implements StorageManager {
 
 	private final StorageManager tmpFileManager;
 
-	public ApiStorageManager(URL location, StorageManager tmpFileManager, RemoteFileService remoteFileService) {
+	public ApiStorageManager(URL location, StorageManager tmpFileManager) {
 		logger.info("Remote: \"" + location + "\" is getting used for the save location");
 
 		this.remoteFileService = new RemoteFileService(location);
