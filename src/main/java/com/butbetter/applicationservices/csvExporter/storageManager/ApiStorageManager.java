@@ -67,7 +67,8 @@ public class ApiStorageManager implements StorageManager {
 
 	@Override
 	public boolean ready() {
-		return remoteFileService.isUp();
+		return remoteFileService.isUp() &&
+				tmpFileManager.ready();
 	}
 
 	@Override
