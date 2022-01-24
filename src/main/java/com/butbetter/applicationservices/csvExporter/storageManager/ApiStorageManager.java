@@ -73,14 +73,21 @@ public class ApiStorageManager implements StorageManager {
 
 	@Override
 	public void saveContentToFile(String name, String content) throws IOException, StorageNotReadyException {
-		File fileToUpload = createFileWithContentLocally(name, content);
+		List<String> contentInStream = putStringInCollection(content);
+		File fileToUpload = createFileWithContentLocally(name, contentInStream.stream());
 		uploadFileToRemote(fileToUpload);
 		removeTemporaryFile(name);
 	}
 
+	private List<String> putStringInCollection(String content) {
+		List<String> contentList = new ArrayList<>();
+		contentList.add(content);
+		return contentList;
+	}
+
 	@Override
 	public void saveContentToFile(String name, Stream<String> content) throws IOException, StorageNotReadyException {
-		File fileToUpload = createFileWithStreamOfContentLocally(name, content);
+		File fileToUpload = createFileWithContentLocally(name, content);
 		uploadFileToRemote(fileToUpload);
 		removeTemporaryFile(name);
 	}
@@ -135,29 +142,19 @@ public class ApiStorageManager implements StorageManager {
 			throw new StorageNotReadyException(message);
 		}
 	}
-	private File createFileWithContentLocally(String name, String content) throws IOException, StorageNotReadyException {
+	private File createFileWithContentLocally(String name, Stream<String> content) throws IOException, StorageNotReadyException {
 		if(fileExists(new File(name))) {
 			removeTemporaryFile(name);
 		}
 
-		try {
-			tmpFileManager.saveContentToFile(name, content);
-		} catch (NameAlreadyBoundException e) {
-			String message = "The Storage might be broken due to complications in deleting and saving temporary files, " +
-					"therefore the Storage might not be fully ready yet";
-			logger.error(message);
-			throw new StorageNotReadyException(message);
-		}
-
-		return getTemporaryFileHandle(name);
-	}
-	private File createFileWithStreamOfContentLocally(String name, Stream<String> content) throws IOException, StorageNotReadyException {
-		if(fileExists(new File(name))) {
-			removeTemporaryFile(name);
-		}
+		List<String> contentList = content.collect(Collectors.toList());
 
 		try {
-			tmpFileManager.saveContentToFile(name, content);
+			if (onlyContainsOne(contentList.stream())) {
+				tmpFileManager.saveContentToFile(name, contentList.stream().findFirst().get());
+			} else {
+				tmpFileManager.saveContentToFile(name, content);
+			}
 		} catch (NameAlreadyBoundException e) {
 			String message = "The Storage might be broken due to complications in deleting and saving temporary files, therefore the Storage might not be fully ready";
 			logger.error(message);
@@ -166,6 +163,12 @@ public class ApiStorageManager implements StorageManager {
 
 		return getTemporaryFileHandle(name);
 	}
+
+	private boolean onlyContainsOne(Stream<?> stringStream) {
+		List<?> copy = stringStream.collect(Collectors.toList());
+		return copy.size() == 1;
+	}
+
 	private File getTemporaryFileHandle(String name) throws IOException, StorageNotReadyException {
 		try {
 			return tmpFileManager.getFileHandleWithName(name);
