@@ -162,12 +162,9 @@ public class ApiStorageManager implements StorageManager {
 
 		try {
 			if (onlyContainsOne(contentList.stream())) {
-
-				// is already getting checked in onlyContainsOne method
-				//noinspection OptionalGetWithoutIsPresent
-				tmpFileManager.saveContentToFile(name, contentList.stream().findFirst().get());
+				tmpFileManager.saveContentToFile(name, contentList.get(0));
 			} else {
-				tmpFileManager.saveContentToFile(name, content);
+				tmpFileManager.saveContentToFile(name, contentList.stream());
 			}
 		} catch (NameAlreadyBoundException e) {
 			String message = "The Storage might be broken due to complications in deleting and saving temporary files, therefore the Storage might not be fully ready";
