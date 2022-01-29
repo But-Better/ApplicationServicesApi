@@ -1,7 +1,8 @@
-package com.butbetter.applicationservices.csvExporter;
+package com.butbetter.applicationservices.csvExporter.csvConverter;
 
 import com.opencsv.ICSVWriter;
 import com.opencsv.ResultSetHelper;
+import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 import java.sql.ResultSet;
@@ -12,6 +13,7 @@ import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
+@Service
 public class CSVCollector implements ICSVWriter {
 
 	private final List<String> csvData = new ArrayList<>();
@@ -57,6 +59,13 @@ public class CSVCollector implements ICSVWriter {
 		if(closed) {
 			throw new IOException("the the ICSVWriter is already closed");
 		}
+	}
+
+	public synchronized void reset() {
+		csvData.forEach(csvData::remove);
+		closed = false;
+		hadError = false;
+		caughtException = null;
 	}
 
 	@Override
