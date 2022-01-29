@@ -1,6 +1,7 @@
 package com.butbetter.applicationservices.csvExporter;
 
 import com.butbetter.applicationservices.csvExporter.apiRequestHandler.RemoteFileService;
+import com.butbetter.applicationservices.csvExporter.csvConverter.CSVConverter;
 import com.butbetter.applicationservices.csvExporter.properties.CSVExporterProperties;
 import com.butbetter.applicationservices.csvExporter.storageManager.LocalFileStorageManager;
 import com.butbetter.applicationservices.csvExporter.storageManager.StorageNotReadyException;
@@ -26,6 +27,7 @@ class ProductInformationCSVFileExporterTest {
 	private static final String BASE_PATH = "src/test/resources/testStorage/storageDirectory";
 
 	private CSVExporterProperties properties;
+	private CSVConverter mockedConverter;
 	private RemoteFileService mockedRemoteManager;
 	private LocalFileStorageManager tmpManager;
 
@@ -37,17 +39,19 @@ class ProductInformationCSVFileExporterTest {
 		when(properties.getSaveLocation()).thenReturn(BASE_PATH);
 
 		mockedRemoteManager = mock(RemoteFileService.class);
-		when(mockedRemoteManager.isUp()).thenReturn(true);
+		when(mockedRemoteManager.isUp()).thenReturn(false);
 		when(mockedRemoteManager.getStorageApiUrl()).thenReturn(new URL("https://localhost"));
 
 		tmpManager = mock(LocalFileStorageManager.class);
 		when(tmpManager.ready()).thenReturn(true);
 
-		exporter = new ProductInformationCSVFileExporter(properties, tmpManager, mockedRemoteManager);
+		mockedConverter = mock(CSVConverter.class);
+
+		exporter = new ProductInformationCSVFileExporter(properties, tmpManager, mockedRemoteManager, mockedConverter);
 	}
 
 	@Test
-	void export() throws CsvRequiredFieldEmptyException, CsvDataTypeMismatchException, IOException, NameAlreadyBoundException, StorageNotReadyException {
+	void export() throws CsvRequiredFieldEmptyException, CsvDataTypeMismatchException, IOException, StorageNotReadyException {
 		ProductInformation testInformation = new ProductInformation(0, new Address(), OffsetDateTime.now().toString());
 		testInformation.setUuid(UUID.randomUUID().toString());
 
