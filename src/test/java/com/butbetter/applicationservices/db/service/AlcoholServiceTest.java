@@ -1,7 +1,7 @@
 package com.butbetter.applicationservices.db.service;
 
 import com.butbetter.applicationservices.Faker.Faker;
-import com.butbetter.applicationservices.productapi.model.Product;
+import com.butbetter.applicationservices.productapi.model.Alcohol;
 import com.butbetter.applicationservices.productapi.repository.ProductRepository;
 import com.butbetter.applicationservices.productapi.service.ProductService;
 import org.junit.jupiter.api.Disabled;
@@ -14,7 +14,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest
 @EnableCaching
-public class ProductServiceTest {
+public class AlcoholServiceTest {
 
     @Autowired
     private ProductService productService;
@@ -40,10 +40,10 @@ public class ProductServiceTest {
         productService.save(faker.getProductFaker().Frankfurter);
         productService.save(faker.getProductFaker().Corona);
 
-        Iterable<Product> productIterable = productService.findAll();
-        Product product = productIterable.iterator().next();
+        Iterable<Alcohol> productIterable = productService.findAll();
+        Alcohol alcohol = productIterable.iterator().next();
 
-        System.out.println(product.getUuid());
+        System.out.println(alcohol.getUuid());
 
         //productService.deleteById(product.getUuid());
 

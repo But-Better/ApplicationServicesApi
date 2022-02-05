@@ -1,7 +1,7 @@
 package com.butbetter.applicationservices.db.service;
 
 import com.butbetter.applicationservices.Faker.Faker;
-import com.butbetter.applicationservices.productapi.model.Product;
+import com.butbetter.applicationservices.productapi.model.Alcohol;
 import com.butbetter.applicationservices.productapi.service.ProductValidationService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +10,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
-class ProductValidationServiceTest {
+class AlcoholValidationServiceTest {
 
     @Autowired
     private ProductValidationService productValidationService;
@@ -95,9 +95,9 @@ class ProductValidationServiceTest {
     @Test
     void checkOverMaxAge() {
         assertThrows(IllegalArgumentException.class, () -> {
-            final Product product = faker.getWrongProduct().maxAgeOfRestriction;
-            product.setAgeOfRestrictions(product.getAgeOfRestrictions() + 1);
-            this.productValidationService.checkProduct(product);
+            final Alcohol alcohol = faker.getWrongProduct().maxAgeOfRestriction;
+            alcohol.setAgeOfRestrictions(alcohol.getAgeOfRestrictions() + 1);
+            this.productValidationService.checkProduct(alcohol);
         });
     }
 

@@ -20,7 +20,7 @@ import java.util.UUID;
 @NoArgsConstructor
 @ToString
 @AllArgsConstructor
-public class Product implements Serializable {
+public class Alcohol implements Serializable {
 
     @Id
     @GeneratedValue(generator = "uuid2")
@@ -29,7 +29,7 @@ public class Product implements Serializable {
     private UUID uuid;
 
     @Enumerated(EnumType.ORDINAL)
-    private ProductBeverageEnum productBeverageEnum;
+    private AlcoholBeverageType alcoholBeverageType;
 
     @NotBlank
     @NotNull
@@ -47,7 +47,7 @@ public class Product implements Serializable {
     private double amount;
 
     @Enumerated(EnumType.ORDINAL)
-    private ProductRatingEnum productRatingEnum;
+    private AlcoholRatingType productRatingEnum;
 
     @Min(16)
     private int ageOfRestrictions;
@@ -62,7 +62,7 @@ public class Product implements Serializable {
     /**
      * Model of alcohol
      *
-     * @param productBeverageEnum = [beer, wine, sparklingWine, vodka, rum, gin]
+     * @param alcoholBeverageType = [beer, wine, sparklingWine, vodka, rum, gin]
      * @param name                = name of Product
      * @param price               = price like €/$/¥
      * @param percentage          = power of drink
@@ -73,11 +73,11 @@ public class Product implements Serializable {
      * @param bio                 = true/false
      * @param countryOfOrigin     = name of origin in which country
      */
-    public Product(ProductBeverageEnum productBeverageEnum, String name, BigDecimal price, double percentage,
-                   double amount, ProductRatingEnum productRatingEnum, int ageOfRestrictions, boolean fairTrade,
+    public Alcohol(AlcoholBeverageType alcoholBeverageType, String name, BigDecimal price, double percentage,
+                   double amount, AlcoholRatingType productRatingEnum, int ageOfRestrictions, boolean fairTrade,
                    boolean bio, String countryOfOrigin
     ) {
-        this.productBeverageEnum = productBeverageEnum;
+        this.alcoholBeverageType = alcoholBeverageType;
         this.name = name;
         this.price = price;
         this.percentage = percentage;
@@ -94,8 +94,8 @@ public class Product implements Serializable {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
-        Product product = (Product) o;
-        return uuid != null && Objects.equals(uuid, product.uuid);
+        Alcohol alcohol = (Alcohol) o;
+        return uuid != null && Objects.equals(uuid, alcohol.uuid);
     }
 
     @Override

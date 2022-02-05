@@ -1,6 +1,6 @@
 package com.butbetter.applicationservices.productapi.model;
 
-public enum ProductBeverageEnum {
+public enum AlcoholBeverageType {
     beer,
     mixedBeer,
     wine,

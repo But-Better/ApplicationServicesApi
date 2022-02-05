@@ -1,6 +1,6 @@
 package com.butbetter.applicationservices.productapi.service;
 
-import com.butbetter.applicationservices.productapi.model.Product;
+import com.butbetter.applicationservices.productapi.model.Alcohol;
 import com.butbetter.applicationservices.productapi.repository.ProductOperations;
 import com.butbetter.applicationservices.productapi.repository.ProductRepository;
 import org.slf4j.Logger;
@@ -16,7 +16,7 @@ import java.util.UUID;
 
 @Service
 @CacheConfig(cacheNames = {"products"})
-public class ProductService implements ProductOperations<Product> {
+public class ProductService implements ProductOperations<Alcohol> {
 
     private final ProductRepository productRepository;
     private final ProductValidationService productValidationService;
@@ -31,17 +31,17 @@ public class ProductService implements ProductOperations<Product> {
 
     @Override
     @CacheEvict(value = "products", allEntries = true)
-    public void save(Product product) throws IllegalArgumentException {
-        this.productValidationService.checkProduct(product);
-        log.info("save " + product.toString() + " to db");
-        this.productRepository.save(product);
+    public void save(Alcohol alcohol) throws IllegalArgumentException {
+        this.productValidationService.checkProduct(alcohol);
+        log.info("save " + alcohol.toString() + " to db");
+        this.productRepository.save(alcohol);
     }
 
     @Override
     @Cacheable(value = "products", key = "#id")
-    public Product findById(UUID id) {
+    public Alcohol findById(UUID id) {
         log.info("Found a product over " + id);
-        Optional<Product> optionalProduct = this.productRepository.findById(id);
+        Optional<Alcohol> optionalProduct = this.productRepository.findById(id);
         return optionalProduct.orElse(null);
     }
 
@@ -54,7 +54,7 @@ public class ProductService implements ProductOperations<Product> {
 
     @Override
     @Cacheable(value = "products")
-    public Iterable<Product> findAll() {
+    public Iterable<Alcohol> findAll() {
         log.info("Get cacheable request from findAll()");
         return this.productRepository.findAll();
     }

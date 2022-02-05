@@ -1,6 +1,6 @@
 package com.butbetter.applicationservices.productapi.controller;
 
-import com.butbetter.applicationservices.productapi.model.Product;
+import com.butbetter.applicationservices.productapi.model.Alcohol;
 import com.butbetter.applicationservices.productapi.service.ProductService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -24,9 +24,9 @@ public class ProductController {
     }
 
     @PostMapping
-    public ResponseEntity<?> save(@RequestBody final Product product) {
+    public ResponseEntity<?> save(@RequestBody final Alcohol alcohol) {
         log.info("Controller save product at redis");
-        this.productService.save(product);
+        this.productService.save(alcohol);
         return ResponseEntity.ok().build();
     }
 
