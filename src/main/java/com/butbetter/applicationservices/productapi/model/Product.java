@@ -60,7 +60,7 @@ public class Product implements Serializable {
     private String countryOfOrigin;
 
     /**
-     * Object of Product for Hibernate
+     * Model of alcohol
      *
      * @param productBeverageEnum = [beer, wine, sparklingWine, vodka, rum, gin]
      * @param name                = name of Product
