@@ -1,7 +1,6 @@
-package com.butbetter.applicationservices.db.repository;
+package com.butbetter.applicationservices.productapi.repository;
 
-import com.butbetter.applicationservices.db.model.Product;
-import org.springframework.data.jpa.repository.JpaRepository;
+import com.butbetter.applicationservices.productapi.model.Product;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

@@ -1,4 +1,4 @@
-package com.butbetter.applicationservices.db.repository;
+package com.butbetter.applicationservices.productapi.repository;
 
 import javax.validation.constraints.NotNull;
 import java.util.UUID;

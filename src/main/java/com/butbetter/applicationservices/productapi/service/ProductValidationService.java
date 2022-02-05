@@ -1,6 +1,6 @@
-package com.butbetter.applicationservices.db.service;
+package com.butbetter.applicationservices.productapi.service;
 
-import com.butbetter.applicationservices.db.model.Product;
+import com.butbetter.applicationservices.productapi.model.Product;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;

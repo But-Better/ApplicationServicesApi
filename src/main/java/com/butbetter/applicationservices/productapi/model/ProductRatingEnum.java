@@ -1,4 +1,4 @@
-package com.butbetter.applicationservices.db.model;
+package com.butbetter.applicationservices.productapi.model;
 
 public enum ProductRatingEnum {
     zero,

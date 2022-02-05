@@ -1,10 +1,8 @@
 package com.butbetter.applicationservices.db.service;
 
 import com.butbetter.applicationservices.Faker.Faker;
-import com.butbetter.applicationservices.Faker.ProductFaker;
-import com.butbetter.applicationservices.Faker.WrongProduct;
-import com.butbetter.applicationservices.db.model.Product;
-import org.junit.jupiter.api.BeforeAll;
+import com.butbetter.applicationservices.productapi.model.Product;
+import com.butbetter.applicationservices.productapi.service.ProductValidationService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

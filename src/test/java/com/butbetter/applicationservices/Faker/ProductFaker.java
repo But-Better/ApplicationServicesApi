@@ -1,8 +1,8 @@
 package com.butbetter.applicationservices.Faker;
 
-import com.butbetter.applicationservices.db.model.Product;
-import com.butbetter.applicationservices.db.model.ProductBeverageEnum;
-import com.butbetter.applicationservices.db.model.ProductRatingEnum;
+import com.butbetter.applicationservices.productapi.model.Product;
+import com.butbetter.applicationservices.productapi.model.ProductBeverageEnum;
+import com.butbetter.applicationservices.productapi.model.ProductRatingEnum;
 
 import java.math.BigDecimal;
 

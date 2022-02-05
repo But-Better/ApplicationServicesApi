@@ -1,8 +1,8 @@
-package com.butbetter.applicationservices.db.service;
+package com.butbetter.applicationservices.productapi.service;
 
-import com.butbetter.applicationservices.db.model.Product;
-import com.butbetter.applicationservices.db.repository.ProductOperations;
-import com.butbetter.applicationservices.db.repository.ProductRepository;
+import com.butbetter.applicationservices.productapi.model.Product;
+import com.butbetter.applicationservices.productapi.repository.ProductOperations;
+import com.butbetter.applicationservices.productapi.repository.ProductRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

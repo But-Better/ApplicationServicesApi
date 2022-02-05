@@ -1,11 +1,10 @@
-package com.butbetter.applicationservices.db.controller;
+package com.butbetter.applicationservices.productapi.controller;
 
-import com.butbetter.applicationservices.db.model.Product;
-import com.butbetter.applicationservices.db.service.ProductService;
+import com.butbetter.applicationservices.productapi.model.Product;
+import com.butbetter.applicationservices.productapi.service.ProductService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 

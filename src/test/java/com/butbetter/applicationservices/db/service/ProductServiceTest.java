@@ -1,8 +1,9 @@
 package com.butbetter.applicationservices.db.service;
 
 import com.butbetter.applicationservices.Faker.Faker;
-import com.butbetter.applicationservices.db.model.Product;
-import com.butbetter.applicationservices.db.repository.ProductRepository;
+import com.butbetter.applicationservices.productapi.model.Product;
+import com.butbetter.applicationservices.productapi.repository.ProductRepository;
+import com.butbetter.applicationservices.productapi.service.ProductService;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

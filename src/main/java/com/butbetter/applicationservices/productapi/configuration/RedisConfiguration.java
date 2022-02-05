@@ -1,4 +1,4 @@
-package com.butbetter.applicationservices.db.configuration;
+package com.butbetter.applicationservices.productapi.configuration;
 
 import org.springframework.boot.autoconfigure.cache.RedisCacheManagerBuilderCustomizer;
 import org.springframework.context.annotation.Bean;

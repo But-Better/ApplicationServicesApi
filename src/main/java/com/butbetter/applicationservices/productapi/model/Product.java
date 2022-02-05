@@ -1,9 +1,8 @@
-package com.butbetter.applicationservices.db.model;
+package com.butbetter.applicationservices.productapi.model;
 
 import lombok.*;
 import org.hibernate.Hibernate;
 import org.hibernate.annotations.GenericGenerator;
-import org.springframework.data.redis.core.RedisHash;
 
 import javax.persistence.*;
 import javax.validation.constraints.Max;
