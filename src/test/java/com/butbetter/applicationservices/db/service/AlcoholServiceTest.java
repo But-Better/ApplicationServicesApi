@@ -2,8 +2,8 @@ package com.butbetter.applicationservices.db.service;
 
 import com.butbetter.applicationservices.Faker.Faker;
 import com.butbetter.applicationservices.productapi.model.Alcohol;
-import com.butbetter.applicationservices.productapi.repository.ProductRepository;
-import com.butbetter.applicationservices.productapi.service.ProductService;
+import com.butbetter.applicationservices.productapi.repository.AlcoholRepository;
+import com.butbetter.applicationservices.productapi.service.AlcoholService;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,36 +17,36 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class AlcoholServiceTest {
 
     @Autowired
-    private ProductService productService;
+    private AlcoholService alcoholService;
 
     @Autowired
-    private ProductRepository productRepository;
+    private AlcoholRepository alcoholRepository;
 
     private final Faker faker = new Faker();
 
     @Test
     void saveAProduct() {
-        productService.save(faker.getProductFaker().AbsolutVodka);
-        assertThat(productRepository.count()).isEqualTo(1);
+        alcoholService.save(faker.getProductFaker().AbsolutVodka);
+        assertThat(alcoholRepository.count()).isEqualTo(1);
     }
 
     @Test
     @Disabled
     void saveAProductAndCachingAfterARemovedProduct() {
-        if (productService.findAll().iterator().hasNext()) {
-            productService.deleteAll();
+        if (alcoholService.findAll().iterator().hasNext()) {
+            alcoholService.deleteAll();
         }
-        productService.save(faker.getProductFaker().MaikäferFlugzeugBenzin);
-        productService.save(faker.getProductFaker().Frankfurter);
-        productService.save(faker.getProductFaker().Corona);
+        alcoholService.save(faker.getProductFaker().MaikäferFlugzeugBenzin);
+        alcoholService.save(faker.getProductFaker().Frankfurter);
+        alcoholService.save(faker.getProductFaker().Corona);
 
-        Iterable<Alcohol> productIterable = productService.findAll();
+        Iterable<Alcohol> productIterable = alcoholService.findAll();
         Alcohol alcohol = productIterable.iterator().next();
 
         System.out.println(alcohol.getUuid());
 
         //productService.deleteById(product.getUuid());
 
-        assertThat(productRepository.count()).isEqualTo(3);
+        assertThat(alcoholRepository.count()).isEqualTo(3);
     }
 }

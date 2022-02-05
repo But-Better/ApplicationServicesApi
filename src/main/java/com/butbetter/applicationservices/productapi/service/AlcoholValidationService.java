@@ -8,9 +8,9 @@ import org.springframework.stereotype.Service;
 import java.math.BigDecimal;
 
 @Service
-public class ProductValidationService {
+public class AlcoholValidationService {
 
-    private static final Logger log = LoggerFactory.getLogger(ProductValidationService.class);
+    private static final Logger log = LoggerFactory.getLogger(AlcoholValidationService.class);
 
     private static final int MIN_AGE = 16;
     private static final int MAX_AGE = 100;
@@ -43,8 +43,8 @@ public class ProductValidationService {
     }
 
     private boolean ageRestrictionIsValid(Alcohol alcohol) {
-        return alcohol.getAgeOfRestrictions() >= ProductValidationService.MIN_AGE
-                && alcohol.getAgeOfRestrictions() <= ProductValidationService.MAX_AGE;
+        return alcohol.getAgeOfRestrictions() >= AlcoholValidationService.MIN_AGE
+                && alcohol.getAgeOfRestrictions() <= AlcoholValidationService.MAX_AGE;
     }
 
     private boolean amountIsValid(Alcohol alcohol) {

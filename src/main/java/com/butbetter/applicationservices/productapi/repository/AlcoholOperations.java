@@ -3,7 +3,7 @@ package com.butbetter.applicationservices.productapi.repository;
 import javax.validation.constraints.NotNull;
 import java.util.UUID;
 
-public interface ProductOperations<P> {
+public interface AlcoholOperations<P> {
 
     void save(@NotNull final P product);
 
