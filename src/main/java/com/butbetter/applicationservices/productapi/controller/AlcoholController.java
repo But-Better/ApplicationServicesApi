@@ -14,7 +14,7 @@ import java.util.UUID;
 @RequestMapping(value = "v1/product")
 public class AlcoholController {
 
-    private static final Logger log = LoggerFactory.getLogger(AlcoholController.class);
+    private final Logger log = LoggerFactory.getLogger(AlcoholController.class);
 
     private final AlcoholService alcoholService;
 

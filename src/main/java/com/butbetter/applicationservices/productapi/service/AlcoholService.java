@@ -21,7 +21,7 @@ public class AlcoholService implements AlcoholOperations<Alcohol> {
     private final AlcoholRepository alcoholRepository;
     private final AlcoholValidationService alcoholValidationService;
 
-    private static final Logger log = LoggerFactory.getLogger(AlcoholService.class);
+    private final Logger log = LoggerFactory.getLogger(AlcoholService.class);
 
     @Autowired
     public AlcoholService(AlcoholRepository alcoholRepository, AlcoholValidationService alcoholValidationService) {

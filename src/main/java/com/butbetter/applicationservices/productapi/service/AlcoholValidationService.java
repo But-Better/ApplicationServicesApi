@@ -10,8 +10,6 @@ import java.math.BigDecimal;
 @Service
 public class AlcoholValidationService {
 
-    private static final Logger log = LoggerFactory.getLogger(AlcoholValidationService.class);
-
     private static final int MIN_AGE = 16;
     private static final int MAX_AGE = 100;
     private static final double MIN_AMOUNT = 0;
