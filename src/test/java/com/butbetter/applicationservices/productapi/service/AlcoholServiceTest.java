@@ -29,6 +29,9 @@ public class AlcoholServiceTest {
         assertThat(alcoholRepository.count()).isEqualTo(1);
     }
 
+    /**
+     * Test is alcohol faker value valid
+     */
     @Test
     @Disabled
     void saveAProductAndCachingAfterARemovedProduct() {
@@ -43,8 +46,6 @@ public class AlcoholServiceTest {
         Alcohol alcohol = productIterable.iterator().next();
 
         System.out.println(alcohol.getUuid());
-
-        //productService.deleteById(product.getUuid());
 
         assertThat(alcoholRepository.count()).isEqualTo(3);
     }
