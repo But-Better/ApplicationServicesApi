@@ -1,9 +1,8 @@
-package com.butbetter.applicationservices.db.service;
+package com.butbetter.applicationservices.productapi.service;
 
-import com.butbetter.applicationservices.Faker.Faker;
+import com.butbetter.applicationservices.faker.Faker;
 import com.butbetter.applicationservices.productapi.model.Alcohol;
 import com.butbetter.applicationservices.productapi.repository.AlcoholRepository;
-import com.butbetter.applicationservices.productapi.service.AlcoholService;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +25,7 @@ public class AlcoholServiceTest {
 
     @Test
     void saveAProduct() {
-        alcoholService.save(faker.getProductFaker().AbsolutVodka);
+        alcoholService.save(faker.getAlcohol().AbsolutVodka);
         assertThat(alcoholRepository.count()).isEqualTo(1);
     }
 
@@ -36,9 +35,9 @@ public class AlcoholServiceTest {
         if (alcoholService.findAll().iterator().hasNext()) {
             alcoholService.deleteAll();
         }
-        alcoholService.save(faker.getProductFaker().MaikäferFlugzeugBenzin);
-        alcoholService.save(faker.getProductFaker().Frankfurter);
-        alcoholService.save(faker.getProductFaker().Corona);
+        alcoholService.save(faker.getAlcohol().MaikäferFlugzeugBenzin);
+        alcoholService.save(faker.getAlcohol().Frankfurter);
+        alcoholService.save(faker.getAlcohol().Corona);
 
         Iterable<Alcohol> productIterable = alcoholService.findAll();
         Alcohol alcohol = productIterable.iterator().next();
