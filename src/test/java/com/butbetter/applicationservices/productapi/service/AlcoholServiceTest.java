@@ -25,6 +25,7 @@ public class AlcoholServiceTest {
 
     @Test
     void saveAProduct() {
+        this.alcoholRepository.deleteAll();
         alcoholService.save(faker.getAlcohol().AbsolutVodka);
         assertThat(alcoholRepository.count()).isEqualTo(1);
     }
