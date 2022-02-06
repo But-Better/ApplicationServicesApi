@@ -96,7 +96,7 @@ public class AlcoholFaker {
 
     public final Alcohol minAgeOfRestriction = new Alcohol(
             AlcoholBeverageType.beer, "Duff", BigDecimal.valueOf(22.80), 34, 0.7,
-            AlcoholRatingType.one, 0, true, true, "Deutschland"
+            AlcoholRatingType.one, 16, true, true, "Deutschland"
     );
 
     public final Alcohol maxAgeOfRestriction = new Alcohol(
