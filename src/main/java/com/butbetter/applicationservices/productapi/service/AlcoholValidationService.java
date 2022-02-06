@@ -1,11 +1,11 @@
 package com.butbetter.applicationservices.productapi.service;
 
 import com.butbetter.applicationservices.productapi.model.Alcohol;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
+import java.util.Objects;
+import java.util.stream.Stream;
 
 @Service
 public class AlcoholValidationService {
@@ -28,7 +28,8 @@ public class AlcoholValidationService {
      *                                  Age is min. {@value MIN_AGE} and max. {@value MAX_AGE},
      *                                  Amount is min {@value MIN_AMOUNT} and max. {@value MAX_AMOUNT}
      */
-    public void checkProduct(Alcohol alcohol) throws IllegalArgumentException {
+    public void checkProduct(Alcohol alcohol) throws IllegalArgumentException, NullPointerException {
+        if (isAnyValueNull(alcohol)) throw new NullPointerException("One or many types are null");
         if (!amountIsValid(alcohol)) throw new IllegalArgumentException("Amount is negative or to high");
         if (!percentageIsValid(alcohol)) throw new IllegalArgumentException("percentage is negative or to high");
         if (!priceIsValid(alcohol)) throw new IllegalArgumentException("price is negative");
@@ -53,5 +54,10 @@ public class AlcoholValidationService {
     private boolean percentageIsValid(Alcohol alcohol) {
         return alcohol.getPercentage() >= MIN_PERCENTAGE
                 && alcohol.getPercentage() <= MAX_PERCENTAGE;
+    }
+
+    private boolean isAnyValueNull(Alcohol alcohol) {
+        return Stream.of(alcohol.getName(), alcohol.getCountryOfOrigin(), alcohol.getName(),
+                alcohol.getPrice(), alcohol.getAlcoholBeverageType(), alcohol.getProductRatingEnum()).anyMatch(Objects::isNull);
     }
 }
