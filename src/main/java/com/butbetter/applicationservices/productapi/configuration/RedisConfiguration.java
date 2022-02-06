@@ -26,7 +26,7 @@ public class RedisConfiguration {
     @Bean
     public RedisCacheManagerBuilderCustomizer redisCacheManagerBuilderCustomizer() {
         return builder -> builder
-                .withCacheConfiguration("Product",
+                .withCacheConfiguration("alcohol",
                         RedisCacheConfiguration.defaultCacheConfig().entryTtl(Duration.ofMinutes(15)));
     }
 
