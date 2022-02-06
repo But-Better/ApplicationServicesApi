@@ -15,7 +15,7 @@ import java.util.Optional;
 import java.util.UUID;
 
 @Service
-@CacheConfig(cacheNames = {"products"})
+@CacheConfig(cacheNames = {"alcohol"})
 public class AlcoholService implements AlcoholOperations<Alcohol> {
 
     private final AlcoholRepository alcoholRepository;
@@ -30,15 +30,15 @@ public class AlcoholService implements AlcoholOperations<Alcohol> {
     }
 
     @Override
-    @CacheEvict(value = "products", allEntries = true)
-    public void save(Alcohol alcohol) throws IllegalArgumentException {
+    @CacheEvict(value = "alcohol", allEntries = true)
+    public void save(Alcohol alcohol) throws IllegalArgumentException, NullPointerException {
         this.alcoholValidationService.checkProduct(alcohol);
         log.info("save " + alcohol.toString() + " to db");
         this.alcoholRepository.save(alcohol);
     }
 
     @Override
-    @Cacheable(value = "products", key = "#id")
+    @Cacheable(value = "alcohol", key = "#id")
     public Alcohol findById(UUID id) {
         log.info("Found a product over " + id);
         Optional<Alcohol> optionalProduct = this.alcoholRepository.findById(id);
@@ -46,14 +46,14 @@ public class AlcoholService implements AlcoholOperations<Alcohol> {
     }
 
     @Override
-    @CacheEvict(value = "products", allEntries = true, key = "#id")
+    @CacheEvict(value = "alcohol", allEntries = true, key = "#id")
     public void deleteById(UUID id) {
         log.info("Delete a product with id: " + id);
         this.alcoholRepository.deleteById(id);
     }
 
     @Override
-    @Cacheable(value = "products")
+    @Cacheable(value = "alcohol")
     public Iterable<Alcohol> findAll() {
         log.info("Get cacheable request from findAll()");
         return this.alcoholRepository.findAll();
