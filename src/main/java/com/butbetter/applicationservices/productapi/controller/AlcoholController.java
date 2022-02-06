@@ -53,4 +53,10 @@ public class AlcoholController {
         log.error(e.getMessage());
         return ResponseEntity.badRequest().build();
     }
+
+    @ExceptionHandler(NullPointerException.class)
+    public ResponseEntity<?> nullInputs(Exception e) {
+        log.error(e.getMessage());
+        return ResponseEntity.badRequest().build();
+    }
 }
