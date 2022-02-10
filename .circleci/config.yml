@@ -21,7 +21,6 @@ jobs:
           MYSQL_ROOT_PASSWORD: "password"
       - image: redis
 
-
     # set up environment  
     environment:
       TEST_RESULTS: /tmp/test-results
@@ -31,30 +30,11 @@ jobs:
     steps:
       # Checkout the code as the first step.
       - checkout
-
-      # start needed env with docker compose run
-      - setup_remote_docker
-
-      - run:
-          name: Start all services declared in docker-compose.yml
-          command: docker-compose up -d
           
       # Use mvn clean and package as the standard maven build phase
       - run:
           name: Build
           command: mvn -B -DskipTests clean package
-      
-      - run:
-          name: Waiting for Postgres to be ready
-          command: |
-            for i in `seq 1 1000`;
-            do
-              nc -z localhost 3306 && echo Success && exit 0
-              echo -n .
-              sleep 1
-            done
-            echo Failed waiting for MySQL && exit 1
-            exit 1
 
       # Then run your tests!
       - run:
