@@ -13,6 +13,11 @@ jobs:
     # A list of available CircleCI Docker Convenience Images are available here: https://circleci.com/developer/images/image/cimg/openjdk
     docker:
       - image: cimg/openjdk:11.0
+
+    # set up environment  
+    environment:
+      TEST_RESULTS: /tmp/test-results
+    
     # Add steps to the job
     # See: https://circleci.com/docs/2.0/configuration-reference/#steps
     steps:
@@ -31,6 +36,17 @@ jobs:
           name: Build
           command: mvn -B -DskipTests clean package
       
+      - run:
+          name: Waiting for Postgres to be ready
+          command: |
+            for i in `seq 1 10`;
+            do
+              nc -z localhost 3306 && echo Success && exit 0
+              echo -n .
+              sleep 1
+            done
+            echo Failed waiting for Postgress && exit 1
+
       # Then run your tests!
       - run:
           name: Test
