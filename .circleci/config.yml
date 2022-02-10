@@ -13,6 +13,14 @@ jobs:
     # A list of available CircleCI Docker Convenience Images are available here: https://circleci.com/developer/images/image/cimg/openjdk
     docker:
       - image: cimg/openjdk:11.0
+      - image: mysql
+        environment:
+          MYSQL_DATABASE: "db"
+          MYSQL_USER: "user"
+          MYSQL_PASSWORD: "password"
+          MYSQL_ROOT_PASSWORD: "password"
+      - image: redis
+
 
     # set up environment  
     environment:
