@@ -32,8 +32,9 @@ jobs:
       - setup_remote_docker
 
       - run:
-          name: Build images of services declared in docker-compose.yml
-          command: docker-compose run -d
+          name: Start all services declared in docker-compose.yml
+          command: docker-compose up -d
+          
       # Use mvn clean and package as the standard maven build phase
       - run:
           name: Build
