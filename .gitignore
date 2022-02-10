@@ -34,3 +34,6 @@ build/
 
 ###DeepL ####
 .env-config.yml
+
+### Env ###
+loadEnv.sh

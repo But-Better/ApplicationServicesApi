@@ -1,6 +1,6 @@
-package com.butbetter.applicationservices;
+package com.butbetter.applicationservices.caluapi;
 
-import com.butbetter.applicationservices.calculator.Calculator;
+import com.butbetter.applicationservices.caluapi.service.Calculator;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

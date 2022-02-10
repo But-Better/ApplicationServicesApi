@@ -1,6 +1,6 @@
-package com.butbetter.applicationservices.calculator;
+package com.butbetter.applicationservices.caluapi.service;
 
-import com.butbetter.applicationservices.calculator.model.CalcApiResponse;
+import com.butbetter.applicationservices.caluapi.model.VAT;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +12,7 @@ import org.springframework.web.client.RestTemplate;
 @Service
 public class Calculator implements CalculatorService {
 
-    private String calcApiUrl = "https://caluationapi.herokuapp.com";
+    private String calcApiUrl ="https://caluationapi.herokuapp.com";
     private String calcApiPath = "/calc/v1/VAT?";
     private String calcApiUrlPrice = "price=";
     private String calcApiUrlPercent = "&percent=";
@@ -63,9 +63,8 @@ public class Calculator implements CalculatorService {
     public float calculateVATofPrice(float price, float percent) throws ResourceAccessException, HttpClientErrorException.BadRequest {
         String restReq = this.calcApiUrl + this.calcApiPath + this.calcApiUrlPrice + price + this.calcApiUrlPercent + percent;
         log.info("accessing [" + restReq + "] to calc VAT of " + price + " with VAT(" + percent + "%)");
-        CalcApiResponse calcApiResponse = calcAPIRESTTemplate.getForObject(restReq, CalcApiResponse.class);
-        if (calcApiResponse == null)
-            throw new IllegalStateException("Calc api response is null because spring boot didnt throw ResourcAccessException");
+        VAT calcApiResponse = calcAPIRESTTemplate.getForObject(restReq, VAT.class);
+        if(calcApiResponse == null) throw new IllegalStateException("Calc api response is null because spring boot didnt throw ResourcAccessException");
         return Float.parseFloat(calcApiResponse.getVatResult());
     }
 }
