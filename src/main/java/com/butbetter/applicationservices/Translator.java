@@ -15,6 +15,7 @@ import java.util.Objects;
 
 @Service
 public class Translator implements TranslatorService {
+
     private String deepLAPIURL = "https://api-free.deepl.com/v2/translate?";
     private String deepLToken;
     private String authenticationKey = "auth_key=";
@@ -34,9 +35,7 @@ public class Translator implements TranslatorService {
     @Override
     public Language getLanguage(String sentence) throws ResourceAccessException, HttpClientErrorException.BadRequest{
 
-        //how do i not store the api key in the code?
-
-        // make sure not to exceed The request body size should not exceed 128 KiB (128 * 1024 bytes)
+        // make sure not to exceed The request body size of 128 KiB (128 * 1024 bytes)
         // i dont think our data instances will have descriptions that exceed this size
 
         String restReq = createURL(sentence,null);
@@ -55,17 +54,8 @@ public class Translator implements TranslatorService {
     @Override
     public String translate(String sentence, Language language) throws ResourceAccessException, HttpClientErrorException.BadRequest{
 
-        /*
-        ObjectMapper objectMapper = new ObjectMapper();
-        Translation[] translationsArray = {new Translation(Language.DE,"Friend")};
-        DeepLApiResponse car = new DeepLApiResponse(translationsArray);
-        try {
-            objectMapper.writeValue(new File("target/car.json"), car);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        */
-
+        // make sure not to exceed The request body size of 128 KiB (128 * 1024 bytes)
+        // i dont think our data instances will have descriptions that exceed this size
 
         String restReq = createURL(sentence,language);
         log.info("accessing [" + restReq + "] to translate this sentence [" + sentence + "] into " + language.getFullLanguage());
