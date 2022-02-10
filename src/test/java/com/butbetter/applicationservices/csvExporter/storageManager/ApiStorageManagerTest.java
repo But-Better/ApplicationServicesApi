@@ -109,7 +109,7 @@ class ApiStorageManagerTest {
 
 		manager.saveContentToFile(name, contentStream);
 
-		verify(mockedLocalFileManager, times(1)).saveContentToFile(name, contentStream);
+		verify(mockedLocalFileManager, times(1)).saveContentToFile(any(String.class), any(Stream.class));
 	}
 
 	@Test
@@ -117,6 +117,8 @@ class ApiStorageManagerTest {
 		String name = "testFile";
 		File testFile = new File(BASE_PATH + "/" + name);
 
+		//will be tested
+		//noinspection ResultOfMethodCallIgnored
 		testFile.createNewFile();
 
 		Path path = testFile.toPath();
@@ -131,6 +133,8 @@ class ApiStorageManagerTest {
 		String name = "testFile";
 		File testFile = new File(BASE_PATH + "/" + name);
 
+		//will be tested
+		//noinspection ResultOfMethodCallIgnored
 		testFile.createNewFile();
 
 		Path path = testFile.toPath();

@@ -5,6 +5,7 @@ import com.butbetter.applicationservices.csvExporter.properties.CSVExporterPrope
 import javassist.tools.web.BadHttpRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -56,6 +57,7 @@ public class ApiStorageManager implements StorageManager {
 		this.tmpFileManager = tmpFileManager;
 	}
 
+	@Autowired
 	public ApiStorageManager(CSVExporterProperties properties) {
 		logger.info("Remote: \"" + properties.getSaveLocation() + "\" is getting used for the save location");
 
@@ -144,6 +146,7 @@ public class ApiStorageManager implements StorageManager {
 	private boolean fileExists(File fileToUpload) {
 		return fileToUpload.exists();
 	}
+
 	private void uploadFileToRemote(File fileToUpload) throws NotActiveException, FileNotFoundException, StorageNotReadyException {
 		try {
 			remoteFileService.uploadFile(fileToUpload);
@@ -153,6 +156,7 @@ public class ApiStorageManager implements StorageManager {
 			throw new StorageNotReadyException(message);
 		}
 	}
+
 	private File createFileWithContentLocally(String name, Stream<String> content) throws IOException, StorageNotReadyException {
 		if(fileExists(new File(name))) {
 			removeTemporaryFile(name);

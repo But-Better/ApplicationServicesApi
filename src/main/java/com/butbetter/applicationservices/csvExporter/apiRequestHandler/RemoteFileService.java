@@ -1,8 +1,10 @@
 package com.butbetter.applicationservices.csvExporter.apiRequestHandler;
 
+import com.butbetter.applicationservices.csvExporter.properties.CSVExporterProperties;
 import javassist.tools.web.BadHttpRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.PermissionDeniedDataAccessException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -13,14 +15,13 @@ import java.io.FileNotFoundException;
 import java.io.NotActiveException;
 import java.net.URISyntaxException;
 import java.net.URL;
-import java.util.List;
 
 @Service
 public class RemoteFileService {
 
-	private Logger logger = LoggerFactory.getLogger(this.getClass());
+	private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
-	private RestTemplate restTemplate;
+	private final RestTemplate restTemplate;
 
 	private final URL storageApiUrl;
 
@@ -32,6 +33,12 @@ public class RemoteFileService {
 	public RemoteFileService(URL storageApiUrl) {
 		this.restTemplate = new RestTemplate();
 		this.storageApiUrl = storageApiUrl;
+	}
+
+	@Autowired
+	public RemoteFileService(CSVExporterProperties properties) {
+		this.restTemplate = new RestTemplate();
+		this.storageApiUrl = properties.getStorageUrl();
 	}
 
 	public boolean isUp() {
