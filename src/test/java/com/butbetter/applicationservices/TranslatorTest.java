@@ -1,5 +1,7 @@
 package com.butbetter.applicationservices;
 
+import com.butbetter.applicationservices.externalAPI.model.Language;
+import com.butbetter.applicationservices.externalAPI.service.Translator;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -17,7 +19,7 @@ class TranslatorTest {
     @Test
     @DisplayName("test german to english translation of Freund")
     void testGermanToEnglishTranslationWord(){
-        assertEquals("Friend",translator.translate("Freund",Language.EN));
+        assertEquals("Friend",translator.translate("Freund", Language.EN));
     }
 
     @Test

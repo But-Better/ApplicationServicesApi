@@ -1,13 +1,12 @@
-package com.butbetter.applicationservices;
+package com.butbetter.applicationservices.externalAPI.service;
 
-import com.butbetter.applicationservices.model.DeepLApiResponse;
-import com.butbetter.applicationservices.model.Translation;
+import com.butbetter.applicationservices.externalAPI.model.DeepLApiResponse;
+import com.butbetter.applicationservices.externalAPI.model.Language;
+import com.butbetter.applicationservices.externalAPI.model.Translation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.HttpClientErrorException;
-import org.springframework.web.client.ResourceAccessException;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.Objects;

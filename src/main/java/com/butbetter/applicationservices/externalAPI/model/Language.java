@@ -1,4 +1,4 @@
-package com.butbetter.applicationservices;
+package com.butbetter.applicationservices.externalAPI.model;
 
 public enum Language {
     DE("German"),
@@ -26,7 +26,7 @@ public enum Language {
     SV("Swedish"),
     ZH("Chinese");
 
-    private String fullLanguage;
+    private final String fullLanguage;
 
     Language(String language){
         this.fullLanguage = language;

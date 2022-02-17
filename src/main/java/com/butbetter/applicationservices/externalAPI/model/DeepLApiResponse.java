@@ -1,6 +1,5 @@
-package com.butbetter.applicationservices.model;
+package com.butbetter.applicationservices.externalAPI.model;
 
-import com.butbetter.applicationservices.Language;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 

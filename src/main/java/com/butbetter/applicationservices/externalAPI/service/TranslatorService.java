@@ -1,4 +1,6 @@
-package com.butbetter.applicationservices;
+package com.butbetter.applicationservices.externalAPI.service;
+
+import com.butbetter.applicationservices.externalAPI.model.Language;
 
 public interface TranslatorService {
 
