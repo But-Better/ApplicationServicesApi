@@ -34,9 +34,6 @@ public class Translator implements TranslatorService {
     @Override
     public Language getLanguage(String text){
 
-        // make sure not to exceed The request body size of 128 KiB (128 * 1024 bytes)
-        // i dont think our data instances will have descriptions that exceed this size
-
         DeepLApiResponse deepLApiResponse = askDeepLForTranslation(text,null);
        Translation translation = turnResponseIntoTranslation(deepLApiResponse);
        if(translation == null) return null;
@@ -46,9 +43,6 @@ public class Translator implements TranslatorService {
 
     @Override
     public String translate(String text, Language language){
-
-        // make sure not to exceed The request body size of 128 KiB (128 * 1024 bytes)
-        // i dont think our data instances will have descriptions that exceed this size
 
         DeepLApiResponse deepLApiResponse = askDeepLForTranslation(text,null);
         Translation translation = turnResponseIntoTranslation(deepLApiResponse);
