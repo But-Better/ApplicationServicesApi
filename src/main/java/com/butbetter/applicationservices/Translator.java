@@ -22,7 +22,7 @@ public class Translator implements TranslatorService {
     private String targetLanguage = "&target_lang=";
     private String sourceLanguage = "&source_lang=de"; // set to german by default
 
-    private static final Logger log = LoggerFactory.getLogger(Translator.class);
+    private final Logger log = LoggerFactory.getLogger(Translator.class);
 
     public Translator() {
         this.deepLToken = System.getenv("DEEPL_TOKEN");
