@@ -5,7 +5,6 @@ import com.butbetter.applicationservices.model.Translation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.ResourceAccessException;
@@ -33,48 +32,54 @@ public class Translator implements TranslatorService {
     private RestTemplate deepLRESTTemplate;
 
     @Override
-    public Language getLanguage(String sentence) throws ResourceAccessException, HttpClientErrorException.BadRequest{
+    public Language getLanguage(String text){
 
         // make sure not to exceed The request body size of 128 KiB (128 * 1024 bytes)
         // i dont think our data instances will have descriptions that exceed this size
 
-        String restReq = createURL(sentence,null);
-        log.info("accessing [" + restReq + "] to get the language of this sentence [" + sentence + "]");
-        DeepLApiResponse deepLApiResponse = deepLRESTTemplate.getForObject(restReq, DeepLApiResponse.class);
-        if (deepLApiResponse == null)
-            throw new IllegalStateException("DeepL Api response is null because spring boot didnt throw ResourcAccessException");
-        Translation[] translations = deepLApiResponse.getTranslations();
-        if(translations == null) throw new IllegalArgumentException("The translations are null");
-        Translation translation = translations[0];
-        if(translation == null) throw new IllegalArgumentException("The translation is null");
+        DeepLApiResponse deepLApiResponse = askDeepLForTranslation(text,null);
+       Translation translation = turnResponseIntoTranslation(deepLApiResponse);
+       if(translation == null) return null;
 
         return translation.getLanguage();
     }
 
     @Override
-    public String translate(String sentence, Language language) throws ResourceAccessException, HttpClientErrorException.BadRequest{
+    public String translate(String text, Language language){
 
         // make sure not to exceed The request body size of 128 KiB (128 * 1024 bytes)
         // i dont think our data instances will have descriptions that exceed this size
 
-        String restReq = createURL(sentence,language);
-        log.info("accessing [" + restReq + "] to translate this sentence [" + sentence + "] into " + language.getFullLanguage());
-        DeepLApiResponse deepLApiResponse = deepLRESTTemplate.getForObject(restReq, DeepLApiResponse.class);
-        if (deepLApiResponse == null)
-            throw new IllegalStateException("DeepL Api response is null because spring boot didnt throw ResourcAccessException");
-        Translation[] translations = deepLApiResponse.getTranslations();
-        if(translations == null) throw new IllegalArgumentException("The translations are null");
-        Translation translation = translations[0];
-        if(translation == null) throw new IllegalArgumentException("The translation is null");
+        DeepLApiResponse deepLApiResponse = askDeepLForTranslation(text,null);
+        Translation translation = turnResponseIntoTranslation(deepLApiResponse);
+        if(translation == null) return null;
 
         return translation.getTranslation();
     }
 
-    private String createURL(String sentence, Language language){
+    private Translation turnResponseIntoTranslation(DeepLApiResponse deepLApiResponse){
+        if (deepLApiResponse == null) return null;
+        Translation[] translations = deepLApiResponse.getTranslations();
+        if(translations == null) return null;
+
+        return translations[0];
+    }
+
+    private DeepLApiResponse askDeepLForTranslation(String text, Language language){
+        String deepLRequestURL = createDeepLRequestURL(text,language);
+        DeepLApiResponse deepLAPIResponse = deepLRESTTemplate.getForObject(deepLRequestURL, DeepLApiResponse.class);
+
+        if(language == null) log.info("accessed [" + deepLRequestURL + "] to get the language of this text [" + text + "]");
+        else log.info("accessed [" + deepLRequestURL + "] to translate this text [" + text + "] into " + language.getFullLanguage());
+
+        return deepLAPIResponse;
+    }
+
+    private String createDeepLRequestURL(String text, Language language){
         return deepLAPIURL +
                 authenticationKey +
                 deepLToken +
-                textToTranslate + sentence +
+                textToTranslate + text +
                 targetLanguage + Objects.requireNonNullElse(language, Language.EN).name().toLowerCase() +
                 sourceLanguage;
     }
