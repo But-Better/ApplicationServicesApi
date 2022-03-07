@@ -31,7 +31,7 @@ public class AlcoholService implements AlcoholOperations<Alcohol> {
 
     @Override
     @CacheEvict(value = "alcohol", allEntries = true)
-    public void save(Alcohol alcohol) throws IllegalArgumentException, NullPointerException {
+    public void saveAlcohol(Alcohol alcohol) throws IllegalArgumentException, NullPointerException {
         this.alcoholValidationService.checkProduct(alcohol);
         log.info("save " + alcohol.toString() + " to db");
         this.alcoholRepository.save(alcohol);
@@ -39,7 +39,7 @@ public class AlcoholService implements AlcoholOperations<Alcohol> {
 
     @Override
     @Cacheable(value = "alcohol", key = "#id")
-    public Alcohol findById(UUID id) {
+    public Alcohol findAlcoholById(UUID id) {
         log.info("Found a product over " + id);
         Optional<Alcohol> optionalProduct = this.alcoholRepository.findById(id);
         return optionalProduct.orElse(null);
@@ -47,20 +47,20 @@ public class AlcoholService implements AlcoholOperations<Alcohol> {
 
     @Override
     @CacheEvict(value = "alcohol", allEntries = true, key = "#id")
-    public void deleteById(UUID id) {
+    public void deleteAlcoholById(UUID id) {
         log.info("Delete a product with id: " + id);
         this.alcoholRepository.deleteById(id);
     }
 
     @Override
     @Cacheable(value = "alcohol")
-    public Iterable<Alcohol> findAll() {
+    public Iterable<Alcohol> findAllAlcohol() {
         log.info("Get cacheable request from findAll()");
         return this.alcoholRepository.findAll();
     }
 
     @Override
-    public void deleteAll() {
+    public void deleteAllAlcohol() {
         this.alcoholRepository.deleteAll();
     }
 

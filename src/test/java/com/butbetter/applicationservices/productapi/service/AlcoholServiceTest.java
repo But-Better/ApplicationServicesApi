@@ -26,7 +26,7 @@ public class AlcoholServiceTest {
     @Test
     void saveAProduct() {
         this.alcoholRepository.deleteAll();
-        alcoholService.save(faker.getAlcohol().AbsolutVodka);
+        alcoholService.saveAlcohol(faker.getAlcohol().AbsolutVodka);
         assertThat(alcoholRepository.count()).isEqualTo(1);
     }
 
@@ -36,14 +36,14 @@ public class AlcoholServiceTest {
     @Test
     @Disabled
     void saveAProductAndCachingAfterARemovedProduct() {
-        if (alcoholService.findAll().iterator().hasNext()) {
-            alcoholService.deleteAll();
+        if (alcoholService.findAllAlcohol().iterator().hasNext()) {
+            alcoholService.deleteAllAlcohol();
         }
-        alcoholService.save(faker.getAlcohol().MaikäferFlugzeugBenzin);
-        alcoholService.save(faker.getAlcohol().Frankfurter);
-        alcoholService.save(faker.getAlcohol().Corona);
+        alcoholService.saveAlcohol(faker.getAlcohol().MaikäferFlugzeugBenzin);
+        alcoholService.saveAlcohol(faker.getAlcohol().Frankfurter);
+        alcoholService.saveAlcohol(faker.getAlcohol().Corona);
 
-        Iterable<Alcohol> productIterable = alcoholService.findAll();
+        Iterable<Alcohol> productIterable = alcoholService.findAllAlcohol();
         Alcohol alcohol = productIterable.iterator().next();
 
         System.out.println(alcohol.getUuid());
