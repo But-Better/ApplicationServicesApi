@@ -31,7 +31,7 @@ public class StorageApiServiceTest {
     void getOne() {
         ProductInformation productInformation = null;
 
-        productInformation = this.storageApiService.one("6c83a6c0-40b3-4c06-a5fd-16af6344ab6d");
+        productInformation = this.storageApiService.findProductInformationById("6c83a6c0-40b3-4c06-a5fd-16af6344ab6d");
 
         Assertions.assertNotNull(productInformation);
     }
@@ -44,7 +44,7 @@ public class StorageApiServiceTest {
     void getAll() {
         List<ProductInformation> informationList =
                 null;
-        informationList = this.storageApiService.all();
+        informationList = this.storageApiService.findAllProductInformation();
 
         Assertions.assertNotEquals(informationList.size(), 0);
     }
@@ -61,7 +61,7 @@ public class StorageApiServiceTest {
                 .toInstant()
                 .atOffset(ZoneOffset.ofHoursMinutes(hour, minute));
 
-        this.storageApiService.newProductInformation(
+        this.storageApiService.saveProductInformation(
                 new ProductInformation(
                         20,
                         new Address(
