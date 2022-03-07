@@ -1,7 +1,7 @@
 package com.butbetter.applicationservices.caluapi;
 
 import com.butbetter.applicationservices.caluapi.model.VAT;
-import com.butbetter.applicationservices.caluapi.service.Calculator;
+import com.butbetter.applicationservices.caluapi.service.CalculatorService;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -18,16 +18,16 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 @SpringBootTest
-public class CalculatorTestUsingMockito {
+public class CalculatorServiceTestUsingMockito {
 
     @Mock
     private RestTemplate calcRestApiTemplateMock;
 
     @InjectMocks
-    private Calculator calcConnected = new Calculator();
+    private CalculatorService calcConnected = new CalculatorService();
 
     @Autowired
-    private Calculator calcNoConnection;
+    private CalculatorService calcNoConnection;
 
     @Test
     @DisplayName("test calc API by mocking restTemplate with the values 100 10")
