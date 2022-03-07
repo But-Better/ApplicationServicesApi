@@ -1,15 +1,13 @@
 package com.butbetter.applicationservices.storagerestapi.repository;
 
-import com.butbetter.applicationservices.storagerestapi.model.ProductInformation;
-
 import javax.validation.constraints.NotNull;
 import java.util.List;
 
-public interface StorageOperation {
+public interface StorageOperation<P> {
 
-    List<ProductInformation> all();
+    List<P> findAllProductInformation();
 
-    ProductInformation one(@NotNull String uuid);
+    P findProductInformationById(@NotNull String uuid);
 
-    void newProductInformation(@NotNull ProductInformation productInformation);
+    void saveProductInformation(@NotNull P productInformation);
 }
