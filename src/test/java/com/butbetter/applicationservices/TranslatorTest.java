@@ -55,7 +55,7 @@ class TranslatorTest {
     @Test
     @DisplayName("Test the language of a given word: friend")
     void testLanguageTypeDetectionEN(){
-        assertEquals(Language.EN,translator.getLanguage("friend"));
+        assertEquals(Language.EN,translator.getLanguage("suck my balls Mr Garrison"));
     }
 
 
@@ -63,6 +63,12 @@ class TranslatorTest {
     @DisplayName("Test empty input for translation")
     void testEmptyInputTranslation(){
         assertEquals("",translator.translate("",Language.EN));
+    }
+
+    @Test
+    @DisplayName("Test empty input for language detection")
+    void testEmptyInputLanguageDetection(){
+        assertEquals(Language.EN,translator.getLanguage(""));
     }
 
 }
