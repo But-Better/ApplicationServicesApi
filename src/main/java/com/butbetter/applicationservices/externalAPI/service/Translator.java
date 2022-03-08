@@ -43,7 +43,7 @@ public class Translator implements TranslatorService {
     @Override
     public String translate(String text, Language language){
 
-        DeepLApiResponse deepLApiResponse = askDeepLForTranslation(text,null);
+        DeepLApiResponse deepLApiResponse = askDeepLForTranslation(text,language);
         Translation translation = turnResponseIntoTranslation(deepLApiResponse);
         if(translation == null) return null;
 
