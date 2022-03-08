@@ -45,6 +45,12 @@ class TranslatorTest {
         assertEquals(expectedTranslation,translator.translate(text,Language.EN));
     }
 
+    @Test
+    @DisplayName("test german to japanese translation of: Hallo General Kenobi")
+    void testGermanToJapaneseTranslationSentence(){
+        assertEquals("ケノービ将軍こんにちは",translator.translate("Hallo General Kenobi",Language.JA));
+    }
+
 
     @Test
     @DisplayName("Test the language of a given word: Freund")
@@ -53,11 +59,16 @@ class TranslatorTest {
     }
 
     @Test
-    @DisplayName("Test the language of a given word: friend")
+    @DisplayName("Test the language for the sentence: suck my balls Mr Garrison")
     void testLanguageTypeDetectionEN(){
         assertEquals(Language.EN,translator.getLanguage("suck my balls Mr Garrison"));
     }
 
+    @Test
+    @DisplayName("Test the language for the sentence: ハローケノービ")
+    void testLanguageTypeDetectionJA(){
+        assertEquals(Language.JA,translator.getLanguage("ハローケノービ"));
+    }
 
     @Test
     @DisplayName("Test empty input for translation")
