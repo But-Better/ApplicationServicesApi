@@ -69,11 +69,17 @@ public class Translator implements TranslatorService {
     }
 
     private String createDeepLRequestURL(String text, Language language){
-        return deepLAPIURL +
-                authenticationKey +
-                deepLToken +
-                textToTranslate + text +
-                targetLanguage + Objects.requireNonNullElse(language, Language.EN).name().toLowerCase() +
-                sourceLanguage;
+
+        String requestURL = deepLAPIURL +
+                            authenticationKey +
+                            deepLToken +
+                            textToTranslate + text +
+                            targetLanguage + Objects.requireNonNullElse(language, Language.EN).name().toLowerCase();
+
+        if(language != null){
+            requestURL += sourceLanguage;
+        }
+
+        return requestURL;
     }
 }
