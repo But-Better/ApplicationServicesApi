@@ -41,7 +41,7 @@ public class Translator implements TranslatorService {
     }
 
     @Override
-    public String translate(String text, Language language){
+    public String translate(String text, Language language) throws NullPointerException{
 
         DeepLApiResponse deepLApiResponse = askDeepLForTranslation(text,language);
         Translation translation = turnResponseIntoTranslation(deepLApiResponse);
