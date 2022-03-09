@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import javax.validation.constraints.Null;
 import java.util.Objects;
 
 @Service
@@ -31,11 +32,10 @@ public class Translator implements TranslatorService {
     private RestTemplate deepLRESTTemplate;
 
     @Override
-    public Language getLanguage(String text){
+    public Language getLanguage(String text) throws NullPointerException{
 
         DeepLApiResponse deepLApiResponse = askDeepLForTranslation(text,null);
        Translation translation = turnResponseIntoTranslation(deepLApiResponse);
-       if(translation == null) return null;
 
         return translation.getLanguage();
     }
@@ -50,11 +50,11 @@ public class Translator implements TranslatorService {
         return translation.getTranslation();
     }
 
-    private Translation turnResponseIntoTranslation(DeepLApiResponse deepLApiResponse){
-        if (deepLApiResponse == null) return null;
+    private Translation turnResponseIntoTranslation(DeepLApiResponse deepLApiResponse) throws NullPointerException {
+        if (deepLApiResponse == null) throw new NullPointerException("DeepL Api Response is null");
         Translation[] translations = deepLApiResponse.getTranslations();
-        if(translations == null) return null;
-
+        if(translations == null) throw new NullPointerException("translations in DeepL Api Response is null");
+        if(translations[0] == null) throw new NullPointerException("first translation in DeepL Api Response is null");
         return translations[0];
     }
 
