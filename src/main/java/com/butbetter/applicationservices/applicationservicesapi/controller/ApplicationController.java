@@ -1,7 +1,6 @@
 package com.butbetter.applicationservices.applicationservicesapi.controller;
 
 import com.butbetter.applicationservices.applicationservicesapi.service.ApplicationService;
-import com.butbetter.applicationservices.productapi.controller.AlcoholController;
 import com.butbetter.applicationservices.productapi.model.Alcohol;
 import com.butbetter.applicationservices.storagerestapi.model.ProductInformation;
 import org.slf4j.Logger;
@@ -94,12 +93,14 @@ public class ApplicationController implements ApplicationControllerOperations {
     @ExceptionHandler(ResourceAccessException.class)
     @Override
     public ResponseEntity<?> resourceAccessException(Exception e) {
+        log.error(e.getMessage());
         return ResponseEntity.badRequest().build();
     }
 
     @ExceptionHandler(HttpClientErrorException.class)
     @Override
     public ResponseEntity<?> httpClientErrorException(Exception e) {
+        log.error(e.getMessage());
         return ResponseEntity.badRequest().build();
     }
 
