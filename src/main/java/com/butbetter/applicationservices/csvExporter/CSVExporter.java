@@ -9,6 +9,6 @@ import java.io.IOException;
 import java.util.Collection;
 
 interface CSVExporter<P> {
-	void export(P object) throws IOException, CsvRequiredFieldEmptyException, CsvDataTypeMismatchException, NameAlreadyBoundException, StorageNotReadyException;
-	void export(Collection<P> objects) throws IOException, CsvRequiredFieldEmptyException, CsvDataTypeMismatchException, NameAlreadyBoundException, StorageNotReadyException;
+	String export(P object) throws IOException, CsvRequiredFieldEmptyException, CsvDataTypeMismatchException, NameAlreadyBoundException, StorageNotReadyException;
+	String export(Collection<P> objects) throws IOException, CsvRequiredFieldEmptyException, CsvDataTypeMismatchException, NameAlreadyBoundException, StorageNotReadyException;
 }
