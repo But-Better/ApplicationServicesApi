@@ -40,8 +40,6 @@ class CSVConverterTest {
 
         String csv = converter.convertSingle(testInformation);
 
-        System.out.println(csv);
-
         String expectedCsv = "\"ADDRESS\"\n"+
                 "\"AMOUNT\"\n"+
                 "\"DELIVERYTIME\"\n"+
