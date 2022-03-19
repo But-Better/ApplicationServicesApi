@@ -57,7 +57,7 @@ public class CSVConverter {
 	private String extractCsvDataFromCollection() throws IOException {
 		checkErrorInCollector(this.collector);
 
-		List<String> data = this.collector.getCsvData();
+		List<String> data = new ArrayList<>(this.collector.getCsvData());
 
 		this.collector.reset();
 
