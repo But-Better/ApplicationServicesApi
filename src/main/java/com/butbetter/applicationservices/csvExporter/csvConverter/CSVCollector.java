@@ -62,7 +62,8 @@ public class CSVCollector implements ICSVWriter {
 	}
 
 	public synchronized void reset() {
-		csvData.forEach(csvData::remove);
+		List<String> copy = new ArrayList<>(csvData);
+		csvData.removeAll(copy);
 		closed = false;
 		hadError = false;
 		caughtException = null;
