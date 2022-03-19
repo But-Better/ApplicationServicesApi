@@ -6,6 +6,7 @@ import javassist.tools.web.BadHttpRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -149,10 +150,15 @@ public class ApiStorageManager implements StorageManager {
 
 	private void uploadFileToRemote(File fileToUpload) throws NotActiveException, FileNotFoundException, StorageNotReadyException {
 		try {
-			remoteFileService.uploadFile(fileToUpload);
+			ResponseEntity<String> response = remoteFileService.uploadFile(fileToUpload);
+			logger.info(response.toString());
 		} catch (BadHttpRequest e) {
 			String message = "given remote api (" + remoteFileService.getStorageApiUrl() + ") is not available";
 			logger.error(message);
+			throw new StorageNotReadyException(message);
+		} catch (IOException e) {
+			String message = "file conversion to upload couldn't take place, this might be a ram problem";
+			logger.error(message, e);
 			throw new StorageNotReadyException(message);
 		}
 	}
