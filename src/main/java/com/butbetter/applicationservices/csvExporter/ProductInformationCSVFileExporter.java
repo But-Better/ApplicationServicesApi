@@ -18,7 +18,6 @@ import java.io.IOException;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.List;
 import java.util.UUID;
 
 @Service
@@ -56,15 +55,17 @@ public class ProductInformationCSVFileExporter implements CSVExporter<ProductInf
 	}
 
 	@Override
-	public void export(ProductInformation object) throws IOException, StorageNotReadyException, CsvRequiredFieldEmptyException, CsvDataTypeMismatchException {
+	public String export(ProductInformation object) throws IOException, StorageNotReadyException, CsvRequiredFieldEmptyException, CsvDataTypeMismatchException {
 		String csv = converter.convertSingle(object);
 		uploadCsvData(csv);
+		return csv;
 	}
 
 	@Override
-	public void export(Collection<ProductInformation> objects) throws IOException, StorageNotReadyException, CsvRequiredFieldEmptyException, CsvDataTypeMismatchException {
+	public String export(Collection<ProductInformation> objects) throws IOException, StorageNotReadyException, CsvRequiredFieldEmptyException, CsvDataTypeMismatchException {
 		String csv = converter.convertList(new ArrayList<>(objects));
 		uploadCsvData(csv);
+		return csv;
 	}
 
 	private void uploadCsvData(String csv) throws IOException, StorageNotReadyException {
