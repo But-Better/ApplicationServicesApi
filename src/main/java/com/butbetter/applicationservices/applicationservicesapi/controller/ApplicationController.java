@@ -32,7 +32,7 @@ public class ApplicationController implements ApplicationControllerOperations {
 
     @PostMapping("/" + ALCOHOL_API_TAG)
     @Override
-    public ResponseEntity<?> saveAlcohol(Alcohol product) {
+    public ResponseEntity<?> saveAlcohol(@RequestParam("alcohol") Alcohol product) {
         this.applicationService.saveAlcohol(product);
         return ResponseEntity.ok().build();
     }
@@ -77,7 +77,7 @@ public class ApplicationController implements ApplicationControllerOperations {
 
     @PostMapping("/" + PRODUCT_INFORMATION_API_TAG)
     @Override
-    public ResponseEntity<?> saveProductInformation(ProductInformation productInformation) {
+    public ResponseEntity<?> saveProductInformation(@RequestParam("productInformation") ProductInformation productInformation) {
         this.applicationService.saveProductInformation(productInformation);
         return ResponseEntity.ok().build();
     }
