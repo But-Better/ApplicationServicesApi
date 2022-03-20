@@ -60,6 +60,7 @@ public class AlcoholService implements AlcoholOperations<Alcohol> {
     }
 
     @Override
+    @CacheEvict(value = "alcohol", allEntries = true)
     public void deleteAllAlcohol() {
         this.alcoholRepository.deleteAll();
     }
