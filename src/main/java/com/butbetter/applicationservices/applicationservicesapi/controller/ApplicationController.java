@@ -32,7 +32,7 @@ public class ApplicationController implements ApplicationControllerOperations {
 
     @PostMapping("/" + ALCOHOL_API_TAG)
     @Override
-    public ResponseEntity<?> saveAlcohol(@RequestParam("alcohol") Alcohol product) {
+    public ResponseEntity<?> saveAlcohol(@RequestBody Alcohol product) {
         this.applicationService.saveAlcohol(product);
         return ResponseEntity.ok().build();
     }
