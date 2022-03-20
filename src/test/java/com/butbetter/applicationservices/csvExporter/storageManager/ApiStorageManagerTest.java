@@ -2,9 +2,12 @@ package com.butbetter.applicationservices.csvExporter.storageManager;
 
 import com.butbetter.applicationservices.csvExporter.apiRequestHandler.RemoteFileService;
 import javassist.tools.web.BadHttpRequest;
+import lombok.SneakyThrows;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 
 import javax.naming.NameAlreadyBoundException;
 import javax.naming.NameNotFoundException;
@@ -30,11 +33,13 @@ class ApiStorageManagerTest {
 
 	private StorageManager manager;
 
+	@SneakyThrows
 	@BeforeEach
 	void setUp() {
 		mockedApiService = mock(RemoteFileService.class);
 		mockedLocalFileManager = mock(LocalFileStorageManager.class);
 
+		when(mockedApiService.uploadFile(any())).thenReturn(new ResponseEntity<>(HttpStatus.ACCEPTED));
 		assert new File(BASE_PATH).exists() || new File(BASE_PATH).mkdirs();
 
 		manager = new ApiStorageManager(mockedApiService, mockedLocalFileManager);
