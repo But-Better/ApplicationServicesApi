@@ -23,57 +23,57 @@ import java.util.UUID;
 @Service
 public class ProductInformationCSVFileExporter implements CSVExporter<ProductInformation> {
 
-	private final CSVExporterProperties properties;
+    private final CSVExporterProperties properties;
 
-	private final CSVConverter converter;
+    private final CSVConverter converter;
 
-	private final StorageManager uploader;
+    private final StorageManager uploader;
 
-	@Autowired
-	public ProductInformationCSVFileExporter(CSVExporterProperties properties, CSVConverter converter) {
-		this.properties = properties;
+    @Autowired
+    public ProductInformationCSVFileExporter(CSVExporterProperties properties, CSVConverter converter) {
+        this.properties = properties;
 
-		LocalFileStorageManager tmpManager = new LocalFileStorageManager(Path.of(properties.getSaveLocation()));
-		RemoteFileService remoteFileService = new RemoteFileService(properties.getStorageUrl());
+        LocalFileStorageManager tmpManager = new LocalFileStorageManager(Path.of(properties.getSaveLocation()));
+        RemoteFileService remoteFileService = new RemoteFileService(properties.getStorageUrl());
 
-		this.uploader = new ApiStorageManager(remoteFileService, tmpManager);
+        this.uploader = new ApiStorageManager(remoteFileService, tmpManager);
 
-		this.converter = converter;
-	}
+        this.converter = converter;
+    }
 
-	public ProductInformationCSVFileExporter(CSVExporterProperties properties, StorageManager uploader) {
-		this.converter = new CSVConverter();
-		this.properties = properties;
-		this.uploader = uploader;
-	}
+    public ProductInformationCSVFileExporter(CSVExporterProperties properties, StorageManager uploader) {
+        this.converter = new CSVConverter();
+        this.properties = properties;
+        this.uploader = uploader;
+    }
 
-	public ProductInformationCSVFileExporter(CSVExporterProperties properties, LocalFileStorageManager tmpManager,
-	                                         RemoteFileService remoteManager, CSVConverter converter) {
-		this.converter = converter;
-		this.properties = properties;
-		this.uploader = new ApiStorageManager(remoteManager, tmpManager);
-	}
+    public ProductInformationCSVFileExporter(CSVExporterProperties properties, LocalFileStorageManager tmpManager,
+                                             RemoteFileService remoteManager, CSVConverter converter) {
+        this.converter = converter;
+        this.properties = properties;
+        this.uploader = new ApiStorageManager(remoteManager, tmpManager);
+    }
 
-	@Override
-	public String export(ProductInformation object) throws IOException, StorageNotReadyException, CsvRequiredFieldEmptyException, CsvDataTypeMismatchException {
-		String csv = converter.convertSingle(object);
-		uploadCsvData(csv);
-		return csv;
-	}
+    @Override
+    public String export(ProductInformation object) throws IOException, StorageNotReadyException, CsvRequiredFieldEmptyException, CsvDataTypeMismatchException {
+        String csv = converter.convertSingle(object);
+        uploadCsvData(csv);
+        return csv;
+    }
 
-	@Override
-	public String export(Collection<ProductInformation> objects) throws IOException, StorageNotReadyException, CsvRequiredFieldEmptyException, CsvDataTypeMismatchException {
-		String csv = converter.convertList(new ArrayList<>(objects));
-		uploadCsvData(csv);
-		return csv;
-	}
+    @Override
+    public String export(Collection<ProductInformation> objects) throws IOException, StorageNotReadyException, CsvRequiredFieldEmptyException, CsvDataTypeMismatchException {
+        String csv = converter.convertList(new ArrayList<>(objects));
+        uploadCsvData(csv);
+        return csv;
+    }
 
-	private void uploadCsvData(String csv) throws IOException, StorageNotReadyException {
-		try {
-			uploader.saveContentToFile(UUID.randomUUID().toString(), csv);
-		} catch (NameAlreadyBoundException e) {
-			uploadCsvData(csv);
-		}
-	}
+    private void uploadCsvData(String csv) throws IOException, StorageNotReadyException {
+        try {
+            uploader.saveContentToFile(UUID.randomUUID().toString(), csv);
+        } catch (NameAlreadyBoundException e) {
+            uploadCsvData(csv);
+        }
+    }
 
 }

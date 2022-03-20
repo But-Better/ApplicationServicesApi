@@ -15,69 +15,69 @@ import java.util.List;
 @Service
 public class CSVConverter {
 
-	private final CSVCollector collector;
+    private final CSVCollector collector;
 
-	public CSVConverter(CSVCollector collector) {
-		this.collector = collector;
-	}
+    public CSVConverter(CSVCollector collector) {
+        this.collector = collector;
+    }
 
-	@Autowired
-	public CSVConverter() {
-		this.collector = new CSVCollector();
-	}
+    @Autowired
+    public CSVConverter() {
+        this.collector = new CSVCollector();
+    }
 
-	public String convertList(List<ProductInformation> listOfObjects) throws CsvRequiredFieldEmptyException, CsvDataTypeMismatchException, IOException {
-		listToCsv(listOfObjects, this.collector);
+    public String convertList(List<ProductInformation> listOfObjects) throws CsvRequiredFieldEmptyException, CsvDataTypeMismatchException, IOException {
+        listToCsv(listOfObjects, this.collector);
 
-		return extractCsvDataFromCollection();
-	}
+        return extractCsvDataFromCollection();
+    }
 
-	private void listToCsv(List<ProductInformation> listOfObjects, CSVCollector collector) throws CsvDataTypeMismatchException, CsvRequiredFieldEmptyException {
-		StatefulBeanToCsv beanToCsv = new StatefulBeanToCsvBuilder(collector).build();
+    private void listToCsv(List<ProductInformation> listOfObjects, CSVCollector collector) throws CsvDataTypeMismatchException, CsvRequiredFieldEmptyException {
+        StatefulBeanToCsv beanToCsv = new StatefulBeanToCsvBuilder(collector).build();
 
-		for(ProductInformation info: listOfObjects) {
-			beanToCsv.write(info);
-		}
+        for (ProductInformation info : listOfObjects) {
+            beanToCsv.write(info);
+        }
 
-		collector.close();
-	}
+        collector.close();
+    }
 
-	public String convertSingle(ProductInformation object) throws IOException, CsvRequiredFieldEmptyException, CsvDataTypeMismatchException {
-		objectToCsv(object, this.collector);
+    public String convertSingle(ProductInformation object) throws IOException, CsvRequiredFieldEmptyException, CsvDataTypeMismatchException {
+        objectToCsv(object, this.collector);
 
-		return extractCsvDataFromCollection();
-	}
+        return extractCsvDataFromCollection();
+    }
 
-	private void objectToCsv(ProductInformation object, CSVCollector collector) throws CsvRequiredFieldEmptyException, CsvDataTypeMismatchException {
-		StatefulBeanToCsv beanToCsv = new StatefulBeanToCsvBuilder(collector).build();
-		beanToCsv.write(object);
-		collector.close();
-	}
+    private void objectToCsv(ProductInformation object, CSVCollector collector) throws CsvRequiredFieldEmptyException, CsvDataTypeMismatchException {
+        StatefulBeanToCsv beanToCsv = new StatefulBeanToCsvBuilder(collector).build();
+        beanToCsv.write(object);
+        collector.close();
+    }
 
-	private String extractCsvDataFromCollection() throws IOException {
-		checkErrorInCollector(this.collector);
+    private String extractCsvDataFromCollection() throws IOException {
+        checkErrorInCollector(this.collector);
 
-		List<String> data = new ArrayList<>(this.collector.getCsvData());
+        List<String> data = new ArrayList<>(this.collector.getCsvData());
 
-		this.collector.reset();
+        this.collector.reset();
 
-		return putCollectionOfStringsIntoSingleString(data);
-	}
+        return putCollectionOfStringsIntoSingleString(data);
+    }
 
-	private void checkErrorInCollector(CSVCollector collector) throws IOException {
-		if (collector.checkError()) {
-			throw collector.getException();
-		}
-	}
+    private void checkErrorInCollector(CSVCollector collector) throws IOException {
+        if (collector.checkError()) {
+            throw collector.getException();
+        }
+    }
 
-	private String putCollectionOfStringsIntoSingleString(List<String> data) {
-		StringBuilder builder = new StringBuilder();
+    private String putCollectionOfStringsIntoSingleString(List<String> data) {
+        StringBuilder builder = new StringBuilder();
 
-		data.forEach(l -> builder
-				.append(l)
-				.append(System.lineSeparator())
-		);
+        data.forEach(l -> builder
+                .append(l)
+                .append(System.lineSeparator())
+        );
 
-		return builder.toString();
-	}
+        return builder.toString();
+    }
 }

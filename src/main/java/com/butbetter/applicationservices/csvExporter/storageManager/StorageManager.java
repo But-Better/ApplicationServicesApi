@@ -9,21 +9,21 @@ import java.util.stream.Stream;
 
 public interface StorageManager {
 
-	URI getSaveLocation() throws StorageNotReadyException;
+    URI getSaveLocation() throws StorageNotReadyException;
 
-	boolean ready();
+    boolean ready();
 
-	void saveContentToFile(String name, String content) throws NameAlreadyBoundException, IOException, StorageNotReadyException;
+    void saveContentToFile(String name, String content) throws NameAlreadyBoundException, IOException, StorageNotReadyException;
 
-	void saveContentToFile(String name, Stream<String> content) throws NameAlreadyBoundException, IOException, StorageNotReadyException;
+    void saveContentToFile(String name, Stream<String> content) throws NameAlreadyBoundException, IOException, StorageNotReadyException;
 
-	void copyFileToStorage(Path file) throws WriteAbortedException, StorageNotReadyException, FileNotFoundException, NotActiveException;
+    void copyFileToStorage(Path file) throws WriteAbortedException, StorageNotReadyException, FileNotFoundException, NotActiveException;
 
-	File getFileHandleWithName(String filename) throws NameNotFoundException, IOException, StorageNotReadyException;
+    File getFileHandleWithName(String filename) throws NameNotFoundException, IOException, StorageNotReadyException;
 
-	Stream<Path> getAllSavedAsPaths() throws IOException;
+    Stream<Path> getAllSavedAsPaths() throws IOException;
 
-	void moveFileToAnotherStorage(StorageManager nextStorage, String name) throws NameNotFoundException, IOException, StorageNotReadyException;
+    void moveFileToAnotherStorage(StorageManager nextStorage, String name) throws NameNotFoundException, IOException, StorageNotReadyException;
 
-	void removeFileWithName(String name) throws NameNotFoundException, IOException, StorageNotReadyException;
+    void removeFileWithName(String name) throws NameNotFoundException, IOException, StorageNotReadyException;
 }

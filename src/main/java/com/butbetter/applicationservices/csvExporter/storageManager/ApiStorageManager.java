@@ -28,177 +28,178 @@ import java.util.stream.Stream;
 @Service
 public class ApiStorageManager implements StorageManager {
 
-	private final Logger logger = LoggerFactory.getLogger(this.getClass());
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
-	private final RemoteFileService remoteFileService;
+    private final RemoteFileService remoteFileService;
 
-	private final StorageManager tmpFileManager;
+    private final StorageManager tmpFileManager;
 
-	public ApiStorageManager(URL location, StorageManager tmpFileManager) {
-		logger.info("Remote: \"" + location + "\" is getting used for the save location");
+    public ApiStorageManager(URL location, StorageManager tmpFileManager) {
+        logger.info("Remote: \"" + location + "\" is getting used for the save location");
 
-		this.remoteFileService = new RemoteFileService(location);
+        this.remoteFileService = new RemoteFileService(location);
 
-		this.tmpFileManager = tmpFileManager;
-	}
+        this.tmpFileManager = tmpFileManager;
+    }
 
-	public ApiStorageManager(URL location, StorageManager tmpFileManager, RestTemplate specificTemplate) {
-		logger.info("Remote: \"" + location + "\" is getting used for the save location");
+    public ApiStorageManager(URL location, StorageManager tmpFileManager, RestTemplate specificTemplate) {
+        logger.info("Remote: \"" + location + "\" is getting used for the save location");
 
-		this.remoteFileService = new RemoteFileService(location, specificTemplate);
+        this.remoteFileService = new RemoteFileService(location, specificTemplate);
 
-		this.tmpFileManager = tmpFileManager;
-	}
+        this.tmpFileManager = tmpFileManager;
+    }
 
-	public ApiStorageManager(RemoteFileService remoteFileService, StorageManager tmpFileManager) {
-		logger.info("Remote: \"" + remoteFileService.getStorageApiUrl() + "\" is getting used for the save location");
+    public ApiStorageManager(RemoteFileService remoteFileService, StorageManager tmpFileManager) {
+        logger.info("Remote: \"" + remoteFileService.getStorageApiUrl() + "\" is getting used for the save location");
 
-		this.remoteFileService = remoteFileService;
+        this.remoteFileService = remoteFileService;
 
-		this.tmpFileManager = tmpFileManager;
-	}
+        this.tmpFileManager = tmpFileManager;
+    }
 
-	@Autowired
-	public ApiStorageManager(CSVExporterProperties properties) {
-		logger.info("Remote: \"" + properties.getSaveLocation() + "\" is getting used for the save location");
+    @Autowired
+    public ApiStorageManager(CSVExporterProperties properties) {
+        logger.info("Remote: \"" + properties.getSaveLocation() + "\" is getting used for the save location");
 
-		this.remoteFileService = new RemoteFileService(properties.getStorageUrl());
+        this.remoteFileService = new RemoteFileService(properties.getStorageUrl());
 
-		this.tmpFileManager = new LocalFileStorageManager(Path.of(properties.getSaveLocation()));
-	}
+        this.tmpFileManager = new LocalFileStorageManager(Path.of(properties.getSaveLocation()));
+    }
 
-	@Override
-	public URI getSaveLocation() throws StorageNotReadyException {
-		try {
-			return remoteFileService.getStorageApiUrl().toURI();
-		} catch (URISyntaxException e) {
-			String message = "given location for storage " + remoteFileService.getStorageApiUrl().toString() + " can't be converted into URI " +
-					"(not formatted strictly according to to RFC2396). This can lead to failure in storing Files";
-			logger.error(message);
-			throw new StorageNotReadyException(message);
-		}
-	}
+    @Override
+    public URI getSaveLocation() throws StorageNotReadyException {
+        try {
+            return remoteFileService.getStorageApiUrl().toURI();
+        } catch (URISyntaxException e) {
+            String message = "given location for storage " + remoteFileService.getStorageApiUrl().toString() + " can't be converted into URI " +
+                    "(not formatted strictly according to to RFC2396). This can lead to failure in storing Files";
+            logger.error(message);
+            throw new StorageNotReadyException(message);
+        }
+    }
 
-	@Override
-	public boolean ready() {
-		return remoteFileService.isUp() &&
-				tmpFileManager.ready();
-	}
+    @Override
+    public boolean ready() {
+        return remoteFileService.isUp() &&
+                tmpFileManager.ready();
+    }
 
-	@Override
-	public void saveContentToFile(String name, String content) throws IOException, StorageNotReadyException {
-		List<String> contentInStream = putStringInCollection(content);
-		File fileToUpload = createFileWithContentLocally(name, contentInStream.stream());
-		uploadFileToRemote(fileToUpload);
-		removeTemporaryFile(name);
-	}
+    @Override
+    public void saveContentToFile(String name, String content) throws IOException, StorageNotReadyException {
+        List<String> contentInStream = putStringInCollection(content);
+        File fileToUpload = createFileWithContentLocally(name, contentInStream.stream());
+        uploadFileToRemote(fileToUpload);
+        removeTemporaryFile(name);
+    }
 
-	private List<String> putStringInCollection(String content) {
-		List<String> contentList = new ArrayList<>();
-		contentList.add(content);
-		return contentList;
-	}
+    private List<String> putStringInCollection(String content) {
+        List<String> contentList = new ArrayList<>();
+        contentList.add(content);
+        return contentList;
+    }
 
-	@Override
-	public void saveContentToFile(String name, Stream<String> content) throws IOException, StorageNotReadyException {
-		File fileToUpload = createFileWithContentLocally(name, content);
-		uploadFileToRemote(fileToUpload);
-		removeTemporaryFile(name);
-	}
+    @Override
+    public void saveContentToFile(String name, Stream<String> content) throws IOException, StorageNotReadyException {
+        File fileToUpload = createFileWithContentLocally(name, content);
+        uploadFileToRemote(fileToUpload);
+        removeTemporaryFile(name);
+    }
 
-	@Override
-	public void copyFileToStorage(Path file) throws StorageNotReadyException, FileNotFoundException, NotActiveException {
-		File fileToUpload = file.toFile();
-		assert fileExists(fileToUpload);
-		uploadFileToRemote(fileToUpload);
-	}
+    @Override
+    public void copyFileToStorage(Path file) throws StorageNotReadyException, FileNotFoundException, NotActiveException {
+        File fileToUpload = file.toFile();
+        assert fileExists(fileToUpload);
+        uploadFileToRemote(fileToUpload);
+    }
 
-	@Override
-	public File getFileHandleWithName(String filename) {
-		throw new UnsupportedOperationException("file request is not supported by the storage api due to api restrictions");
-	}
+    @Override
+    public File getFileHandleWithName(String filename) {
+        throw new UnsupportedOperationException("file request is not supported by the storage api due to api restrictions");
+    }
 
-	@Override
-	public Stream<Path> getAllSavedAsPaths() {
-		throw new UnsupportedOperationException("file listing is not supported by the storage api due to api restrictions");
-	}
+    @Override
+    public Stream<Path> getAllSavedAsPaths() {
+        throw new UnsupportedOperationException("file listing is not supported by the storage api due to api restrictions");
+    }
 
-	@Override
-	public void moveFileToAnotherStorage(StorageManager nextStorage, String name) {
-		throw new UnsupportedOperationException("file movement is not supported by the storage api due to api restrictions");
+    @Override
+    public void moveFileToAnotherStorage(StorageManager nextStorage, String name) {
+        throw new UnsupportedOperationException("file movement is not supported by the storage api due to api restrictions");
 
-	}
+    }
 
-	@Override
-	public void removeFileWithName(String name) {
-		throw new UnsupportedOperationException("file removal is not supported by the storage api due to api restrictions");
+    @Override
+    public void removeFileWithName(String name) {
+        throw new UnsupportedOperationException("file removal is not supported by the storage api due to api restrictions");
 
-	}
+    }
 
-	private void removeTemporaryFile(String name) throws IOException, StorageNotReadyException {
-		try {
-			tmpFileManager.removeFileWithName(name);
-		} catch (NameNotFoundException e) {
-			String message = "temporary file " + name + " couldn't be removed, Storage might not be ready";
-			logger.error(message);
-			throw new StorageNotReadyException(message);
-		}
-	}
-	private boolean fileExists(File fileToUpload) {
-		return fileToUpload.exists();
-	}
+    private void removeTemporaryFile(String name) throws IOException, StorageNotReadyException {
+        try {
+            tmpFileManager.removeFileWithName(name);
+        } catch (NameNotFoundException e) {
+            String message = "temporary file " + name + " couldn't be removed, Storage might not be ready";
+            logger.error(message);
+            throw new StorageNotReadyException(message);
+        }
+    }
 
-	private void uploadFileToRemote(File fileToUpload) throws NotActiveException, FileNotFoundException, StorageNotReadyException {
-		try {
-			ResponseEntity<String> response = remoteFileService.uploadFile(fileToUpload);
-			logger.info(response.toString());
-		} catch (BadHttpRequest e) {
-			String message = "given remote api (" + remoteFileService.getStorageApiUrl() + ") is not available";
-			logger.error(message);
-			throw new StorageNotReadyException(message);
-		} catch (IOException e) {
-			String message = "file conversion to upload couldn't take place, this might be a ram problem";
-			logger.error(message, e);
-			throw new StorageNotReadyException(message);
-		}
-	}
+    private boolean fileExists(File fileToUpload) {
+        return fileToUpload.exists();
+    }
 
-	private File createFileWithContentLocally(String name, Stream<String> content) throws IOException, StorageNotReadyException {
-		if(fileExists(new File(name))) {
-			removeTemporaryFile(name);
-		}
+    private void uploadFileToRemote(File fileToUpload) throws NotActiveException, FileNotFoundException, StorageNotReadyException {
+        try {
+            ResponseEntity<String> response = remoteFileService.uploadFile(fileToUpload);
+            logger.info(response.toString());
+        } catch (BadHttpRequest e) {
+            String message = "given remote api (" + remoteFileService.getStorageApiUrl() + ") is not available";
+            logger.error(message);
+            throw new StorageNotReadyException(message);
+        } catch (IOException e) {
+            String message = "file conversion to upload couldn't take place, this might be a ram problem";
+            logger.error(message, e);
+            throw new StorageNotReadyException(message);
+        }
+    }
 
-		List<String> contentList = content.collect(Collectors.toList());
+    private File createFileWithContentLocally(String name, Stream<String> content) throws IOException, StorageNotReadyException {
+        if (fileExists(new File(name))) {
+            removeTemporaryFile(name);
+        }
 
-		try {
-			if (onlyContainsOne(contentList.stream())) {
-				tmpFileManager.saveContentToFile(name, contentList.get(0));
-			} else {
-				tmpFileManager.saveContentToFile(name, contentList.stream());
-			}
-		} catch (NameAlreadyBoundException e) {
-			String message = "The Storage might be broken due to complications in deleting and saving temporary files, therefore the Storage might not be fully ready";
-			logger.error(message);
-			throw new StorageNotReadyException(message);
-		}
+        List<String> contentList = content.collect(Collectors.toList());
 
-		return getTemporaryFileHandle(name);
-	}
+        try {
+            if (onlyContainsOne(contentList.stream())) {
+                tmpFileManager.saveContentToFile(name, contentList.get(0));
+            } else {
+                tmpFileManager.saveContentToFile(name, contentList.stream());
+            }
+        } catch (NameAlreadyBoundException e) {
+            String message = "The Storage might be broken due to complications in deleting and saving temporary files, therefore the Storage might not be fully ready";
+            logger.error(message);
+            throw new StorageNotReadyException(message);
+        }
 
-	private boolean onlyContainsOne(Stream<?> stringStream) {
-		List<?> copy = stringStream.collect(Collectors.toList());
-		return copy.size() == 1;
-	}
+        return getTemporaryFileHandle(name);
+    }
 
-	private File getTemporaryFileHandle(String name) throws IOException, StorageNotReadyException {
-		try {
-			return tmpFileManager.getFileHandleWithName(name);
-		} catch (NameNotFoundException e) {
-			String message = "The Storage might be broken due to complications in deleting and saving temporary files, " +
-					"therefore the Storage might not be fully ready yet";
-			logger.error(message);
-			throw new StorageNotReadyException(message);
-		}
-	}
+    private boolean onlyContainsOne(Stream<?> stringStream) {
+        List<?> copy = stringStream.collect(Collectors.toList());
+        return copy.size() == 1;
+    }
+
+    private File getTemporaryFileHandle(String name) throws IOException, StorageNotReadyException {
+        try {
+            return tmpFileManager.getFileHandleWithName(name);
+        } catch (NameNotFoundException e) {
+            String message = "The Storage might be broken due to complications in deleting and saving temporary files, " +
+                    "therefore the Storage might not be fully ready yet";
+            logger.error(message);
+            throw new StorageNotReadyException(message);
+        }
+    }
 
 }
