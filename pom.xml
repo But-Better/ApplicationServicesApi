@@ -97,8 +97,8 @@
 		
 		<dependency>
 		    <groupId>org.springframework</groupId>
-            	    <artifactId>spring-test</artifactId>
-        	</dependency>
+			<artifactId>spring-test</artifactId>
+        </dependency>
 
 	</dependencies>
 
