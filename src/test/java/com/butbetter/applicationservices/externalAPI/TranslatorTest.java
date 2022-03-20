@@ -17,18 +17,21 @@ class TranslatorTest {
    private Translator translator;
 
     @Test
+    @Disabled("Deep L API is needed for this test to run")
     @DisplayName("test german to english translation of Freund")
     void testGermanToEnglishTranslationWord(){
         assertEquals("Friend",translator.translate("Freund", Language.EN));
     }
 
     @Test
+    @Disabled("Deep L API is needed for this test to run")
     @DisplayName("test german to english translation of: Mein Freund läuft schnell.")
     void testGermanToEnglishTranslationSentence(){
         assertEquals("My friend runs fast.",translator.translate("Mein Freund läuft schnell.",Language.EN));
     }
 
     @Test
+    @Disabled("Deep L API is needed for this test to run")
     @DisplayName("test german to english translation of a big text")
     void testGermanToEnglishTranslationText(){
         String text = "Die reine Substanz ist eine bei Raumtemperatur farblose, leicht entzündliche Flüssigkeit mit einem brennenden Geschmack und einem charakteristischen, würzigen (süßlichen) Geruch. Die als Lebergift eingestufte Droge wird bei der Herstellung von Genussmitteln und alkoholischen Getränken wie Wein, Bier und Spirituosen aus kohlenhydrathaltigem Material durch eine von Hefen ausgelöste Gärung in großem Maßstab produziert.";
@@ -46,6 +49,7 @@ class TranslatorTest {
     }
 
     @Test
+    @Disabled("Deep L API is needed for this test to run")
     @DisplayName("test german to japanese translation of: Hallo General Kenobi")
     void testGermanToJapaneseTranslationSentence(){
         assertEquals("ケノービ将軍こんにちは",translator.translate("Hallo General Kenobi",Language.JA));
@@ -53,30 +57,35 @@ class TranslatorTest {
 
 
     @Test
+    @Disabled("Deep L API is needed for this test to run")
     @DisplayName("Test the language of a given word: Freund")
     void testLanguageTypeDetectionDE(){
         assertEquals(Language.DE,translator.getLanguage("Freund"));
     }
 
     @Test
+    @Disabled("Deep L API is needed for this test to run")
     @DisplayName("Test the language for the sentence: suck my balls Mr Garrison")
     void testLanguageTypeDetectionEN(){
         assertEquals(Language.EN,translator.getLanguage("suck my balls Mr Garrison"));
     }
 
     @Test
+    @Disabled("Deep L API is needed for this test to run")
     @DisplayName("Test the language for the sentence: ハローケノービ")
     void testLanguageTypeDetectionJA(){
         assertEquals(Language.JA,translator.getLanguage("ハローケノービ"));
     }
 
     @Test
+    @Disabled("Deep L API is needed for this test to run")
     @DisplayName("Test empty input for translation")
     void testEmptyInputTranslation(){
         assertEquals("",translator.translate("",Language.EN));
     }
 
     @Test
+    @Disabled("Deep L API is needed for this test to run")
     @DisplayName("Test empty input for language detection")
     void testEmptyInputLanguageDetection(){
         assertEquals(Language.EN,translator.getLanguage(""));
