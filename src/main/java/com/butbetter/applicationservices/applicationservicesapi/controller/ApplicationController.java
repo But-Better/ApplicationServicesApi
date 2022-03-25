@@ -1,6 +1,7 @@
 package com.butbetter.applicationservices.applicationservicesapi.controller;
 
 import com.butbetter.applicationservices.applicationservicesapi.service.ApplicationService;
+import com.butbetter.applicationservices.externalAPI.model.Language;
 import com.butbetter.applicationservices.productapi.model.Alcohol;
 import com.butbetter.applicationservices.storagerestapi.model.ProductInformation;
 import org.slf4j.Logger;
@@ -24,6 +25,7 @@ public class ApplicationController implements ApplicationControllerOperations {
     private static final String ALCOHOL_API_TAG = "alcohol";
     private static final String PRODUCT_INFORMATION_API_TAG = "productinformation";
     private static final String CALCULATION_API_TAG = "VAT";
+    private static final String TRANSLATOR_API_TAG = "translator";
 
     @Autowired
     public ApplicationController(ApplicationService applicationService) {
@@ -88,6 +90,19 @@ public class ApplicationController implements ApplicationControllerOperations {
             @RequestParam(value = "price") float price,
             @RequestParam(value = "percent") float percent) {
         return ResponseEntity.ok().body(this.applicationService.calculateVATofPrice(price, percent));
+    }
+
+    @GetMapping("/" + TRANSLATOR_API_TAG)
+    @Override
+    public ResponseEntity<?> translate(@RequestParam(value = "text") String text,
+                                       @RequestParam(value = "language") Language language) {
+        return ResponseEntity.ok().body(applicationService.translate(text,language));
+    }
+
+    @GetMapping("/" + TRANSLATOR_API_TAG)
+    @Override
+    public ResponseEntity<?> getLanguage(@RequestParam(value = "text") String text) {
+        return ResponseEntity.ok().body(applicationService.getLanguage(text));
     }
 
     @ExceptionHandler(ResourceAccessException.class)

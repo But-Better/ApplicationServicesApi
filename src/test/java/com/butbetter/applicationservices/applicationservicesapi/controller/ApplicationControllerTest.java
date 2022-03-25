@@ -2,6 +2,7 @@ package com.butbetter.applicationservices.applicationservicesapi.controller;
 
 import com.butbetter.applicationservices.applicationservicesapi.service.ApplicationService;
 import com.butbetter.applicationservices.caluapi.service.CalculatorService;
+import com.butbetter.applicationservices.externalAPI.service.Translator;
 import com.butbetter.applicationservices.productapi.model.Alcohol;
 import com.butbetter.applicationservices.productapi.model.AlcoholBeverageType;
 import com.butbetter.applicationservices.productapi.model.AlcoholRatingType;
@@ -33,12 +34,15 @@ class ApplicationControllerTest {
     @SuppressWarnings("FieldCanBeLocal")
     private CalculatorService calculatorService;
 
+    private Translator translator;
+
     @BeforeEach
     void setUp() {
         storageApiService = mock(StorageApiService.class);
         calculatorService = mock(CalculatorService.class);
+        translator = mock(Translator.class);
 
-        applicationService = new ApplicationService(alcoholService, storageApiService, calculatorService);
+        applicationService = new ApplicationService(alcoholService, storageApiService, calculatorService, translator);
 
         applicationController = new ApplicationController(applicationService);
     }

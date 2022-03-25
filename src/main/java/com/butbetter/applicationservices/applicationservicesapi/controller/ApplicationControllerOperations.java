@@ -1,5 +1,6 @@
 package com.butbetter.applicationservices.applicationservicesapi.controller;
 
+import com.butbetter.applicationservices.externalAPI.model.Language;
 import com.butbetter.applicationservices.productapi.model.Alcohol;
 import com.butbetter.applicationservices.storagerestapi.model.ProductInformation;
 import org.springframework.http.ResponseEntity;
@@ -29,6 +30,10 @@ public interface ApplicationControllerOperations {
 
     //Calu API
     ResponseEntity<?> calculateVATofPrice(float price, float percent);
+
+    //Translate APi
+    ResponseEntity<?> translate(String text, Language language);
+    ResponseEntity<?> getLanguage(String text);
 
     //Execptions
     ResponseEntity<?> resourceAccessException(Exception e);

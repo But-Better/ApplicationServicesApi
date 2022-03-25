@@ -1,6 +1,9 @@
 package com.butbetter.applicationservices.applicationservicesapi.service;
 
 import com.butbetter.applicationservices.caluapi.service.CalculatorService;
+import com.butbetter.applicationservices.externalAPI.model.Language;
+import com.butbetter.applicationservices.externalAPI.service.Translator;
+import com.butbetter.applicationservices.externalAPI.service.TranslatorService;
 import com.butbetter.applicationservices.productapi.model.Alcohol;
 import com.butbetter.applicationservices.productapi.service.AlcoholService;
 import com.butbetter.applicationservices.storagerestapi.model.ProductInformation;
@@ -21,14 +24,16 @@ public class ApplicationService implements ApplicationOperations {
     private final AlcoholService alcoholService;
     private final StorageApiService storageApiService;
     private final CalculatorService calculatorService;
+    private final Translator translator;
 
     private final Logger log = LoggerFactory.getLogger(ApplicationService.class);
 
     @Autowired
-    public ApplicationService(AlcoholService alcoholService, StorageApiService storageApiService, CalculatorService calculatorService) {
+    public ApplicationService(AlcoholService alcoholService, StorageApiService storageApiService, CalculatorService calculatorService, Translator translator) {
         this.alcoholService = alcoholService;
         this.storageApiService = storageApiService;
         this.calculatorService = calculatorService;
+        this.translator = translator;
     }
 
     @Override
@@ -83,5 +88,17 @@ public class ApplicationService implements ApplicationOperations {
     public void saveProductInformation(ProductInformation productInformation) {
         log.info(String.format("%s create a ProductInformation", this.getClass()));
         this.storageApiService.saveProductInformation(productInformation);
+    }
+
+    @Override
+    public Language getLanguage(String text) {
+        log.info(String.format("%s get language", this.getClass()));
+        return this.translator.getLanguage(text);
+    }
+
+    @Override
+    public String translate(String text, Language language) {
+        log.info(String.format("%s translate german input into " + language, this.getClass()));
+        return this.translator.translate(text,language);
     }
 }
