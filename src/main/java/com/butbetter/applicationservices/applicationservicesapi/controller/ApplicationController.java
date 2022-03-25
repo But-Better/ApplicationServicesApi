@@ -99,7 +99,7 @@ public class ApplicationController implements ApplicationControllerOperations {
         return ResponseEntity.ok().body(applicationService.translate(text,language));
     }
 
-    @GetMapping("/" + TRANSLATOR_API_TAG)
+    @GetMapping("/" + TRANSLATOR_API_TAG + "/analyse")
     @Override
     public ResponseEntity<?> getLanguage(@RequestParam(value = "text") String text) {
         return ResponseEntity.ok().body(applicationService.getLanguage(text));
