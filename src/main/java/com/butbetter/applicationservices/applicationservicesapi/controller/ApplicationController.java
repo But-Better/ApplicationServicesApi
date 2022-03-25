@@ -77,7 +77,7 @@ public class ApplicationController implements ApplicationControllerOperations {
 
     @PostMapping("/" + PRODUCT_INFORMATION_API_TAG)
     @Override
-    public ResponseEntity<?> saveProductInformation(@RequestParam("productInformation") ProductInformation productInformation) {
+    public ResponseEntity<?> saveProductInformation(@RequestBody ProductInformation productInformation) {
         this.applicationService.saveProductInformation(productInformation);
         return ResponseEntity.ok().build();
     }
