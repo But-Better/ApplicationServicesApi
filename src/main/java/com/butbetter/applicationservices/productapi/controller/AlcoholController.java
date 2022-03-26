@@ -26,25 +26,25 @@ public class AlcoholController {
     @PostMapping
     public ResponseEntity<?> save(@RequestBody final Alcohol alcohol) {
         log.info("Controller save product at redis");
-        this.alcoholService.save(alcohol);
+        this.alcoholService.saveAlcohol(alcohol);
         return ResponseEntity.ok().build();
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<?> findById(@PathVariable UUID id) {
         log.info("Controller findByID product from redis");
-        return ResponseEntity.ok().body(this.alcoholService.findById(id));
+        return ResponseEntity.ok().body(this.alcoholService.findAlcoholById(id));
     }
 
     @GetMapping
     public ResponseEntity<?> findAll() {
         log.info("Controller findAll products");
-        return ResponseEntity.ok().body(this.alcoholService.findAll());
+        return ResponseEntity.ok().body(this.alcoholService.findAllAlcohol());
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<?> delete(@PathVariable UUID id) {
-        this.alcoholService.deleteById(id);
+        this.alcoholService.deleteAlcoholById(id);
         return ResponseEntity.ok().build();
     }
 

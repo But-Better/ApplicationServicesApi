@@ -23,7 +23,7 @@ import java.util.Objects;
  * Create Connection to Storage API
  */
 @Service
-public class StorageApiService implements StorageOperation {
+public class StorageApiService implements StorageOperation<ProductInformation> {
 
     private static final Logger log = LoggerFactory.getLogger(StorageApiService.class);
 
@@ -57,7 +57,7 @@ public class StorageApiService implements StorageOperation {
      * @return a list of {@link ProductInformation} or null
      */
     @Override
-    public List<ProductInformation> all() {
+    public List<ProductInformation> findAllProductInformation() {
         ResponseEntity<ProductInformation[]> response = null;
 
         try {
@@ -82,7 +82,7 @@ public class StorageApiService implements StorageOperation {
      * @return {@link ProductInformation} or null
      */
     @Override
-    public ProductInformation one(@NotNull String id) {
+    public ProductInformation findProductInformationById(@NotNull String id) {
         ResponseEntity<ProductInformation> response = null;
         try {
             response = this.restTemplate.getForEntity(
@@ -104,7 +104,7 @@ public class StorageApiService implements StorageOperation {
      * @param productInformation = {@link ProductInformation}
      */
     @Override
-    public void newProductInformation(@NotNull ProductInformation productInformation) {
+    public void saveProductInformation(@NotNull ProductInformation productInformation) {
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
         headers.setAccept(Collections.singletonList(MediaType.APPLICATION_JSON));

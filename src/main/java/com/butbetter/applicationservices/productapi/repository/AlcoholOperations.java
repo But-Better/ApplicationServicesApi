@@ -5,14 +5,14 @@ import java.util.UUID;
 
 public interface AlcoholOperations<P> {
 
-    void save(@NotNull final P product);
+    void saveAlcohol(@NotNull final P product);
 
-    P findById(@NotNull final UUID uuid);
+    P findAlcoholById(@NotNull final UUID uuid);
 
-    void deleteById(@NotNull final UUID id);
+    void deleteAlcoholById(@NotNull final UUID id);
 
-    Iterable<P> findAll();
+    Iterable<P> findAllAlcohol();
 
-    void deleteAll();
+    void deleteAllAlcohol();
 
 }

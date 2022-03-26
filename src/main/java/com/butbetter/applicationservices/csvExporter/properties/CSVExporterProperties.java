@@ -23,7 +23,7 @@ public class CSVExporterProperties {
 
     {
         try {
-            StorageUrl = new URL("localhost");
+            StorageUrl = new URL("http://localhost:8080/");
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
