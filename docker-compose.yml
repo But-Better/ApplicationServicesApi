@@ -1,0 +1,48 @@
+version: "3.1"
+
+services:
+
+  app:
+    container_name: ApplicationServiceAPI
+    command: java -jar target/storage-0.0.1-SNAPSHOT.jar
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "9090:9090"
+    environment:
+      - spring.datasource.url=jdbc:mysql://db:3306/db
+      - spring.datasource.username=user
+      - spring.datasource.password=password
+      - spring.redis.host=redis
+      - spring.redis.port=6379
+      - spring.redis.password=password
+      - spring.redis.timeout=60000
+    depends_on:
+      - db
+      - redis-server
+
+  db:
+    image: mysql
+    container_name: "mysqldb"
+    restart: always
+    environment:
+      MYSQL_DATABASE: "db"
+      MYSQL_USER: "user"
+      MYSQL_PASSWORD: "password"
+      MYSQL_ROOT_PASSWORD: "password"
+    ports:
+      - "3306:3306"
+    volumes:
+      - my-db:/var/lib/mysql
+
+  redis-server:
+    hostname: redis
+    container_name: "redisdb"
+    image: 'redis'
+    ports:
+      - "6379:6379"
+
+volumes:
+  my-db:
+
