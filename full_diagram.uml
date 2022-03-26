@@ -1,0 +1,755 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>/home/note/IdeaProjects/ApplicationServicesApi/src/main/java</OriginalElement>
+  <nodes>
+    <node x="2859.985255281693" y="1725.0">com.butbetter.applicationservices.storagerestapi.service.StorageApiService</node>
+    <node x="558.0577318075107" y="1725.0">com.butbetter.applicationservices.productapi.service.AlcoholService</node>
+    <node x="3129.735255281693" y="307.0">com.butbetter.applicationservices.storagerestapi.model.Address</node>
+    <node x="4677.65192194836" y="49.0">com.butbetter.applicationservices.csvExporter.storageManager.StorageNotReadyException</node>
+    <node x="0.0" y="2936.0">com.butbetter.applicationservices.productapi.configuration.RedisConfiguration</node>
+    <node x="2063.343016431928" y="1156.0">com.butbetter.applicationservices.externalAPI.model.DeepLApiResponse</node>
+    <node x="1087.343016431928" y="1146.5">com.butbetter.applicationservices.productapi.repository.AlcoholOperations</node>
+    <node x="562.0" y="2936.0">com.butbetter.applicationservices.caluapi.configuration.RestTemplateConfiguration</node>
+    <node x="1337.343016431928" y="1192.5">com.butbetter.applicationservices.caluapi.service.CalculatorOperations</node>
+    <node x="3161.735255281693" y="1040.0">com.butbetter.applicationservices.storagerestapi.model.ProductInformation</node>
+    <node x="1792.343016431928" y="1181.0">com.butbetter.applicationservices.externalAPI.service.TranslatorService</node>
+    <node x="4646.754914906105" y="1097.5">com.butbetter.applicationservices.csvExporter.apiRequestHandler.RemoteFileService</node>
+    <node x="4187.567414906105" y="1690.5">com.butbetter.applicationservices.csvExporter.csvConverter.CSVConverter</node>
+    <node x="0.0" y="2220.5">com.butbetter.applicationservices.productapi.controller.AlcoholController</node>
+    <node x="288.34301643192794" y="215.0">com.butbetter.applicationservices.productapi.model.Alcohol</node>
+    <node x="2382.343016431928" y="1725.0">com.butbetter.applicationservices.externalAPI.service.Translator</node>
+    <node x="3312.599398474177" y="1645.5">com.butbetter.applicationservices.applicationservicesapi.controller.ApplicationControllerOperations</node>
+    <node x="1626.343016431928" y="1143.5">com.butbetter.applicationservices.caluapi.model.VAT</node>
+    <node x="3163.125" y="2535.0">com.butbetter.applicationservices.applicationservicesapi.controller.ApplicationController</node>
+    <node x="2336.343016431928" y="1169.5">com.butbetter.applicationservices.storagerestapi.repository.StorageOperation</node>
+    <node x="1450.5674149061051" y="2163.0">com.butbetter.applicationservices.applicationservicesapi.service.ApplicationService</node>
+    <node x="5154.504914906105" y="971.0">com.butbetter.applicationservices.csvExporter.storageManager.LocalFileStorageManager</node>
+    <node x="1497.093016431928" y="1677.0">com.butbetter.applicationservices.caluapi.service.CalculatorService</node>
+    <node x="2363.692414906105" y="469.0">com.butbetter.applicationservices.externalAPI.model.Translation</node>
+    <node x="4360.769659624412" y="2232.0">com.butbetter.applicationservices.csvExporter.ProductInformationCSVFileExporter</node>
+    <node x="4218.317414906105" y="1028.5">com.butbetter.applicationservices.csvExporter.csvConverter.CSVCollector</node>
+    <node x="668.5930164319279" y="25.0">com.butbetter.applicationservices.productapi.model.AlcoholBeverageType</node>
+    <node x="3873.843016431928" y="1180.0">com.butbetter.applicationservices.ApplicationServices</node>
+    <node x="4064.041666666667" y="457.5">com.butbetter.applicationservices.csvExporter.properties.CSVExporterProperties</node>
+    <node x="4785.843016431928" y="1563.0">com.butbetter.applicationservices.csvExporter.storageManager.ApiStorageManager</node>
+    <node x="2428.360255281693" y="0.0">com.butbetter.applicationservices.externalAPI.model.Language</node>
+    <node x="5453.504914906105" y="517.0">com.butbetter.applicationservices.csvExporter.CSVExporter</node>
+    <node x="1263.093016431928" y="1796.5">com.butbetter.applicationservices.applicationservicesapi.service.ApplicationOperations</node>
+    <node x="4383.291666666667" y="435.5">com.butbetter.applicationservices.csvExporter.storageManager.StorageManager</node>
+    <node x="330.0" y="1122.5">com.butbetter.applicationservices.productapi.service.AlcoholValidationService</node>
+    <node x="393.59301643192794" y="25.0">com.butbetter.applicationservices.productapi.model.AlcoholRatingType</node>
+    <node x="633.0" y="1205.5">com.butbetter.applicationservices.productapi.repository.AlcoholRepository</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="com.butbetter.applicationservices.applicationservicesapi.controller.ApplicationController" target="com.butbetter.applicationservices.storagerestapi.model.ProductInformation" relationship="DEPENDENCY">
+      <point x="-147.0" y="-178.0" />
+      <point x="3236.625" y="2514.0" />
+      <point x="1288.4571596244125" y="2514.0" />
+      <point x="1288.4571596244125" y="2494.0" />
+      <point x="3302.099398474177" y="2494.0" />
+      <point x="3302.099398474177" y="1531.0" />
+      <point x="3309.235255281693" y="1531.0" />
+      <point x="0.0" y="180.0" />
+    </edge>
+    <edge source="com.butbetter.applicationservices.productapi.controller.AlcoholController" target="com.butbetter.applicationservices.productapi.service.AlcoholService" relationship="DEPENDENCY">
+      <point x="77.25" y="-97.5" />
+      <point x="231.75" y="2141.0" />
+      <point x="159.5" y="2141.0" />
+      <point x="159.5" y="2131.0" />
+      <point x="719.3321596244123" y="2131.0" />
+      <point x="719.3321596244123" y="2091.0" />
+      <point x="872.3077318075107" y="2091.0" />
+      <point x="104.75" y="86.0" />
+    </edge>
+    <edge source="com.butbetter.applicationservices.productapi.model.Alcohol" target="com.butbetter.applicationservices.productapi.model.AlcoholRatingType" relationship="TO_ONE">
+      <point x="194.5" y="-341.0" />
+      <point x="871.8430164319279" y="194.0" />
+      <point x="584.8430164319279" y="194.0" />
+      <point x="63.75" y="51.5" />
+    </edge>
+    <edge source="com.butbetter.applicationservices.applicationservicesapi.service.ApplicationOperations" target="com.butbetter.applicationservices.storagerestapi.model.ProductInformation" relationship="DEPENDENCY">
+      <point x="-53.5" y="-14.5" />
+      <point x="1316.593016431928" y="1541.0" />
+      <point x="1326.843016431928" y="1541.0" />
+      <point x="1326.843016431928" y="1521.0" />
+      <point x="3309.235255281693" y="1521.0" />
+      <point x="0.0" y="180.0" />
+    </edge>
+    <edge source="com.butbetter.applicationservices.storagerestapi.service.StorageApiService" target="com.butbetter.applicationservices.storagerestapi.repository.StorageOperation" relationship="REALIZATION">
+      <point x="-96.75" y="-86.0" />
+      <point x="2956.735255281693" y="1501.0" />
+      <point x="2542.593016431928" y="1501.0" />
+      <point x="68.75" y="50.5" />
+    </edge>
+    <edge source="com.butbetter.applicationservices.applicationservicesapi.service.ApplicationService" target="com.butbetter.applicationservices.caluapi.service.CalculatorService" relationship="TO_ONE">
+      <point x="0.0" y="-155.0" />
+      <point x="1729.5674149061051" y="2141.0" />
+      <point x="1688.843016431928" y="2141.0" />
+      <point x="1688.843016431928" y="2091.0" />
+      <point x="1564.343016431928" y="2091.0" />
+      <point x="-67.25" y="134.0" />
+    </edge>
+    <edge source="com.butbetter.applicationservices.applicationservicesapi.service.ApplicationService" target="com.butbetter.applicationservices.productapi.service.AlcoholService" relationship="TO_ONE">
+      <point x="0.0" y="-155.0" />
+      <point x="1729.5674149061051" y="2141.0" />
+      <point x="1688.843016431928" y="2141.0" />
+      <point x="1688.843016431928" y="2111.0" />
+      <point x="709.3321596244123" y="2111.0" />
+      <point x="709.3321596244123" y="2101.0" />
+      <point x="662.8077318075107" y="2101.0" />
+      <point x="-104.75" y="86.0" />
+    </edge>
+    <edge source="com.butbetter.applicationservices.csvExporter.csvConverter.CSVConverter" target="com.butbetter.applicationservices.storagerestapi.model.ProductInformation" relationship="DEPENDENCY">
+      <point x="-134.33333333333394" y="-120.5" />
+      <point x="4254.734081572771" y="1531.0" />
+      <point x="3309.235255281693" y="1531.0" />
+      <point x="0.0" y="180.0" />
+    </edge>
+    <edge source="com.butbetter.applicationservices.csvExporter.csvConverter.CSVConverter" target="com.butbetter.applicationservices.csvExporter.csvConverter.CSVCollector" relationship="CREATE">
+      <point x="0.0" y="-120.5" />
+      <point x="4389.067414906105" y="1541.0" />
+      <point x="4306.317414906105" y="1541.0" />
+      <point x="-88.0" y="191.5" />
+    </edge>
+    <edge source="com.butbetter.applicationservices.csvExporter.ProductInformationCSVFileExporter" target="com.butbetter.applicationservices.csvExporter.storageManager.StorageManager" relationship="TO_ONE">
+      <point x="-96.5" y="-86.0" />
+      <point x="4650.269659624412" y="2131.0" />
+      <point x="4231.718016431928" y="2131.0" />
+      <point x="4231.718016431928" y="2121.0" />
+      <point x="4177.067414906105" y="2121.0" />
+      <point x="4177.067414906105" y="939.0" />
+      <point x="4637.958333333334" y="939.0" />
+      <point x="4637.958333333334" y="929.0" />
+      <point x="4579.291666666667" y="929.0" />
+      <point x="0.0" y="120.5" />
+    </edge>
+    <edge source="com.butbetter.applicationservices.csvExporter.ProductInformationCSVFileExporter" target="com.butbetter.applicationservices.csvExporter.storageManager.ApiStorageManager" relationship="CREATE">
+      <point x="96.5" y="-86.0" />
+      <point x="4843.269659624412" y="2141.0" />
+      <point x="5034.519659624412" y="2141.0" />
+      <point x="5034.519659624412" y="2121.0" />
+      <point x="4983.343016431928" y="2121.0" />
+      <point x="0.0" y="248.0" />
+    </edge>
+    <edge source="com.butbetter.applicationservices.productapi.service.AlcoholService" target="com.butbetter.applicationservices.productapi.service.AlcoholValidationService" relationship="DEPENDENCY">
+      <point x="0.0" y="-86.0" />
+      <point x="767.5577318075107" y="1541.0" />
+      <point x="757.625" y="1541.0" />
+      <point x="757.625" y="1521.0" />
+      <point x="542.25" y="1521.0" />
+      <point x="70.75" y="97.5" />
+    </edge>
+    <edge source="com.butbetter.applicationservices.applicationservicesapi.service.ApplicationOperations" target="com.butbetter.applicationservices.caluapi.service.CalculatorOperations" relationship="INTERFACE_GENERALIZATION">
+      <point x="53.5" y="-14.5" />
+      <point x="1423.593016431928" y="1501.0" />
+      <point x="1404.593016431928" y="1501.0" />
+      <point x="-67.25" y="27.5" />
+    </edge>
+    <edge source="com.butbetter.applicationservices.applicationservicesapi.controller.ApplicationControllerOperations" target="com.butbetter.applicationservices.productapi.model.Alcohol" relationship="DEPENDENCY">
+      <point x="0.0" y="-165.5" />
+      <point x="3533.099398474177" y="1541.0" />
+      <point x="3808.875" y="1541.0" />
+      <point x="3808.875" y="939.0" />
+      <point x="677.3430164319279" y="939.0" />
+      <point x="0.0" y="341.0" />
+    </edge>
+    <edge source="com.butbetter.applicationservices.storagerestapi.service.StorageApiService" target="com.butbetter.applicationservices.storagerestapi.model.ProductInformation" relationship="DEPENDENCY">
+      <point x="96.75" y="-86.0" />
+      <point x="3150.235255281693" y="1531.0" />
+      <point x="3309.235255281693" y="1531.0" />
+      <point x="0.0" y="180.0" />
+    </edge>
+    <edge source="com.butbetter.applicationservices.externalAPI.model.DeepLApiResponse" target="com.butbetter.applicationservices.externalAPI.model.Translation" relationship="DEPENDENCY">
+      <point x="63.25" y="-64.0" />
+      <point x="2253.093016431928" y="949.0" />
+      <point x="2483.692414906105" y="949.0" />
+      <point x="2483.692414906105" y="929.0" />
+      <point x="2536.192414906105" y="929.0" />
+      <point x="57.5" y="87.0" />
+    </edge>
+    <edge source="com.butbetter.applicationservices.caluapi.service.CalculatorService" target="com.butbetter.applicationservices.caluapi.service.CalculatorOperations" relationship="REALIZATION">
+      <point x="-67.25" y="-134.0" />
+      <point x="1564.343016431928" y="1511.0" />
+      <point x="1539.093016431928" y="1511.0" />
+      <point x="67.25" y="27.5" />
+    </edge>
+    <edge source="com.butbetter.applicationservices.csvExporter.ProductInformationCSVFileExporter" target="com.butbetter.applicationservices.csvExporter.csvConverter.CSVConverter" relationship="CREATE">
+      <point x="96.5" y="-86.0" />
+      <point x="4843.269659624412" y="2141.0" />
+      <point x="5034.519659624412" y="2141.0" />
+      <point x="5034.519659624412" y="2121.0" />
+      <point x="4489.817414906105" y="2121.0" />
+      <point x="100.75" y="120.5" />
+    </edge>
+    <edge source="com.butbetter.applicationservices.productapi.service.AlcoholService" target="com.butbetter.applicationservices.productapi.repository.AlcoholRepository" relationship="DEPENDENCY">
+      <point x="0.0" y="-86.0" />
+      <point x="767.5577318075107" y="1541.0" />
+      <point x="757.625" y="1541.0" />
+      <point x="757.625" y="1521.0" />
+      <point x="770.25" y="1521.0" />
+      <point x="45.75" y="14.5" />
+    </edge>
+    <edge source="com.butbetter.applicationservices.applicationservicesapi.service.ApplicationOperations" target="com.butbetter.applicationservices.productapi.repository.AlcoholOperations" relationship="INTERFACE_GENERALIZATION">
+      <point x="53.5" y="-14.5" />
+      <point x="1423.593016431928" y="1501.0" />
+      <point x="1259.093016431928" y="1501.0" />
+      <point x="57.25" y="73.5" />
+    </edge>
+    <edge source="com.butbetter.applicationservices.applicationservicesapi.service.ApplicationService" target="com.butbetter.applicationservices.externalAPI.service.Translator" relationship="TO_ONE">
+      <point x="0.0" y="-155.0" />
+      <point x="1729.5674149061051" y="2141.0" />
+      <point x="1688.843016431928" y="2141.0" />
+      <point x="1688.843016431928" y="2091.0" />
+      <point x="2488.343016431928" y="2091.0" />
+      <point x="-106.0" y="86.0" />
+    </edge>
+    <edge source="com.butbetter.applicationservices.csvExporter.ProductInformationCSVFileExporter" target="com.butbetter.applicationservices.csvExporter.storageManager.LocalFileStorageManager" relationship="CREATE">
+      <point x="96.5" y="-86.0" />
+      <point x="4843.269659624412" y="2141.0" />
+      <point x="5034.519659624412" y="2141.0" />
+      <point x="5034.519659624412" y="2121.0" />
+      <point x="5350.504914906105" y="2121.0" />
+      <point x="0.0" y="249.0" />
+    </edge>
+    <edge source="com.butbetter.applicationservices.applicationservicesapi.controller.ApplicationController" target="com.butbetter.applicationservices.applicationservicesapi.controller.ApplicationControllerOperations" relationship="REALIZATION">
+      <point x="147.0" y="-178.0" />
+      <point x="3530.625" y="2514.0" />
+      <point x="3533.099398474177" y="2514.0" />
+      <point x="0.0" y="165.5" />
+    </edge>
+    <edge source="com.butbetter.applicationservices.csvExporter.storageManager.ApiStorageManager" target="com.butbetter.applicationservices.csvExporter.apiRequestHandler.RemoteFileService" relationship="TO_ONE">
+      <point x="-49.375" y="-248.0" />
+      <point x="4933.968016431928" y="1541.0" />
+      <point x="4973.343016431928" y="1541.0" />
+      <point x="4973.343016431928" y="1501.0" />
+      <point x="4882.254914906105" y="1501.0" />
+      <point x="78.5" y="122.5" />
+    </edge>
+    <edge source="com.butbetter.applicationservices.storagerestapi.model.ProductInformation" target="com.butbetter.applicationservices.storagerestapi.model.Address" relationship="TO_ONE">
+      <point x="73.75" y="-180.0" />
+      <point x="3382.985255281693" y="929.0" />
+      <point x="3398.985255281693" y="929.0" />
+      <point x="89.75" y="249.0" />
+    </edge>
+    <edge source="com.butbetter.applicationservices.externalAPI.service.Translator" target="com.butbetter.applicationservices.externalAPI.model.Translation" relationship="DEPENDENCY">
+      <point x="-106.0" y="-86.0" />
+      <point x="2488.343016431928" y="1541.0" />
+      <point x="2599.7071596244123" y="1541.0" />
+      <point x="2599.7071596244123" y="1491.0" />
+      <point x="2621.843016431928" y="1491.0" />
+      <point x="2621.843016431928" y="949.0" />
+      <point x="2483.692414906105" y="949.0" />
+      <point x="2483.692414906105" y="929.0" />
+      <point x="2536.192414906105" y="929.0" />
+      <point x="57.5" y="87.0" />
+    </edge>
+    <edge source="com.butbetter.applicationservices.applicationservicesapi.service.ApplicationOperations" target="com.butbetter.applicationservices.storagerestapi.repository.StorageOperation" relationship="INTERFACE_GENERALIZATION">
+      <point x="53.5" y="-14.5" />
+      <point x="1423.593016431928" y="1501.0" />
+      <point x="2405.093016431928" y="1501.0" />
+      <point x="-68.75" y="50.5" />
+    </edge>
+    <edge source="com.butbetter.applicationservices.productapi.repository.AlcoholRepository" target="com.butbetter.applicationservices.productapi.model.Alcohol" relationship="DEPENDENCY">
+      <point x="0.0" y="-14.5" />
+      <point x="724.5" y="939.0" />
+      <point x="677.3430164319279" y="939.0" />
+      <point x="0.0" y="341.0" />
+    </edge>
+    <edge source="com.butbetter.applicationservices.applicationservicesapi.controller.ApplicationController" target="com.butbetter.applicationservices.applicationservicesapi.service.ApplicationService" relationship="DEPENDENCY">
+      <point x="-147.0" y="-178.0" />
+      <point x="3236.625" y="2514.0" />
+      <point x="1288.4571596244125" y="2514.0" />
+      <point x="1288.4571596244125" y="2494.0" />
+      <point x="1590.0674149061051" y="2494.0" />
+      <point x="-139.5" y="155.0" />
+    </edge>
+    <edge source="com.butbetter.applicationservices.csvExporter.storageManager.ApiStorageManager" target="com.butbetter.applicationservices.csvExporter.apiRequestHandler.RemoteFileService" relationship="CREATE">
+      <point x="148.125" y="-248.0" />
+      <point x="5131.468016431928" y="1541.0" />
+      <point x="5120.009683098595" y="1541.0" />
+      <point x="5120.009683098595" y="1511.0" />
+      <point x="4798.754914906105" y="1511.0" />
+      <point x="4798.754914906105" y="1501.0" />
+      <point x="4725.254914906105" y="1501.0" />
+      <point x="-78.5" y="122.5" />
+    </edge>
+    <edge source="com.butbetter.applicationservices.csvExporter.ProductInformationCSVFileExporter" target="com.butbetter.applicationservices.csvExporter.csvConverter.CSVConverter" relationship="TO_ONE">
+      <point x="-96.5" y="-86.0" />
+      <point x="4650.269659624412" y="2131.0" />
+      <point x="4231.718016431928" y="2131.0" />
+      <point x="4231.718016431928" y="2121.0" />
+      <point x="4288.317414906105" y="2121.0" />
+      <point x="-100.75" y="120.5" />
+    </edge>
+    <edge source="com.butbetter.applicationservices.csvExporter.storageManager.LocalFileStorageManager" target="com.butbetter.applicationservices.csvExporter.storageManager.StorageManager" relationship="REALIZATION">
+      <point x="-98.0" y="-249.0" />
+      <point x="5252.504914906105" y="949.0" />
+      <point x="5100.588248239439" y="949.0" />
+      <point x="5100.588248239439" y="929.0" />
+      <point x="4709.958333333334" y="929.0" />
+      <point x="130.66666666666697" y="120.5" />
+    </edge>
+    <edge source="com.butbetter.applicationservices.productapi.model.Alcohol" target="com.butbetter.applicationservices.productapi.model.AlcoholBeverageType" relationship="DEPENDENCY">
+      <point x="-194.5" y="-341.0" />
+      <point x="482.84301643192794" y="194.0" />
+      <point x="574.8430164319279" y="194.0" />
+      <point x="574.8430164319279" y="184.0" />
+      <point x="736.3430164319279" y="184.0" />
+      <point x="-67.75" y="51.5" />
+    </edge>
+    <edge source="com.butbetter.applicationservices.csvExporter.ProductInformationCSVFileExporter" target="com.butbetter.applicationservices.csvExporter.apiRequestHandler.RemoteFileService" relationship="CREATE">
+      <point x="96.5" y="-86.0" />
+      <point x="4843.269659624412" y="2141.0" />
+      <point x="5034.519659624412" y="2141.0" />
+      <point x="5034.519659624412" y="2121.0" />
+      <point x="4689.33942194836" y="2121.0" />
+      <point x="4689.33942194836" y="1541.0" />
+      <point x="4798.754914906105" y="1541.0" />
+      <point x="4798.754914906105" y="1501.0" />
+      <point x="4725.254914906105" y="1501.0" />
+      <point x="-78.5" y="122.5" />
+    </edge>
+    <edge source="com.butbetter.applicationservices.externalAPI.service.Translator" target="com.butbetter.applicationservices.externalAPI.model.Language" relationship="DEPENDENCY">
+      <point x="-106.0" y="-86.0" />
+      <point x="2488.343016431928" y="1541.0" />
+      <point x="2599.7071596244123" y="1541.0" />
+      <point x="2599.7071596244123" y="1491.0" />
+      <point x="2689.843016431928" y="1491.0" />
+      <point x="2689.843016431928" y="194.0" />
+      <point x="2532.860255281693" y="194.0" />
+      <point x="2532.860255281693" y="184.0" />
+      <point x="2577.610255281693" y="184.0" />
+      <point x="49.75" y="76.5" />
+    </edge>
+    <edge source="com.butbetter.applicationservices.externalAPI.service.Translator" target="com.butbetter.applicationservices.externalAPI.service.TranslatorService" relationship="REALIZATION">
+      <point x="106.0" y="-86.0" />
+      <point x="2700.343016431928" y="1511.0" />
+      <point x="1980.593016431928" y="1511.0" />
+      <point x="62.75" y="39.0" />
+    </edge>
+    <edge source="com.butbetter.applicationservices.applicationservicesapi.controller.ApplicationController" target="com.butbetter.applicationservices.externalAPI.model.Language" relationship="DEPENDENCY">
+      <point x="-147.0" y="-178.0" />
+      <point x="3236.625" y="2514.0" />
+      <point x="1288.4571596244125" y="2514.0" />
+      <point x="1288.4571596244125" y="2494.0" />
+      <point x="1076.843016431928" y="2494.0" />
+      <point x="1076.843016431928" y="194.0" />
+      <point x="2532.860255281693" y="194.0" />
+      <point x="2532.860255281693" y="184.0" />
+      <point x="2577.610255281693" y="184.0" />
+      <point x="49.75" y="76.5" />
+    </edge>
+    <edge source="com.butbetter.applicationservices.productapi.service.AlcoholService" target="com.butbetter.applicationservices.productapi.service.AlcoholValidationService" relationship="TO_ONE">
+      <point x="-139.66666666666663" y="-86.0" />
+      <point x="627.8910651408441" y="1541.0" />
+      <point x="466.5" y="1541.0" />
+      <point x="466.5" y="1531.0" />
+      <point x="400.75" y="1531.0" />
+      <point x="-70.75" y="97.5" />
+    </edge>
+    <edge source="com.butbetter.applicationservices.productapi.model.Alcohol" target="com.butbetter.applicationservices.productapi.model.AlcoholRatingType" relationship="DEPENDENCY">
+      <point x="-194.5" y="-341.0" />
+      <point x="482.84301643192794" y="194.0" />
+      <point x="574.8430164319279" y="194.0" />
+      <point x="574.8430164319279" y="184.0" />
+      <point x="457.34301643192794" y="184.0" />
+      <point x="-63.75" y="51.5" />
+    </edge>
+    <edge source="com.butbetter.applicationservices.csvExporter.ProductInformationCSVFileExporter" target="com.butbetter.applicationservices.csvExporter.properties.CSVExporterProperties" relationship="DEPENDENCY">
+      <point x="-289.5" y="-86.0" />
+      <point x="4457.269659624412" y="2141.0" />
+      <point x="3825.125" y="2141.0" />
+      <point x="3825.125" y="2131.0" />
+      <point x="3852.343016431928" y="2131.0" />
+      <point x="3852.343016431928" y="949.0" />
+      <point x="4356.458333333334" y="949.0" />
+      <point x="4356.458333333334" y="919.0" />
+      <point x="4269.541666666667" y="919.0" />
+      <point x="68.5" y="98.5" />
+    </edge>
+    <edge source="com.butbetter.applicationservices.applicationservicesapi.service.ApplicationService" target="com.butbetter.applicationservices.externalAPI.model.Language" relationship="DEPENDENCY">
+      <point x="186.0" y="-155.0" />
+      <point x="1915.5674149061051" y="2141.0" />
+      <point x="2744.9571596244123" y="2141.0" />
+      <point x="2744.9571596244123" y="2081.0" />
+      <point x="2849.485255281693" y="2081.0" />
+      <point x="2849.485255281693" y="194.0" />
+      <point x="2532.860255281693" y="194.0" />
+      <point x="2532.860255281693" y="184.0" />
+      <point x="2577.610255281693" y="184.0" />
+      <point x="49.75" y="76.5" />
+    </edge>
+    <edge source="com.butbetter.applicationservices.csvExporter.storageManager.ApiStorageManager" target="com.butbetter.applicationservices.csvExporter.storageManager.StorageNotReadyException" relationship="CREATE">
+      <point x="148.125" y="-248.0" />
+      <point x="5131.468016431928" y="1541.0" />
+      <point x="5120.009683098595" y="1541.0" />
+      <point x="5120.009683098595" y="1521.0" />
+      <point x="5144.004914906105" y="1521.0" />
+      <point x="5144.004914906105" y="194.0" />
+      <point x="5315.208333333334" y="194.0" />
+      <point x="5315.208333333334" y="174.0" />
+      <point x="4872.65192194836" y="174.0" />
+      <point x="65.0" y="27.5" />
+    </edge>
+    <edge source="com.butbetter.applicationservices.applicationservicesapi.service.ApplicationService" target="com.butbetter.applicationservices.storagerestapi.service.StorageApiService" relationship="DEPENDENCY">
+      <point x="186.0" y="-155.0" />
+      <point x="1915.5674149061051" y="2141.0" />
+      <point x="2744.9571596244123" y="2141.0" />
+      <point x="2744.9571596244123" y="2081.0" />
+      <point x="3150.235255281693" y="2081.0" />
+      <point x="96.75" y="86.0" />
+    </edge>
+    <edge source="com.butbetter.applicationservices.csvExporter.csvConverter.CSVConverter" target="com.butbetter.applicationservices.csvExporter.csvConverter.CSVCollector" relationship="TO_ONE">
+      <point x="134.33333333333303" y="-120.5" />
+      <point x="4523.400748239438" y="1541.0" />
+      <point x="4482.317414906105" y="1541.0" />
+      <point x="88.0" y="191.5" />
+    </edge>
+    <edge source="com.butbetter.applicationservices.applicationservicesapi.service.ApplicationService" target="com.butbetter.applicationservices.applicationservicesapi.service.ApplicationOperations" relationship="REALIZATION">
+      <point x="-186.0" y="-155.0" />
+      <point x="1543.5674149061051" y="2141.0" />
+      <point x="1370.093016431928" y="2141.0" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="com.butbetter.applicationservices.externalAPI.model.Translation" target="com.butbetter.applicationservices.externalAPI.model.Language" relationship="TO_ONE">
+      <point x="-57.5" y="-87.0" />
+      <point x="2421.192414906105" y="184.0" />
+      <point x="2478.110255281693" y="184.0" />
+      <point x="-49.75" y="76.5" />
+    </edge>
+    <edge source="com.butbetter.applicationservices.productapi.service.AlcoholService" target="com.butbetter.applicationservices.productapi.repository.AlcoholRepository" relationship="TO_ONE">
+      <point x="-139.66666666666663" y="-86.0" />
+      <point x="627.8910651408441" y="1541.0" />
+      <point x="466.5" y="1541.0" />
+      <point x="466.5" y="1531.0" />
+      <point x="678.75" y="1531.0" />
+      <point x="-45.75" y="14.5" />
+    </edge>
+    <edge source="com.butbetter.applicationservices.productapi.service.AlcoholService" target="com.butbetter.applicationservices.productapi.model.Alcohol" relationship="DEPENDENCY">
+      <point x="0.0" y="-86.0" />
+      <point x="767.5577318075107" y="1541.0" />
+      <point x="757.625" y="1541.0" />
+      <point x="757.625" y="1521.0" />
+      <point x="826.5" y="1521.0" />
+      <point x="826.5" y="939.0" />
+      <point x="677.3430164319279" y="939.0" />
+      <point x="0.0" y="341.0" />
+    </edge>
+    <edge source="com.butbetter.applicationservices.externalAPI.service.Translator" target="com.butbetter.applicationservices.externalAPI.model.DeepLApiResponse" relationship="DEPENDENCY">
+      <point x="-106.0" y="-86.0" />
+      <point x="2488.343016431928" y="1541.0" />
+      <point x="2599.7071596244123" y="1541.0" />
+      <point x="2599.7071596244123" y="1491.0" />
+      <point x="2189.843016431928" y="1491.0" />
+      <point x="0.0" y="64.0" />
+    </edge>
+    <edge source="com.butbetter.applicationservices.csvExporter.ProductInformationCSVFileExporter" target="com.butbetter.applicationservices.csvExporter.CSVExporter" relationship="REALIZATION">
+      <point x="289.5" y="-86.0" />
+      <point x="5036.269659624412" y="2141.0" />
+      <point x="5562.504914906105" y="2141.0" />
+      <point x="0.0" y="39.0" />
+    </edge>
+    <edge source="com.butbetter.applicationservices.externalAPI.model.DeepLApiResponse" target="com.butbetter.applicationservices.externalAPI.model.Translation" relationship="TO_ONE">
+      <point x="-63.25" y="-64.0" />
+      <point x="2126.593016431928" y="929.0" />
+      <point x="2421.192414906105" y="929.0" />
+      <point x="-57.5" y="87.0" />
+    </edge>
+    <edge source="com.butbetter.applicationservices.applicationservicesapi.service.ApplicationService" target="com.butbetter.applicationservices.storagerestapi.model.ProductInformation" relationship="DEPENDENCY">
+      <point x="186.0" y="-155.0" />
+      <point x="1915.5674149061051" y="2141.0" />
+      <point x="2744.9571596244123" y="2141.0" />
+      <point x="2744.9571596244123" y="2081.0" />
+      <point x="3257.485255281693" y="2081.0" />
+      <point x="3257.485255281693" y="1531.0" />
+      <point x="3309.235255281693" y="1531.0" />
+      <point x="0.0" y="180.0" />
+    </edge>
+    <edge source="com.butbetter.applicationservices.externalAPI.service.TranslatorService" target="com.butbetter.applicationservices.externalAPI.model.Language" relationship="DEPENDENCY">
+      <point x="0.0" y="-39.0" />
+      <point x="1917.843016431928" y="194.0" />
+      <point x="2532.860255281693" y="194.0" />
+      <point x="2532.860255281693" y="184.0" />
+      <point x="2577.610255281693" y="184.0" />
+      <point x="49.75" y="76.5" />
+    </edge>
+    <edge source="com.butbetter.applicationservices.csvExporter.storageManager.LocalFileStorageManager" target="com.butbetter.applicationservices.csvExporter.storageManager.StorageNotReadyException" relationship="CREATE">
+      <point x="98.0" y="-249.0" />
+      <point x="5448.504914906105" y="949.0" />
+      <point x="5374.458333333334" y="949.0" />
+      <point x="5374.458333333334" y="194.0" />
+      <point x="5315.208333333334" y="194.0" />
+      <point x="5315.208333333334" y="174.0" />
+      <point x="4872.65192194836" y="174.0" />
+      <point x="65.0" y="27.5" />
+    </edge>
+    <edge source="com.butbetter.applicationservices.applicationservicesapi.controller.ApplicationControllerOperations" target="com.butbetter.applicationservices.storagerestapi.model.ProductInformation" relationship="DEPENDENCY">
+      <point x="0.0" y="-165.5" />
+      <point x="3533.099398474177" y="1541.0" />
+      <point x="3808.875" y="1541.0" />
+      <point x="3808.875" y="1511.0" />
+      <point x="3309.235255281693" y="1511.0" />
+      <point x="0.0" y="180.0" />
+    </edge>
+    <edge source="com.butbetter.applicationservices.csvExporter.ProductInformationCSVFileExporter" target="com.butbetter.applicationservices.csvExporter.storageManager.StorageManager" relationship="DEPENDENCY">
+      <point x="-289.5" y="-86.0" />
+      <point x="4457.269659624412" y="2141.0" />
+      <point x="3825.125" y="2141.0" />
+      <point x="3825.125" y="2131.0" />
+      <point x="3852.343016431928" y="2131.0" />
+      <point x="3852.343016431928" y="929.0" />
+      <point x="4448.625" y="929.0" />
+      <point x="-130.66666666666697" y="120.5" />
+    </edge>
+    <edge source="com.butbetter.applicationservices.applicationservicesapi.service.ApplicationService" target="com.butbetter.applicationservices.productapi.service.AlcoholService" relationship="DEPENDENCY">
+      <point x="186.0" y="-155.0" />
+      <point x="1915.5674149061051" y="2141.0" />
+      <point x="2744.9571596244123" y="2141.0" />
+      <point x="2744.9571596244123" y="2101.0" />
+      <point x="719.3321596244123" y="2101.0" />
+      <point x="719.3321596244123" y="2091.0" />
+      <point x="872.3077318075107" y="2091.0" />
+      <point x="104.75" y="86.0" />
+    </edge>
+    <edge source="com.butbetter.applicationservices.csvExporter.storageManager.ApiStorageManager" target="com.butbetter.applicationservices.csvExporter.storageManager.LocalFileStorageManager" relationship="CREATE">
+      <point x="148.125" y="-248.0" />
+      <point x="5131.468016431928" y="1541.0" />
+      <point x="5120.009683098595" y="1541.0" />
+      <point x="5120.009683098595" y="1531.0" />
+      <point x="5350.504914906105" y="1531.0" />
+      <point x="0.0" y="249.0" />
+    </edge>
+    <edge source="com.butbetter.applicationservices.caluapi.service.CalculatorService" target="com.butbetter.applicationservices.caluapi.model.VAT" relationship="DEPENDENCY">
+      <point x="67.25" y="-134.0" />
+      <point x="0.0" y="76.5" />
+    </edge>
+    <edge source="com.butbetter.applicationservices.productapi.service.AlcoholValidationService" target="com.butbetter.applicationservices.productapi.model.Alcohol" relationship="DEPENDENCY">
+      <point x="0.0" y="-97.5" />
+      <point x="471.5" y="939.0" />
+      <point x="677.3430164319279" y="939.0" />
+      <point x="0.0" y="341.0" />
+    </edge>
+    <edge source="com.butbetter.applicationservices.csvExporter.storageManager.ApiStorageManager" target="com.butbetter.applicationservices.csvExporter.storageManager.StorageManager" relationship="REALIZATION">
+      <point x="49.375" y="-248.0" />
+      <point x="5032.718016431928" y="1541.0" />
+      <point x="5100.588248239439" y="1541.0" />
+      <point x="5100.588248239439" y="929.0" />
+      <point x="4709.958333333334" y="929.0" />
+      <point x="130.66666666666697" y="120.5" />
+    </edge>
+    <edge source="com.butbetter.applicationservices.csvExporter.ProductInformationCSVFileExporter" target="com.butbetter.applicationservices.storagerestapi.model.ProductInformation" relationship="DEPENDENCY">
+      <point x="-289.5" y="-86.0" />
+      <point x="4457.269659624412" y="2141.0" />
+      <point x="3825.125" y="2141.0" />
+      <point x="3825.125" y="2131.0" />
+      <point x="3764.099398474177" y="2131.0" />
+      <point x="3764.099398474177" y="1531.0" />
+      <point x="3309.235255281693" y="1531.0" />
+      <point x="0.0" y="180.0" />
+    </edge>
+    <edge source="com.butbetter.applicationservices.applicationservicesapi.service.ApplicationService" target="com.butbetter.applicationservices.caluapi.service.CalculatorService" relationship="DEPENDENCY">
+      <point x="186.0" y="-155.0" />
+      <point x="1915.5674149061051" y="2141.0" />
+      <point x="2744.9571596244123" y="2141.0" />
+      <point x="2744.9571596244123" y="2081.0" />
+      <point x="1698.843016431928" y="2081.0" />
+      <point x="67.25" y="134.0" />
+    </edge>
+    <edge source="com.butbetter.applicationservices.productapi.controller.AlcoholController" target="com.butbetter.applicationservices.productapi.service.AlcoholService" relationship="TO_ONE">
+      <point x="-77.25" y="-97.5" />
+      <point x="77.25" y="2121.0" />
+      <point x="709.3321596244123" y="2121.0" />
+      <point x="709.3321596244123" y="2101.0" />
+      <point x="662.8077318075107" y="2101.0" />
+      <point x="-104.75" y="86.0" />
+    </edge>
+    <edge source="com.butbetter.applicationservices.csvExporter.storageManager.ApiStorageManager" target="com.butbetter.applicationservices.csvExporter.storageManager.StorageManager" relationship="TO_ONE">
+      <point x="-49.375" y="-248.0" />
+      <point x="4933.968016431928" y="1541.0" />
+      <point x="4973.343016431928" y="1541.0" />
+      <point x="4973.343016431928" y="1501.0" />
+      <point x="5089.588248239439" y="1501.0" />
+      <point x="5089.588248239439" y="939.0" />
+      <point x="4637.958333333334" y="939.0" />
+      <point x="4637.958333333334" y="929.0" />
+      <point x="4579.291666666667" y="929.0" />
+      <point x="0.0" y="120.5" />
+    </edge>
+    <edge source="com.butbetter.applicationservices.productapi.model.Alcohol" target="com.butbetter.applicationservices.productapi.model.AlcoholBeverageType" relationship="TO_ONE">
+      <point x="194.5" y="-341.0" />
+      <point x="67.75" y="51.5" />
+    </edge>
+    <edge source="com.butbetter.applicationservices.applicationservicesapi.service.ApplicationService" target="com.butbetter.applicationservices.externalAPI.service.Translator" relationship="DEPENDENCY">
+      <point x="186.0" y="-155.0" />
+      <point x="1915.5674149061051" y="2141.0" />
+      <point x="2744.9571596244123" y="2141.0" />
+      <point x="2744.9571596244123" y="2081.0" />
+      <point x="2700.343016431928" y="2081.0" />
+      <point x="106.0" y="86.0" />
+    </edge>
+    <edge source="com.butbetter.applicationservices.csvExporter.storageManager.ApiStorageManager" target="com.butbetter.applicationservices.csvExporter.properties.CSVExporterProperties" relationship="DEPENDENCY">
+      <point x="-148.125" y="-248.0" />
+      <point x="4835.218016431928" y="1531.0" />
+      <point x="4636.254914906105" y="1531.0" />
+      <point x="4636.254914906105" y="949.0" />
+      <point x="4356.458333333334" y="949.0" />
+      <point x="4356.458333333334" y="919.0" />
+      <point x="4269.541666666667" y="919.0" />
+      <point x="68.5" y="98.5" />
+    </edge>
+    <edge source="com.butbetter.applicationservices.externalAPI.model.Translation" target="com.butbetter.applicationservices.externalAPI.model.Language" relationship="DEPENDENCY">
+      <point x="57.5" y="-87.0" />
+      <point x="2536.192414906105" y="194.0" />
+      <point x="2532.860255281693" y="194.0" />
+      <point x="2532.860255281693" y="184.0" />
+      <point x="2577.610255281693" y="184.0" />
+      <point x="49.75" y="76.5" />
+    </edge>
+    <edge source="com.butbetter.applicationservices.ApplicationServices" target="com.butbetter.applicationservices.csvExporter.properties.CSVExporterProperties" relationship="DEPENDENCY">
+      <point x="0.0" y="-40.0" />
+      <point x="3971.843016431928" y="949.0" />
+      <point x="4356.458333333334" y="949.0" />
+      <point x="4356.458333333334" y="919.0" />
+      <point x="4269.541666666667" y="919.0" />
+      <point x="68.5" y="98.5" />
+    </edge>
+    <edge source="com.butbetter.applicationservices.csvExporter.ProductInformationCSVFileExporter" target="com.butbetter.applicationservices.csvExporter.properties.CSVExporterProperties" relationship="TO_ONE">
+      <point x="-96.5" y="-86.0" />
+      <point x="4650.269659624412" y="2131.0" />
+      <point x="4231.718016431928" y="2131.0" />
+      <point x="4231.718016431928" y="2121.0" />
+      <point x="3863.343016431928" y="2121.0" />
+      <point x="3863.343016431928" y="919.0" />
+      <point x="4132.541666666667" y="919.0" />
+      <point x="-68.5" y="98.5" />
+    </edge>
+    <edge source="com.butbetter.applicationservices.applicationservicesapi.service.ApplicationService" target="com.butbetter.applicationservices.productapi.model.Alcohol" relationship="DEPENDENCY">
+      <point x="186.0" y="-155.0" />
+      <point x="1915.5674149061051" y="2141.0" />
+      <point x="2744.9571596244123" y="2141.0" />
+      <point x="2744.9571596244123" y="2081.0" />
+      <point x="1781.843016431928" y="2081.0" />
+      <point x="1781.843016431928" y="939.0" />
+      <point x="677.3430164319279" y="939.0" />
+      <point x="0.0" y="341.0" />
+    </edge>
+    <edge source="com.butbetter.applicationservices.productapi.service.AlcoholService" target="com.butbetter.applicationservices.productapi.repository.AlcoholOperations" relationship="REALIZATION">
+      <point x="139.66666666666663" y="-86.0" />
+      <point x="907.2243984741772" y="1541.0" />
+      <point x="1144.593016431928" y="1541.0" />
+      <point x="-57.25" y="73.5" />
+    </edge>
+    <edge source="com.butbetter.applicationservices.applicationservicesapi.controller.ApplicationController" target="com.butbetter.applicationservices.productapi.model.Alcohol" relationship="DEPENDENCY">
+      <point x="-147.0" y="-178.0" />
+      <point x="3236.625" y="2514.0" />
+      <point x="1288.4571596244125" y="2514.0" />
+      <point x="1288.4571596244125" y="2494.0" />
+      <point x="319.5" y="2494.0" />
+      <point x="319.5" y="939.0" />
+      <point x="677.3430164319279" y="939.0" />
+      <point x="0.0" y="341.0" />
+    </edge>
+    <edge source="com.butbetter.applicationservices.applicationservicesapi.service.ApplicationOperations" target="com.butbetter.applicationservices.productapi.model.Alcohol" relationship="DEPENDENCY">
+      <point x="-53.5" y="-14.5" />
+      <point x="1316.593016431928" y="1541.0" />
+      <point x="1326.843016431928" y="1541.0" />
+      <point x="1326.843016431928" y="939.0" />
+      <point x="677.3430164319279" y="939.0" />
+      <point x="0.0" y="341.0" />
+    </edge>
+    <edge source="com.butbetter.applicationservices.storagerestapi.model.ProductInformation" target="com.butbetter.applicationservices.storagerestapi.model.Address" relationship="DEPENDENCY">
+      <point x="-73.75" y="-180.0" />
+      <point x="3235.485255281693" y="929.0" />
+      <point x="3219.485255281693" y="929.0" />
+      <point x="-89.75" y="249.0" />
+    </edge>
+    <edge source="com.butbetter.applicationservices.productapi.controller.AlcoholController" target="com.butbetter.applicationservices.productapi.model.Alcohol" relationship="DEPENDENCY">
+      <point x="77.25" y="-97.5" />
+      <point x="231.75" y="2141.0" />
+      <point x="159.5" y="2141.0" />
+      <point x="159.5" y="939.0" />
+      <point x="677.3430164319279" y="939.0" />
+      <point x="0.0" y="341.0" />
+    </edge>
+    <edge source="com.butbetter.applicationservices.applicationservicesapi.controller.ApplicationControllerOperations" target="com.butbetter.applicationservices.externalAPI.model.Language" relationship="DEPENDENCY">
+      <point x="0.0" y="-165.5" />
+      <point x="3533.099398474177" y="1541.0" />
+      <point x="3808.875" y="1541.0" />
+      <point x="3808.875" y="194.0" />
+      <point x="2532.860255281693" y="194.0" />
+      <point x="2532.860255281693" y="184.0" />
+      <point x="2577.610255281693" y="184.0" />
+      <point x="49.75" y="76.5" />
+    </edge>
+    <edge source="com.butbetter.applicationservices.csvExporter.ProductInformationCSVFileExporter" target="com.butbetter.applicationservices.csvExporter.storageManager.StorageNotReadyException" relationship="DEPENDENCY">
+      <point x="-289.5" y="-86.0" />
+      <point x="4457.269659624412" y="2141.0" />
+      <point x="3825.125" y="2141.0" />
+      <point x="3825.125" y="2131.0" />
+      <point x="3819.875" y="2131.0" />
+      <point x="3819.875" y="184.0" />
+      <point x="4552.15192194836" y="184.0" />
+      <point x="4552.15192194836" y="174.0" />
+      <point x="4742.65192194836" y="174.0" />
+      <point x="-65.0" y="27.5" />
+    </edge>
+    <edge source="com.butbetter.applicationservices.applicationservicesapi.controller.ApplicationController" target="com.butbetter.applicationservices.applicationservicesapi.service.ApplicationService" relationship="TO_ONE">
+      <point x="0.0" y="-178.0" />
+      <point x="3383.625" y="2504.0" />
+      <point x="1869.0674149061051" y="2504.0" />
+      <point x="139.5" y="155.0" />
+    </edge>
+    <edge source="com.butbetter.applicationservices.csvExporter.CSVExporter" target="com.butbetter.applicationservices.csvExporter.storageManager.StorageNotReadyException" relationship="DEPENDENCY">
+      <point x="0.0" y="-39.0" />
+      <point x="5562.504914906105" y="184.0" />
+      <point x="4552.15192194836" y="184.0" />
+      <point x="4552.15192194836" y="174.0" />
+      <point x="4742.65192194836" y="174.0" />
+      <point x="-65.0" y="27.5" />
+    </edge>
+    <edge source="com.butbetter.applicationservices.csvExporter.storageManager.StorageManager" target="com.butbetter.applicationservices.csvExporter.storageManager.StorageNotReadyException" relationship="DEPENDENCY">
+      <point x="0.0" y="-120.5" />
+      <point x="4579.291666666667" y="184.0" />
+      <point x="4552.15192194836" y="184.0" />
+      <point x="4552.15192194836" y="174.0" />
+      <point x="4742.65192194836" y="174.0" />
+      <point x="-65.0" y="27.5" />
+    </edge>
+    <edge source="com.butbetter.applicationservices.applicationservicesapi.service.ApplicationOperations" target="com.butbetter.applicationservices.externalAPI.service.TranslatorService" relationship="INTERFACE_GENERALIZATION">
+      <point x="53.5" y="-14.5" />
+      <point x="1423.593016431928" y="1501.0" />
+      <point x="1855.093016431928" y="1501.0" />
+      <point x="-62.75" y="39.0" />
+    </edge>
+    <edge source="com.butbetter.applicationservices.csvExporter.apiRequestHandler.RemoteFileService" target="com.butbetter.applicationservices.csvExporter.properties.CSVExporterProperties" relationship="DEPENDENCY">
+      <point x="0.0" y="-122.5" />
+      <point x="4803.754914906105" y="949.0" />
+      <point x="4356.458333333334" y="949.0" />
+      <point x="4356.458333333334" y="919.0" />
+      <point x="4269.541666666667" y="919.0" />
+      <point x="68.5" y="98.5" />
+    </edge>
+    <edge source="com.butbetter.applicationservices.applicationservicesapi.service.ApplicationService" target="com.butbetter.applicationservices.storagerestapi.service.StorageApiService" relationship="TO_ONE">
+      <point x="0.0" y="-155.0" />
+      <point x="1729.5674149061051" y="2141.0" />
+      <point x="1688.843016431928" y="2141.0" />
+      <point x="1688.843016431928" y="2091.0" />
+      <point x="2956.735255281693" y="2091.0" />
+      <point x="-96.75" y="86.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic" zoom="0.2942137953579601" showDependencies="true" x="2836.0" y="1519.5" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Constructors</Category>
+    <Category>Fields</Category>
+    <Category>Inner Classes</Category>
+    <Category>Methods</Category>
+    <Category>Properties</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

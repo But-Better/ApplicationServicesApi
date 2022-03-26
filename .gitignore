@@ -37,3 +37,6 @@ build/
 
 ### Env ###
 loadEnv.sh
+
+### Log ###
+*.log*
