@@ -2,6 +2,7 @@ package com.butbetter.applicationservices.applicationservicesapi.controller;
 
 import com.butbetter.applicationservices.applicationservicesapi.service.ApplicationService;
 import com.butbetter.applicationservices.caluapi.service.CalculatorService;
+import com.butbetter.applicationservices.csvExporter.ProductInformationCSVFileExporter;
 import com.butbetter.applicationservices.externalAPI.service.Translator;
 import com.butbetter.applicationservices.productapi.model.Alcohol;
 import com.butbetter.applicationservices.productapi.model.AlcoholBeverageType;
@@ -29,6 +30,9 @@ class ApplicationControllerTest {
     @Autowired
     private AlcoholService alcoholService;
 
+    @Autowired
+    private ProductInformationCSVFileExporter exporter;
+
     @SuppressWarnings("FieldCanBeLocal")
     private StorageApiService storageApiService;
     @SuppressWarnings("FieldCanBeLocal")
@@ -42,7 +46,7 @@ class ApplicationControllerTest {
         calculatorService = mock(CalculatorService.class);
         translator = mock(Translator.class);
 
-        applicationService = new ApplicationService(alcoholService, storageApiService, calculatorService, translator);
+        applicationService = new ApplicationService(alcoholService, storageApiService, calculatorService, translator, exporter);
 
         applicationController = new ApplicationController(applicationService);
     }
