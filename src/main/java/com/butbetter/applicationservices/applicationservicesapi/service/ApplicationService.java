@@ -1,13 +1,14 @@
 package com.butbetter.applicationservices.applicationservicesapi.service;
 
 import com.butbetter.applicationservices.caluapi.service.CalculatorService;
+import com.butbetter.applicationservices.csvExporter.ProductInformationCSVFileExporter;
 import com.butbetter.applicationservices.externalAPI.model.Language;
 import com.butbetter.applicationservices.externalAPI.service.Translator;
-import com.butbetter.applicationservices.externalAPI.service.TranslatorService;
 import com.butbetter.applicationservices.productapi.model.Alcohol;
 import com.butbetter.applicationservices.productapi.service.AlcoholService;
 import com.butbetter.applicationservices.storagerestapi.model.ProductInformation;
 import com.butbetter.applicationservices.storagerestapi.service.StorageApiService;
+import lombok.SneakyThrows;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,17 +24,19 @@ public class ApplicationService implements ApplicationOperations {
 
     private final AlcoholService alcoholService;
     private final StorageApiService storageApiService;
+    private final ProductInformationCSVFileExporter exporter;
     private final CalculatorService calculatorService;
     private final Translator translator;
 
     private final Logger log = LoggerFactory.getLogger(ApplicationService.class);
 
     @Autowired
-    public ApplicationService(AlcoholService alcoholService, StorageApiService storageApiService, CalculatorService calculatorService, Translator translator) {
+    public ApplicationService(AlcoholService alcoholService, StorageApiService storageApiService, CalculatorService calculatorService, Translator translator, ProductInformationCSVFileExporter exporter) {
         this.alcoholService = alcoholService;
         this.storageApiService = storageApiService;
         this.calculatorService = calculatorService;
         this.translator = translator;
+        this.exporter = exporter;
     }
 
     @Override
@@ -84,10 +87,12 @@ public class ApplicationService implements ApplicationOperations {
         return this.storageApiService.findProductInformationById(uuid);
     }
 
+    @SneakyThrows
     @Override
     public void saveProductInformation(ProductInformation productInformation) {
         log.info(String.format("%s create a ProductInformation", this.getClass()));
         this.storageApiService.saveProductInformation(productInformation);
+        this.exporter.export(productInformation);
     }
 
     @Override
